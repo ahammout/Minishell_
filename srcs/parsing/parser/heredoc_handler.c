@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:37:05 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/28 17:34:02 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/30 22:03:33 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,12 @@ void    read_input(t_data *data, int fd[2])
             exit(130);
         if (ft_strcmp(buffer, data->tokens->next->lex) == 0)
         {
+            // ft_putstr_fd(NULL, fd[1]);
             free(buffer);
             break;
         }
         ft_putstr_fd(buffer, fd[1]);
+        ft_putstr_fd("\n", fd[1]);
         free(buffer);
     }
     close(fd[1]);

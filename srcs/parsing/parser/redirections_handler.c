@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:09:59 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/26 02:01:12 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/30 22:01:57 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int append_handler(t_data *data)
         data->tokens = data->tokens->next;
     data->cmds->out_file = open(data->tokens->lex, O_WRONLY | O_APPEND);
     if (data->cmds->out_file == -1 && data->tokens->type != APPEND)
-        data->cmds->out_file = open(data->tokens->lex, O_CREAT | O_WRONLY | O_APPEND, 0644);
+        data->cmds->out_file = open(data->tokens->lex, O_CREAT | O_WRONLY | O_APPEND, 0777);
     data->tokens = data->tokens->next;
     if (data->tokens && (data->tokens->type == KEYWORD || data->tokens->type == REDOUT))
     {
@@ -33,8 +33,14 @@ int redout_handler(t_data *data)
     if (data->tokens->type == REDOUT)
         data->tokens = data->tokens->next;
     data->cmds->out_file = open(data->tokens->lex, O_WRONLY);
+    if (data->cmds->out_file != -1 && data->tokens->type != REDOUT)
+    {
+        close(data->cmds->out_file);
+        unlink(data->tokens->lex);
+        data->cmds->out_file = open(data->tokens->lex, O_WRONLY | O_CREAT, 0777);
+    }
     if (data->cmds->out_file == -1 && data->tokens->type != REDOUT)
-        data->cmds->out_file = open(data->tokens->lex, O_WRONLY | O_CREAT, 0644);
+        data->cmds->out_file = open(data->tokens->lex, O_WRONLY | O_CREAT, 0777);
     data->tokens = data->tokens->next;
     if (data->tokens && (data->tokens->type == KEYWORD || data->tokens->type == REDOUT))
     {
