@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:16:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/03/23 18:08:52 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/03/30 23:43:32 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ void execute_command(t_exec *exec, char *path, char **envp) {
         exit(1);
     }
     if (pid)
-        ignore_signals();
+    {
+        //ignore_signal();
+    }
     exec_command(pid, exec, path, envp);
     waitpid(pid, &status, 0);
     handle_exit_status(status);
