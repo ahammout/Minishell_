@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/31 23:03:34 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/31 23:31:32 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ void            add_new_node(t_data *data);
 void            free_tokens_list(t_data *data);
 void            cmd_call(t_data *data, int her_file);
 int             count_pps(t_exec	*exec);
+void            updt_shlvl(t_data *data);
 
 ///////////////////////////////// ENVIRONMENT /////////////////////////////////
 
@@ -215,7 +216,7 @@ void setLastNode(t_env *env);
 t_env *find_node(char *str, t_data *data);
 void ft_unset(t_exec *cmd, t_data *data);
 void execute_command(t_exec *exec, char *path, char **envp);
-void ignore_signals();
+void ignore_signal();
 char *get_path(char *str, t_data *data, int *status);
 void printEnv(t_data *data);
 t_env *sort_environment(t_data *data);

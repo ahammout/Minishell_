@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/31 23:11:33 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/31 23:28:24 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int main(int ac, char **av, char **envp)
         data.envp_ = envp;
         data.buffer = NULL;
         set_environment(&data, envp);
+        updt_shlvl(&data);
         while (1)
         {
             signals_handler();

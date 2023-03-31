@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:58:36 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/03/29 21:12:42 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:59:15 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int find_eq(char *str)
             return (i);
         i++;
     }
-    return (0);
+    return (i);
 }
 
 static t_env   *strToList(char **envp)
@@ -39,7 +39,10 @@ static t_env   *strToList(char **envp)
     {
         tmp = (t_env *)malloc(sizeof(t_env));
         tmp->name = ft_substr(envp[i], 0, find_eq(envp[i]));
-        tmp->value = ft_substr(envp[i],find_eq(envp[i]) + 1, ft_strlen(envp[i]) - find_eq(envp[i]));
+        if (find_eq(envp[i]) == ft_strlen(envp[i]))
+            tmp->value = NULL;
+        else
+            tmp->value = ft_substr(envp[i],find_eq(envp[i]) + 1, ft_strlen(envp[i]) - find_eq(envp[i]));
         tmp->next = env;
         env = tmp;
         i++;
@@ -91,9 +94,14 @@ static char **list_to_str(t_env *env)
     tmp = env;
     while (tmp)
     {
-        tmp2 = ft_strjoin(tmp->name, "=");
-        envp[i] = ft_strjoin(tmp2, tmp->value);
-        free(tmp2);
+        if (tmp->value)
+        {
+            tmp2 = ft_strjoin(tmp->name, "=");
+            envp[i] = ft_strjoin(tmp2, tmp->value);
+            free(tmp2);
+        }
+        else
+            envp[i] = ft_strdup(tmp->name);
         tmp = tmp->next;
         i++;
     }
@@ -108,11 +116,13 @@ void printEnv(t_data *data)
     tmp = data->env;
     while (tmp)
     {
-        ft_putstr_fd("declare -x ", data->cmds->out_file); // is for test only to be replaced by cmds->out_file
-        ft_putstr_fd(tmp->name, data->cmds->out_file); // is for test only to be replaced by cmds->out_file
-        ft_putstr_fd("=", data->cmds->out_file); // is for test only to be replaced by cmds->out_file
-        ft_putstr_fd(tmp->value, data->cmds->out_file); // is for test only to be replaced by cmds->out_file
-        ft_putstr_fd("\n", data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+        if (tmp->value)
+        {
+            ft_putstr_fd(tmp->name, data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+            ft_putstr_fd("=", data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+            ft_putstr_fd(tmp->value, data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+            ft_putstr_fd("\n", data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+        }
         tmp = tmp->next;
     }
 }
@@ -126,9 +136,12 @@ void    export0(t_data *data)
     {
         ft_putstr_fd("declare -x ", data->cmds->out_file); // is for test only to be replaced by cmds->out_file
         ft_putstr_fd(tmp->name, data->cmds->out_file); // is for test only to be replaced by cmds->out_file
-        ft_putstr_fd("=\"", data->cmds->out_file); // is for test only to be replaced by cmds->out_file
-        ft_putstr_fd(tmp->value, data->cmds->out_file); // is for test only to be replaced by cmds->out_file
-        ft_putstr_fd("\"",data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+        if (tmp->value)
+        {
+            ft_putstr_fd("=\"", data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+            ft_putstr_fd(tmp->value, data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+            ft_putstr_fd("\"",data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+        }
         ft_putstr_fd("\n", data->cmds->out_file); // is for test only to be replaced by cmds->out_file
         tmp = tmp->next;
     }
