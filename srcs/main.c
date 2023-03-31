@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/03/31 01:28:35 by ahammout         ###   ########.fr       */
+=======
+/*   Updated: 2023/03/31 00:10:44 by zessadqu         ###   ########.fr       */
+>>>>>>> e16cc6e1459d7687117c91cbcca393fea6fd76a6
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +52,7 @@ int main(int ac, char **av, char **envp)
             data.cmds = parse_line(&data);
             free_tokens_list(&data);
             /////// EXECUTION PART /////
-            if (data.cmds)
+           if (data.cmds)
                 cmd_call(&data,her_file);
         }
     }

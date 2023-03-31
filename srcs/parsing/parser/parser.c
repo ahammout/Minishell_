@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:36:39 by ahammout          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/03/30 22:22:12 by ahammout         ###   ########.fr       */
+=======
+/*   Updated: 2023/03/30 22:22:05 by zessadqu         ###   ########.fr       */
+>>>>>>> e16cc6e1459d7687117c91cbcca393fea6fd76a6
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +78,10 @@ t_exec  *parser(t_data *data)
     data->tokens = ptr;
     data->cmds = head;
     //// OPTIONAL FUNCTION CALL
+<<<<<<< HEAD
     // display_cmds(data->cmds);
+=======
+    //isplay_cmds(data->cmds);
+>>>>>>> e16cc6e1459d7687117c91cbcca393fea6fd76a6
     return (head);
 }
