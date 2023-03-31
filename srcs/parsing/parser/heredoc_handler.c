@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_handler.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:37:05 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/31 01:37:30 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/31 18:33:34 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void    read_input(t_data *data, int fd[2])
     buffer = readline("heredoc> ");
     if (!buffer)
         exit(130);
-    while (1)
+    while (ft_strcmp(buffer, ft_strjoin(data->tokens->next->lex, "\n")) == 0)
     {
         ft_putstr_fd(buffer, fd[1]);
         ft_putstr_fd("\n", fd[1]);
@@ -65,12 +65,12 @@ void    read_input(t_data *data, int fd[2])
         buffer = readline("heredoc> ");
         if (!buffer)
             exit(130);
-        if (ft_strcmp(buffer, data->tokens->next->lex) == 0)
-        {
-            ft_putstr_fd("\0", fd[1]);
-            free(buffer);
-            break;
-        }
+        // if (ft_strcmp(buffer, ft_strjoin(data->tokens->next->lex, "\n")) == 0)
+        // {
+        //     ft_putstr_fd("\0", fd[1]);
+        //     free(buffer);
+        //     break;
+        // }
     }
     close(fd[1]);
     exit (0);
