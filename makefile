@@ -3,14 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+         #
+#    By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 11:15:10 by ahammout          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2023/03/30 22:47:40 by ahammout         ###   ########.fr        #
-=======
-#    Updated: 2023/03/30 23:03:48 by zessadqu         ###   ########.fr        #
->>>>>>> e16cc6e1459d7687117c91cbcca393fea6fd76a6
+#    Updated: 2023/03/31 01:40:58 by ahammout         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
