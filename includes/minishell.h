@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/30 22:10:00 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/03/31 23:03:34 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,10 @@ typedef struct  s_data
     t_env       *env;
     t_tokens    *tokens;
     t_exec      *cmds;
+    char        *err;
     t_pipe      *pipex;
     char        path[PATH_MAX];
-    int         err;
+    int         heredoc;
 }               t_data;
 
 
@@ -125,7 +126,7 @@ int             quotes(t_data *data, char *lexem, char type);
 int             expand(t_data *data, char *lexem);
 int             keyword(t_data *data, char *lexem);
 int             special_op(t_data *data, char *lexem, int type);
-void            optype (int size, int type, t_tokens *token);
+void            optype (t_data *data, int type);
 void            split_token(t_data *data);
 int             q_keyword(t_data *data, char *lexem);
 void            init_tokens_list(t_data *data);
@@ -147,15 +148,14 @@ void            free_env_list(t_data *data);
 ///////////////////////////////// SYNTAX ANALYZER //////////////////////////////
 
 t_tokens        *syntax_analyzer(t_data *data);
-int             analyze_begin_end(t_data *data);
-int             analyze_pipe(t_data *data);
-int             analyze_redirections(t_data *data);
+void            analyze_begin_end(t_data *data);
+void            analyze_pipe(t_data *data);
+void            analyze_redirections(t_data *data);
 int             analyze_quotes(t_data *data);
 int             quotes_syntax(char *lexem, int type);
 void            abs_syntax(t_data *data, int lexem_len, int n_quotes);
-int             analyze_begin(t_tokens *token);
-int             analyze_end(t_tokens *token);
-int             analyze_file(t_tokens *token);
+void            analyze_begin(t_data *data, t_tokens *token);
+void            analyze_end(t_data *data, t_tokens *token);
     
 ///////////////////////////////// EXPANDER //////////////////////////////////////
 
@@ -231,7 +231,7 @@ void export0(t_data *data);
 
 void            exit_error(t_data *data, char *err);
 void            free_data(t_data *data);
-int             generate_error(t_data *data, char *error);
+int             generate_error(t_data *data);
 char            **ft_2strdup(char **str);
 int             white_check(char *str);
 void            display_tokens(t_tokens *token);

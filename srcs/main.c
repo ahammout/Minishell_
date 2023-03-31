@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/31 01:41:26 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/31 23:11:33 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ int main(int ac, char **av, char **envp)
         while (1)
         {
             signals_handler();
+            data.err = NULL;
             buffer_size = 0;
-            data.err = 0;
             while (!buffer_size)
             {
                 data.buffer = readline("(minishell@Developers)$> ");
                 if (!data.buffer)
                 {
                     exitS = 2;
-                    ft_putstr_fd("\nexit\n", 1);
+                    ft_putstr_fd("exit\n", 1);
                     exit (exitS);
                 }
                 buffer_size = ft_strlen(data.buffer);

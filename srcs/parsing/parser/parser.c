@@ -6,11 +6,31 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:36:39 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/31 01:41:09 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/31 22:09:05 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
+
+void    free_cmds_list(t_data *data)
+{
+    t_exec      *tmp;
+    int         i;
+
+    i = 0;
+    while (data->cmds != NULL)
+    {
+        while (data->cmds->str[i])
+        {
+            free(data->cmds->str[i]);
+            i++;
+        }
+        free(data->cmds->str);
+        tmp = data->cmds;
+        data->cmds = data->cmds->next;
+        free(tmp);
+    }
+}
 
 int get_size(t_data *data)
 {
@@ -66,14 +86,15 @@ t_exec  *parser(t_data *data)
         if (!redirection_handler(data))
         {
             data->tokens = ptr;
-            return (head);
+            data->cmds = head;
+            free_cmds_list(data);
+            return(0);
         }
         if (data->tokens && data->tokens->type == PIPE)
             next_cmd(data);
     }
     data->tokens = ptr;
     data->cmds = head;
-    //// OPTIONAL FUNCTION CALL
     // display_cmds(data->cmds);
     return (head);
 }

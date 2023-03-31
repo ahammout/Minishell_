@@ -6,24 +6,27 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:46:54 by ahammout          #+#    #+#             */
-/*   Updated: 2023/02/18 14:21:32 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:28:33 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-void optype(int size, int type, t_tokens *token)
+void optype(t_data *data, int type)
 {
-    if (size == 1 && type == REDOUT)
-        token->type = REDOUT;
-    else if (size > 1 && type == REDOUT)
-        token->type = APPEND;
-    else if (size == 1 && type == REDIN)
-        token->type = REDIN;
-    else if (size > 1 && type == REDIN)
-        token->type = HEREDOC;
+    if (data->tokens->lenght == 1 && type == REDOUT)
+        data->tokens->type = REDOUT;
+    else if (data->tokens->lenght > 1 && type == REDOUT)
+        data->tokens->type = APPEND;
+    else if (data->tokens->lenght == 1 && type == REDIN)
+        data->tokens->type = REDIN;
+    else if (data->tokens->lenght > 1 && type == REDIN)
+    {
+        data->heredoc = 1;
+        data->tokens->type = HEREDOC;
+    }
     else if (type == PIPE)
-        token->type = PIPE;
+        data->tokens->type = PIPE;
 }
 
 int is_special_op(char c)

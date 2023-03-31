@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:09:59 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/30 22:01:57 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/31 23:09:54 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int redin_handler(t_data *data)
     data->cmds->in_file = open(data->tokens->lex, O_RDONLY );
     if (data->cmds->in_file == -1)
     {
-        data->err = 1;
         printf("Minishell: %s: No such file or directory\n", data->tokens->lex);
         return (0);
     }

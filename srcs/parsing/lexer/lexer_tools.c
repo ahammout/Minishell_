@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:13:51 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/19 22:34:30 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:32:04 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void    free_tokens_list(t_data *data)
 
 void    init_tokens_list(t_data *data)
 {
+    data->heredoc = 0;
     data->tokens = malloc(sizeof(t_tokens));
     if (!data->tokens)
         exit_error(data, "Minishell: Allocation failed.");

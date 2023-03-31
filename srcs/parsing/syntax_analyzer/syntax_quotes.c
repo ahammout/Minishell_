@@ -6,11 +6,20 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 18:23:06 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/30 02:11:31 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/31 21:49:12 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
+
+char *inclosed_quotes(char *input)
+{
+    char *error;
+
+    error = ft_strjoin("Minishell: ", input);
+    error = ft_strjoin (error, ": Inclosed quotes.");
+    return (error);
+}
 
 void    abs_syntax(t_data *data, int lexem_len, int n_quotes)
 {
@@ -58,7 +67,7 @@ int quotes_syntax(char *lexem, int type)
     return (-1);
 }
 
-int analyze_quotes (t_data *data)
+int analyze_quotes(t_data *data)
 {
     int n_q;
 
@@ -66,21 +75,19 @@ int analyze_quotes (t_data *data)
     {
         n_q = quotes_syntax (data->tokens->lex, data->tokens->type);
         if (n_q == -1)
+            data->err = inclosed_quotes(data->tokens->lex);
+        if (!data->err)
         {
-            printf("Minishell: %s: %s\n", data->tokens->lex, "Inclosed quotes");
-            data->err = 1;
-            return (0);
+            abs_syntax(data, ft_strlen(data->tokens->lex), n_q);
+            if (!data->tokens->lex || ft_strchr(data->tokens->lex, DQUOTE)
+                || data->tokens->type == SQUOTE || data->tokens->prev->type == HEREDOC)
+            {
+                data->tokens->type = KEYWORD;   
+                return (0);
+            }
+            data->tokens->type = KEYWORD;
+            if (ft_strchr(data->tokens->lex, EXPAND_))
+                split_token(data);
         }
-        abs_syntax(data, ft_strlen(data->tokens->lex), n_q);
-        if (!data->tokens->lex || ft_strchr(data->tokens->lex, DQUOTE)
-            || data->tokens->type == SQUOTE || data->tokens->prev->type == HEREDOC)
-        {
-            data->tokens->type = KEYWORD;   
-            return (1);
-        }
-        data->tokens->type = KEYWORD;
-        if (ft_strchr(data->tokens->lex, EXPAND_))
-            split_token(data);
     }
-    return (1);
 }

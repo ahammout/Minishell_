@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:13:35 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/30 01:48:13 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:28:03 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int special_op(t_data *data, char *lexem, int type)
     while (lexem[ref.i] == type)
         data->tokens->lex[ref.j++] = lexem[ref.i++];
     data->tokens->lex[ref.j] = '\0';
-    optype(data->tokens->lenght, type, data->tokens);
+    optype(data, type);
     return (ref.i);
 }
 
