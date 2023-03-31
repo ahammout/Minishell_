@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/30 22:10:00 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/03/31 02:03:03 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ void            add_new_node(t_data *data);
 void            free_tokens_list(t_data *data);
 void            cmd_call(t_data *data, int her_file);
 int             count_pps(t_exec	*exec);
+void            updt_shlvl(t_data *data);
 
 ///////////////////////////////// ENVIRONMENT /////////////////////////////////
 
@@ -215,7 +216,7 @@ void setLastNode(t_env *env);
 t_env *find_node(char *str, t_data *data);
 void ft_unset(t_exec *cmd, t_data *data);
 void execute_command(t_exec *exec, char *path, char **envp);
-void ignore_signals();
+void ignore_signal();
 char *get_path(char *str, t_data *data, int *status);
 void printEnv(t_data *data);
 t_env *sort_environment(t_data *data);
@@ -226,6 +227,9 @@ int ft_pwd(t_data *data);
 void ft_cd(t_data *data);
 char *ft_getenv(t_data *data, char *str);
 void export0(t_data *data);
+void            updt_shlvl(t_data *data);
+void free_array(char **array);
+
 
 /////////////////////////////////// TOOLS //////////////////////////////////
 

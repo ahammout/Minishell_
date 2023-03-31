@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+         #
+#    By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 11:15:10 by ahammout          #+#    #+#              #
-#    Updated: 2023/03/31 01:40:58 by ahammout         ###   ########.fr        #
+#    Updated: 2023/03/31 02:05:01 by zessadqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # -fsanitize=address
-CC = gcc  
+CC = gcc   -fsanitize=address
 
 #CFLAGS = -Wall -Wextra -Werror -g
 
@@ -58,6 +58,7 @@ SRCS = 	srcs/main.c \
 		srcs/execution/echo.c \
 		srcs/execution/cd.c \
 		srcs/execution/core.c\
+		srcs/execution/update_sh.c\
 
 OBJS = $(SRCS:.c=.o)
 
