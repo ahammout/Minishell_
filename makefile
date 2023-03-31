@@ -6,12 +6,12 @@
 #    By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 11:15:10 by ahammout          #+#    #+#              #
-#    Updated: 2023/03/30 22:06:17 by ahammout         ###   ########.fr        #
+#    Updated: 2023/03/30 22:47:40 by ahammout         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # -fsanitize=address
-CC = gcc  -fsanitize=address
+CC = gcc  
 
 #CFLAGS = -Wall -Wextra -Werror -g
 

@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:37:05 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/30 22:03:33 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/03/31 01:32:51 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void    heredoc_action(t_data *data, int status, int fd[0])
 {
     if (status == 0)
     {
+        close(fd[1]);
         exitS = 0;
         data->cmds->in_file = fd[0];
         data->tokens = data->tokens->next->next;
@@ -53,20 +54,23 @@ void    read_input(t_data *data, int fd[2])
 
     close(fd[0]);
     signal(SIGINT, heredoc_sig_handler);
+    buffer = readline("heredoc> ");
+    if (!buffer)
+        exit(130);
     while (1)
     {
+        ft_putstr_fd(buffer, fd[1]);
+        ft_putstr_fd("\n", fd[1]);
+        free(buffer);
         buffer = readline("heredoc> ");
         if (!buffer)
             exit(130);
         if (ft_strcmp(buffer, data->tokens->next->lex) == 0)
         {
-            // ft_putstr_fd(NULL, fd[1]);
+            ft_putstr_fd("\0", fd[1]);
             free(buffer);
             break;
         }
-        ft_putstr_fd(buffer, fd[1]);
-        ft_putstr_fd("\n", fd[1]);
-        free(buffer);
     }
     close(fd[1]);
     exit (0);
