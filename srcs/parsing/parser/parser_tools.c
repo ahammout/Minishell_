@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 18:59:47 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 17:23:00 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/01 18:00:44 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,31 +42,6 @@ void next_cmd(t_data *data)
     data->cmds->next = node;
     data->cmds = data->cmds->next;
     data->tokens = data->tokens->next;
-}
-
-int free_cmds_list(t_data *data)
-{
-    t_exec *tmp;
-    int i;
-
-    while (data->cmds != NULL)
-    {
-        i = 0;
-        while (data->cmds->str[i])
-        {
-            free(data->cmds->str[i]);
-            i++;
-        }
-        free(data->cmds->str);
-        if (data->cmds->in_file != 0)
-            close(data->cmds->in_file);
-        if (data->cmds->out_file != 1)
-            close(data->cmds->out_file);
-        tmp = data->cmds;
-        data->cmds = data->cmds->next;
-        free(tmp);
-    }
-    return (0);
 }
 
 void    display_cmds(t_exec *cmds)

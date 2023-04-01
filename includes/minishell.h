@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 17:41:09 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/01 18:03:55 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ int         q_keyword(t_data *data, char *lexem);
 void        init_tokens_list(t_data *data);
 void        create_new_node(t_data *data, int *add_node);
 void        add_new_node(t_data *data);
-void        free_tokens_list(t_data *data);
+int         free_tokens_list(t_data *data);
 void        cmd_call(t_data *data, int her_file);
 int         count_pps(t_exec	*exec);
 void        updt_shlvl(t_data *data);
@@ -143,7 +143,7 @@ void        init_env_list(t_data *data);
 void        add_node(t_data *data, int *new_node);
 int         fill_name(t_data *data, char *envp);
 int         fill_value(t_data *data, char *envp);
-void        free_env_list(t_data *data);
+int         free_env_list(t_data *data);
 
 ///////////////////////////////// SYNTAX ANALYZER //////////////////////////////
 

@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:13:51 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 03:37:05 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/01 18:01:27 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,6 @@ void    create_new_node(t_data *data, int *add_node)
     }
     else
         *add_node = 1;
-}
-
-void free_tokens_list(t_data *data)
-{
-    t_tokens *tmp;
-
-    while (data->tokens != NULL)
-    {
-        free(data->tokens->lex);
-        tmp = data->tokens;
-        data->tokens = data->tokens->next;
-        free(tmp);
-    }
 }
 
 void    display_tokens(t_tokens *token)

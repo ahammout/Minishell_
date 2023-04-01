@@ -6,12 +6,12 @@
 #    By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 11:15:10 by ahammout          #+#    #+#              #
-#    Updated: 2023/04/01 17:41:34 by ahammout         ###   ########.fr        #
+#    Updated: 2023/04/01 18:09:19 by ahammout         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # -fsanitize=address
-CC = gcc
+CC = gcc -fsanitize=address
 
 #CFLAGS = -Wall -Wextra -Werror -g
 
@@ -24,6 +24,7 @@ INCLUDES = includes/minishell.h
 NAME = minishell
 
 SRCS = 	srcs/main.c \
+		srcs/free_tools.c \
 		srcs/parsing/tools.c \
 		srcs/parsing/lexer/lexer.c \
 		srcs/parsing/lexer/lexer_check_tools.c \
