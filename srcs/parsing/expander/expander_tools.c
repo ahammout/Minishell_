@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 01:13:54 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 03:27:43 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/01 18:33:09 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char *get_var(t_data *data, char *lexem)
         len++;
     var = malloc(sizeof(char) * len + 1);
     if (!var)
-        exit_error(data, "Minishell: Allocation failed.", 1);
+        exit_minishell(data, "Minishell: Allocation failed.", 1);
     while (lexem[i] && (ft_isalpha(lexem[i]) \
         || ft_isdigit(lexem[i]) || lexem[i] == '_' \
         || lexem[i] == '@' || lexem[len] == '*'))

@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 18:03:55 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/01 18:28:13 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,7 +229,7 @@ char    **list_to_str(t_env *env);
 
 /////////////////////////////////// TOOLS //////////////////////////////////
 
-void            exit_error(t_data *data, char *err, int exit_option);
+void            exit_minishell(t_data *data, char *err, int exit_option);
 int             free_data(t_data *data);
 int             generate_error(t_data *data);
 char            **ft_2strdup(char **str);

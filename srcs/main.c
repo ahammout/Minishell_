@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 17:44:25 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/01 18:28:39 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ int main(int ac, char **av, char **envp)
                 {
                     exitS = 2;
                     ft_putstr_fd("exit\n", 1);
-                    //free_data(&data);
-                    exit (exitS);
+                    exit_minishell(&data, NULL, 2);
                 }
                 buffer_size = ft_strlen(data.buffer);
             }

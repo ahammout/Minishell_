@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 18:59:47 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 18:00:44 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/01 18:48:14 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void init_cmds_list(t_data *data)
 {
     data->cmds = malloc(sizeof(t_exec));
     if (!data->cmds)
-        exit_error(data, "Minishell: Allocation failed", 2);
+        exit_minishell(data, "Minishell: Allocation failed", 2);
     data->cmds->in_file = 0;
     data->cmds->out_file = 1;
     data->cmds->next = NULL;
@@ -35,7 +35,7 @@ void next_cmd(t_data *data)
 
     node = malloc(sizeof(t_exec));
     if (!node)
-        exit_error(data, "Minishell: Allocation failed", 2);
+        exit_minishell(data, "Minishell: Allocation failed", 2);
     node->in_file = 0;
     node->out_file = 1;
     node->next = NULL;

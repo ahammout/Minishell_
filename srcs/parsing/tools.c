@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:46 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 18:04:24 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/01 18:25:55 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int generate_error(t_data *data)
     return (0);
 }
 
-void    exit_error(t_data *data, char *err, int exit_option)
+/// Exit Minishell 
+void    exit_minishell(t_data *data, char *err, int exit_option)
 {
     if (exit_option == 0)
         free_env_list(data);
@@ -38,8 +39,12 @@ void    exit_error(t_data *data, char *err, int exit_option)
         free_tokens_list(data);
         free_cmds_list(data);
     }
-    ft_putstr_fd(err, 2);
-    exit(EXIT_FAILURE);
+    if (err)
+    {
+        ft_putstr_fd(err, 2);
+        exit(EXIT_FAILURE);
+    }
+    exit (exitS);
 }
 
 int white_check(char *str)

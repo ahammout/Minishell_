@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:37:05 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 17:57:29 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/01 18:48:29 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ int heredoc_handler(t_data *data)
 
     signal(SIGINT, SIG_IGN);
     if (pipe(fd) == -1)
-        exit_error(data, "Minishell: pipe() failed.", 2);
+        exit_minishell(data, "Minishell: pipe() failed.", 2);
     pid = fork();
     if (pid == -1)
-        exit_error(data, "Minishell: fork() failed.", 2);
+        exit_minishell(data, "Minishell: fork() failed.", 2);
     if (pid == 0)
         read_input(data, fd);
     waitpid(pid, &status, 0);
