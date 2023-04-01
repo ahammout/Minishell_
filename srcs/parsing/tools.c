@@ -3,14 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:46 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/31 23:04:55 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/01 00:11:52 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+void free_t_exec(t_exec *exec)
+{
+    int i = 0;
+    if (exec)
+    {
+        if (exec->str)
+        {
+            while (exec->str[i])
+            {
+                free(exec->str[i]);
+                i++;
+            }
+            free(exec->str);
+        }
+        free(exec);
+    }
+}
+
+void    free_data(t_data *data)
+{
+    // if (data->buffer)
+    //     free(data->buffer);
+    // if (data->path)
+    //     free(data->path);
+    free_t_exec(data->cmds);
+    free_tokens_list(data);
+}
 
 int generate_error(t_data *data)
 {

@@ -6,11 +6,22 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:58:36 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/03/31 15:59:15 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/01 00:11:07 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
+
+void free_env(t_env *env)
+{
+    while(env)
+    {
+        free(env->name);
+        free(env->value);
+        free(env);
+        env = env->next;
+    }
+}
 
 static int find_eq(char *str)
 {
@@ -130,20 +141,23 @@ void printEnv(t_data *data)
 void    export0(t_data *data)
 {
     t_env *tmp;
+    t_env *head;
 
+    
     tmp = sort_environment(data);
-       while (tmp)
+    head = tmp;
+       while (head)
     {
         ft_putstr_fd("declare -x ", data->cmds->out_file); // is for test only to be replaced by cmds->out_file
-        ft_putstr_fd(tmp->name, data->cmds->out_file); // is for test only to be replaced by cmds->out_file
-        if (tmp->value)
+        ft_putstr_fd(head->name, data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+        if (head->value)
         {
             ft_putstr_fd("=\"", data->cmds->out_file); // is for test only to be replaced by cmds->out_file
-            ft_putstr_fd(tmp->value, data->cmds->out_file); // is for test only to be replaced by cmds->out_file
+            ft_putstr_fd(head->value, data->cmds->out_file); // is for test only to be replaced by cmds->out_file
             ft_putstr_fd("\"",data->cmds->out_file); // is for test only to be replaced by cmds->out_file
         }
         ft_putstr_fd("\n", data->cmds->out_file); // is for test only to be replaced by cmds->out_file
-        tmp = tmp->next;
+        head = head->next;
     }
 }
 
@@ -155,6 +169,6 @@ t_env   *sort_environment(t_data *data)
     envp = list_to_str(data->env);
     envp = sort_env(envp);
     tmp = strToList(envp);
-    free(envp);
+    free_array(envp);
     return (tmp);
 }

@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 21:01:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/03/30 22:09:10 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/01 00:08:47 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,13 @@ void	cmd_call(t_data *data, int her_file)
 	if (data->pipex->p_c)
     {
 		exec_pipes(data->cmds, data, her_file, data->envp_);
-        //free here
-		return ;
+        free_data(data);
+		return;
 	}
 
 	if (!data->cmds->str[0] || !builtin(data, data->cmds))
 	{
+		free_data(data);
 		return ;
 	}
 	st = check_file(data->cmds->str[0]);
@@ -60,11 +61,14 @@ void	cmd_call(t_data *data, int her_file)
 	if (path)
 	{
 		execute_command(data->cmds, path, data->envp_);
+		free(path);
+		free_data(data);
 		return ;
 	}
 	if (st == 3)
 	{
 		execute_command(data->cmds, data->cmds->str[0], data->envp_);
+		free_data(data);
 		return ;
 	}
 	else if (st == 1)
@@ -73,6 +77,7 @@ void	cmd_call(t_data *data, int her_file)
 		ft_putstr_fd(data->cmds->str[0], 2);
 		ft_putstr_fd(": is a directory	", 2);
 		ft_putstr_fd("\n", 2);
+		free_data(data);
 	}
 	else if (st == 2)
 	{
@@ -80,16 +85,14 @@ void	cmd_call(t_data *data, int her_file)
 		ft_putstr_fd(data->cmds->str[0], 2);
 		ft_putstr_fd(": Permission denied	", 2);
 		ft_putstr_fd("\n", 2);
+		free_data(data);
 	}
 	else
 	{
 		ft_putstr_fd("minishell: command not found: ", 2);
 		ft_putstr_fd(data->cmds->str[0], 2);
 		ft_putstr_fd("\n", 2);
-	}
-
-	if (!check) {
-		free(path);
+		free_data(data);
 	}
 
 	//free here
