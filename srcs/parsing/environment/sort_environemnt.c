@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:58:36 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/01 00:11:07 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/01 05:45:40 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static char **sort_env(char **envp)
     return (envp);
 }
 
-static char **list_to_str(t_env *env)
+char **list_to_str(t_env *env)
 {
     char **envp;
     int i;

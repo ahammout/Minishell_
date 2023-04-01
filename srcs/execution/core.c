@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 21:01:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/01 00:08:47 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/01 06:09:28 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,52 +47,52 @@ void	cmd_call(t_data *data, int her_file)
 	if (data->pipex->p_c)
     {
 		exec_pipes(data->cmds, data, her_file, data->envp_);
-        free_data(data);
+        //free_data(data);
 		return;
 	}
 
 	if (!data->cmds->str[0] || !builtin(data, data->cmds))
 	{
-		free_data(data);
+		//free_data(data);
 		return ;
 	}
 	st = check_file(data->cmds->str[0]);
 	path = get_path(data->cmds->str[0], data, &check);
 	if (path)
 	{
-		execute_command(data->cmds, path, data->envp_);
+		execute_command(data->cmds, path, list_to_str(data->env));
 		free(path);
-		free_data(data);
+		//free_data(data);
 		return ;
 	}
 	if (st == 3)
 	{
-		execute_command(data->cmds, data->cmds->str[0], data->envp_);
-		free_data(data);
+		execute_command(data->cmds, data->cmds->str[0], list_to_str(data->env));
+		//free_data(data);
 		return ;
 	}
-	else if (st == 1)
+	 if (st == 1)
 	{
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(data->cmds->str[0], 2);
 		ft_putstr_fd(": is a directory	", 2);
 		ft_putstr_fd("\n", 2);
-		free_data(data);
+		//free_data(data);
 	}
-	else if (st == 2)
+	 if (st == 2)
 	{
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(data->cmds->str[0], 2);
 		ft_putstr_fd(": Permission denied	", 2);
 		ft_putstr_fd("\n", 2);
-		free_data(data);
+		//free_data(data);
 	}
-	else
+	if (!path && st ==4 )
 	{
 		ft_putstr_fd("minishell: command not found: ", 2);
 		ft_putstr_fd(data->cmds->str[0], 2);
 		ft_putstr_fd("\n", 2);
-		free_data(data);
+		//free_data(data);
 	}
 
 	//free here

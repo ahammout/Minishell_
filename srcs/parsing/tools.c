@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:46 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 00:11:52 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/01 00:15:38 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void    free_data(t_data *data)
     //     free(data->buffer);
     // if (data->path)
     //     free(data->path);
+    free_env_list(data);
     free_t_exec(data->cmds);
     free_tokens_list(data);
 }
