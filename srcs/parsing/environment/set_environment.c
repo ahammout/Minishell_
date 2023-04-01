@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_environment.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 16:12:53 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/31 02:36:27 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/01 03:38:46 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int fill_value(t_data *data, char *envp)
         ref.l++;
     data->env->value = malloc(sizeof (char) * (ref.l));
     if (!data->env->value)
-        exit_error (data, "Minishell: Allocation failed.");
+        exit_error (data, "Minishell: Allocation failed.", 0);
     while (envp[ref.j])
         data->env->value[ref.i++] = envp[ref.j++];
     data->env->value[ref.i] = '\0';
@@ -41,7 +41,7 @@ int fill_name(t_data *data, char *envp)
         ref.l++;
     data->env->name = malloc(sizeof(char) * (ref.l + 1));
     if (!data->env->name)
-        exit_error (data, "Minishell: Allocation failed.");
+        exit_error (data, "Minishell: Allocation failed.", 0);
     while (envp[ref.j] != '=')
         data->env->name[ref.i++] = envp[ref.j++];
     data->env->name[ref.i] = '\0';
@@ -57,7 +57,7 @@ void    add_node(t_data *data, int *new_node)
     {
         node = malloc(sizeof(t_env));
         if (!node)
-            exit_error (data, "Minishell: Allocation failed.");
+            exit_error (data, "Minishell: Allocation failed.", 0);
         node->next = NULL;
         data->env->next = node;
         data->env = data->env->next;
@@ -70,7 +70,7 @@ void    init_env_list(t_data *data)
 {
     data->env = malloc(sizeof(t_env));
     if (!data->env)
-        exit_error(data, "Minishell: Allocation failed.");
+        exit_error(data, "Minishell: Allocation failed.", 0);
     data->env->next = NULL;
 }
 

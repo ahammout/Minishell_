@@ -6,13 +6,13 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:37:05 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/31 23:15:32 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/01 17:57:29 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-void heredoc_action(t_data *data, int status, int fd[0])
+void heredoc_action(t_data *data, int status, int fd[2])
 {
     if (status == 0)
     {
@@ -23,12 +23,11 @@ void heredoc_action(t_data *data, int status, int fd[0])
     }
     else
     {
-        ///// CLOSE ALL FDS &  FREE DATA.
         exitS = 130;
         close(fd[0]);
         close(fd[1]);
-        free_tokens_list(data);
         free_env_list(data);
+        free_data(data);
         main(1, NULL, data->envp_);
     }
 }
@@ -65,16 +64,16 @@ void read_input(t_data *data, int fd[2])
 
 int heredoc_handler(t_data *data)
 {
-    int fd[2];
-    pid_t pid;
-    int status;
+    int     fd[2];
+    pid_t   pid;
+    int     status;
 
-    if (pipe(fd) == -1)
-        exit_error(data, "Minishell: pipe() failed.");
     signal(SIGINT, SIG_IGN);
+    if (pipe(fd) == -1)
+        exit_error(data, "Minishell: pipe() failed.", 2);
     pid = fork();
     if (pid == -1)
-        exit_error(data, "Minishell: fork() failed.");
+        exit_error(data, "Minishell: fork() failed.", 2);
     if (pid == 0)
         read_input(data, fd);
     waitpid(pid, &status, 0);

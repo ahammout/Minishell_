@@ -6,13 +6,11 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 18:12:24 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/31 23:01:18 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/01 03:46:06 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-
-//// STORE ERROR INSIDE A STRING - Display error after HEREDOC
 
 void    analyze_redirections(t_data *data)
 {
