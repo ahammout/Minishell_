@@ -3,16 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/01 17:29:04 by zessadqu         ###   ########.fr       */
-=======
-/*   Updated: 2023/04/01 18:03:55 by ahammout         ###   ########.fr       */
->>>>>>> 668d0b13e2206cfefdd13403a2ffb78e178cc18b
+/*   Updated: 2023/04/01 18:31:49 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef MINISHELL_H
 #define MINISHELL_H
@@ -193,8 +190,6 @@ int         is_redirection(int type);
 int         free_cmds_list(t_data *data);
 
 //--------------------------------- EXECUTION PART --------------------------//
-
-<<<<<<< HEAD
 void ft_echo(t_exec *exec);
 int builtin(t_data *data, t_exec *cmd);
 int count_pps(t_exec *exec);
@@ -232,45 +227,7 @@ char *ft_getenv(t_data *data, char *str);
 void export0(t_data *data);
 char **list_to_str(t_env *env);
 void    free_array(char **array);
-=======
-void    ft_echo(t_exec *exec);
-int     builtin(t_data *data, t_exec *cmd);
-int     count_pps(t_exec *exec);
-void    signals_handler(void);
-void    handle_loop(t_vars pipe, int her_file, t_data *data);
-int     *save_std(void);
-int     **pipe_gener(int count);
-void    red_inp(t_exec *tmp, int status, t_data *data, int i);
-void    close_fd(t_data *data);
-void    handle_loop(t_vars pipe, int her_file, t_data *data);
-int     pipes_redirection(t_exec *tmp, int file_, int i, t_data *data);
-void    exec_pipes(t_exec *exc, t_data *data, int file_, char **envp_);
-void    pipe_exe(int *pids, t_data *data, t_exec *tmp, int i);
-void    restore_parent(int *stds, int status, int *pids, t_data *data);
-void    handle_fds(t_data *data, int i);
-void    ft_exit(t_exec *cmd);
-void    ft_export(t_data *data, t_exec *cmd);
-void    export1(t_data *data, char *name, char *value, bool append);
-t_env   *sort_environment(t_data *data);
-int     errorIn(const char *str);
-void    setLastNode(t_env *env);
-t_env   *find_node(char *str, t_data *data);
-void    ft_unset(t_exec *cmd, t_data *data);
-void    execute_command(t_exec *exec, char *path, char **envp);
-void    ignore_signal();
-char    *get_path(char *str, t_data *data, int *status);
-void    printEnv(t_data *data);
-t_env   *sort_environment(t_data *data);
-void    restore_parent(int *stds, int status, int *pids, t_data *data);
-void    close_fd(t_data *data);
-char    *ft_getenv(t_data *data, char *str);
-int     ft_pwd(t_data *data);
-void    ft_cd(t_data *data);
-char    *ft_getenv(t_data *data, char *str);
-void    export0(t_data *data);
-char    **list_to_str(t_env *env);
 
->>>>>>> 668d0b13e2206cfefdd13403a2ffb78e178cc18b
 /////////////////////////////////// TOOLS //////////////////////////////////
 
 void            exit_error(t_data *data, char *err, int exit_option);
