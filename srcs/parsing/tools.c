@@ -6,11 +6,29 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:46 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 03:38:15 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/01 17:45:30 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+void free_t_exec(t_exec *exec)
+{
+    int i = 0;
+    if (exec)
+    {
+        if (exec->str)
+        {
+            while (exec->str[i])
+            {
+                free(exec->str[i]);
+                i++;
+            }
+            free(exec->str);
+        }
+        free(exec);
+    }
+}
 
 int free_data(t_data *data)
 {
