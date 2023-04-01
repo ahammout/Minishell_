@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:13:35 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/31 15:28:03 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/01 03:24:27 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int special_op(t_data *data, char *lexem, int type)
     data->tokens->lenght = ref.l;
     data->tokens->lex = malloc(sizeof(char) * ref.l + 1);
     if (!data->tokens->lex)
-        exit_error(data, "Minishell: Allocation failed.");
+        exit_error(data, "Minishell: Allocation failed.", 1);
     while (lexem[ref.i] == type)
         data->tokens->lex[ref.j++] = lexem[ref.i++];
     data->tokens->lex[ref.j] = '\0';
@@ -44,7 +44,7 @@ int keyword(t_data *data, char *lexem)
     data->tokens->lenght = ref.l;
     data->tokens->lex = malloc(sizeof(char) * ref.l + 1);
     if (!data->tokens->lex)
-        exit_error(data, "Minishell: Allocation failed.");
+        exit_error(data, "Minishell: Allocation failed.", 1);
     while (lexem[ref.i] && is_keyword(lexem[ref.i]))
         data->tokens->lex[ref.j++] = lexem[ref.i++];
     data->tokens->lex[ref.j] = '\0';
@@ -66,7 +66,7 @@ int expand(t_data *data, char *lexem)
         ref.l++;
     data->tokens->lex = malloc(sizeof(char) * ref.l + 1);
     if (!data->tokens->lex)
-        exit_error(data, "Minishell: Allocation failed.");
+        exit_error(data, "Minishell: Allocation failed.", 1);
     while (lexem[ref.i] == EXPAND_ || lexem[ref.i] == '@' \
         || lexem[ref.i] == '*')
         data->tokens->lex[ref.j++] = lexem[ref.i++];
@@ -97,7 +97,7 @@ int quotes(t_data *data, char *lexem, char type)
     }
     data->tokens->lex = malloc(sizeof(char) * ref.l + 1);
     if (!data->tokens->lex)
-        exit_error(data, "Minishell: Allocation failed.");
+        exit_error(data, "Minishell: Allocation failed.", 1);
     quote = 0;
     while (lexem[ref.i])
     {

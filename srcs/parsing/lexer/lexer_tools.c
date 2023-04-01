@@ -6,31 +6,18 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:13:51 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/31 15:32:04 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/01 03:37:05 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-
-void    free_tokens_list(t_data *data)
-{
-    t_tokens    *tmp;
-    
-    while (data->tokens != NULL)
-    {
-        free(data->tokens->lex);
-        tmp = data->tokens;
-        data->tokens = data->tokens->next;
-        free(tmp);
-    }
-}
 
 void    init_tokens_list(t_data *data)
 {
     data->heredoc = 0;
     data->tokens = malloc(sizeof(t_tokens));
     if (!data->tokens)
-        exit_error(data, "Minishell: Allocation failed.");
+        exit_error(data, "Minishell: Allocation failed.", 1);
     data->tokens->next = NULL;
     data->tokens->prev = data->tokens;
 }
@@ -41,7 +28,7 @@ void    add_new_node(t_data *data)
 
     node = malloc(sizeof(t_tokens));
     if (!node)
-        exit_error(data, "Malloc: Allocation failed.");
+        exit_error(data, "Malloc: Allocation failed.", 1);
     node->next = NULL;
     node->prev = data->tokens;
     data->tokens->next = node;
@@ -56,6 +43,19 @@ void    create_new_node(t_data *data, int *add_node)
     }
     else
         *add_node = 1;
+}
+
+void free_tokens_list(t_data *data)
+{
+    t_tokens *tmp;
+
+    while (data->tokens != NULL)
+    {
+        free(data->tokens->lex);
+        tmp = data->tokens;
+        data->tokens = data->tokens->next;
+        free(tmp);
+    }
 }
 
 void    display_tokens(t_tokens *token)

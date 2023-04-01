@@ -6,11 +6,19 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:46 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/31 23:04:55 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/01 03:38:15 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+int free_data(t_data *data)
+{
+    free_tokens_list(data);
+    free_cmds_list(data);
+    free(data->err);
+    return (0);
+}
 
 int generate_error(t_data *data)
 {
@@ -20,32 +28,26 @@ int generate_error(t_data *data)
     return (0);
 }
 
-void    exit_error(t_data *data, char *err)
+void    exit_error(t_data *data, char *err, int exit_option)
 {
-    free(data->buffer);
-    free_tokens_list(data);
+    if (exit_option == 0)
+        free_env_list(data);
+    else if (exit_option == 1)
+    {
+        free_env_list(data);
+        free(data->buffer);
+        free_tokens_list(data);
+    }
+    else if (exit_option == 2)
+    {
+        if (data->err)
+            free(data->err);
+        free_env_list(data);
+        free_tokens_list(data);
+        free_cmds_list(data);
+    }
     ft_putstr_fd(err, 2);
     exit(EXIT_FAILURE);
-}
-
-char    **ft_2strdup(char **tab1)
-{
-    int len;
-    int i;
-    char    **tab2;
-
-    len = 0;
-    i = 0;
-    while(tab1[len])
-        len++;
-    tab2 = malloc(sizeof(char*) * len);
-    while (tab1[i])
-    {
-        tab2[i] = ft_strdup(tab1[i]);
-        i++;
-    }
-    tab2[i] = NULL;
-    return (tab2);
 }
 
 int white_check(char *str)

@@ -6,19 +6,36 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 18:59:47 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/26 01:44:26 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/01 17:23:00 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-void    next_cmd(t_data *data)
+int is_redirection(int type)
 {
-    t_exec  *node;
+    if (type == REDIN || type == REDOUT || type == APPEND || type == HEREDOC)
+        return (1);
+    return (0);
+}
 
-    node = malloc(sizeof (t_exec));
+void init_cmds_list(t_data *data)
+{
+    data->cmds = malloc(sizeof(t_exec));
+    if (!data->cmds)
+        exit_error(data, "Minishell: Allocation failed", 2);
+    data->cmds->in_file = 0;
+    data->cmds->out_file = 1;
+    data->cmds->next = NULL;
+}
+
+void next_cmd(t_data *data)
+{
+    t_exec *node;
+
+    node = malloc(sizeof(t_exec));
     if (!node)
-        exit_error (data, "Minishell: Allocation failed");
+        exit_error(data, "Minishell: Allocation failed", 2);
     node->in_file = 0;
     node->out_file = 1;
     node->next = NULL;
@@ -27,21 +44,28 @@ void    next_cmd(t_data *data)
     data->tokens = data->tokens->next;
 }
 
-void    init_cmds_list(t_data *data)
+int free_cmds_list(t_data *data)
 {
-    data->cmds = malloc(sizeof(t_exec));
-    if (!data->cmds)
-        exit_error(data, "Minishell: Allocation failed");
-    data->cmds->in_file = 0;
-    data->cmds->out_file = 1;
-    data->cmds->next = NULL;
-}
+    t_exec *tmp;
+    int i;
 
-int is_redirection(int type)
-{
-    if (type == REDIN || type == REDOUT \
-        || type == APPEND || type == HEREDOC)
-        return (1);
+    while (data->cmds != NULL)
+    {
+        i = 0;
+        while (data->cmds->str[i])
+        {
+            free(data->cmds->str[i]);
+            i++;
+        }
+        free(data->cmds->str);
+        if (data->cmds->in_file != 0)
+            close(data->cmds->in_file);
+        if (data->cmds->out_file != 1)
+            close(data->cmds->out_file);
+        tmp = data->cmds;
+        data->cmds = data->cmds->next;
+        free(tmp);
+    }
     return (0);
 }
 

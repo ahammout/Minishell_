@@ -6,46 +6,25 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:36:39 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/31 22:09:05 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/01 17:24:32 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-void    free_cmds_list(t_data *data)
-{
-    t_exec      *tmp;
-    int         i;
-
-    i = 0;
-    while (data->cmds != NULL)
-    {
-        while (data->cmds->str[i])
-        {
-            free(data->cmds->str[i]);
-            i++;
-        }
-        free(data->cmds->str);
-        tmp = data->cmds;
-        data->cmds = data->cmds->next;
-        free(tmp);
-    }
-}
-
 int get_size(t_data *data)
 {
-    t_tokens    *ptr;
+    t_tokens    *tmp;
     int         size;
 
-    ptr = data->tokens;
+    tmp = data->tokens;
     size = 0;
-    while (data->tokens && !is_redirection(data->tokens->type) && data->tokens->type != PIPE)
+    while (tmp && !is_redirection(tmp->type) && tmp->type != PIPE)
     {
-        if (data->tokens->type != EMPTY)
+        if (tmp->type != EMPTY)
             size++;
-        data->tokens = data->tokens->next;
+        tmp = tmp->next;
     }
-    data->tokens = ptr;
     return (size);
 }
 
@@ -57,8 +36,9 @@ char    **get_cmd_args(t_data *data)
     ref.i = 0;
     str = malloc(sizeof(char *) * (get_size(data) + 1));
     if (!str)
-        exit_error(data, "Minishell: Allocation failed.");
-    while (data->tokens && !is_redirection(data->tokens->type) && data->tokens->type != PIPE)
+        exit_error(data, "Minishell: Allocation failed.", 2);
+    while (data->tokens && !is_redirection(data->tokens->type) \
+        && data->tokens->type != PIPE)
     {
         if (data->tokens->type != EMPTY)
         {
@@ -71,7 +51,7 @@ char    **get_cmd_args(t_data *data)
     return (str);
 }
 
-t_exec  *parser(t_data *data)
+t_exec  *tokens_to_cmds(t_data *data)
 {
     t_exec      *head;
     t_tokens    *ptr;
@@ -83,18 +63,35 @@ t_exec  *parser(t_data *data)
     {
         if (data->tokens && data->tokens->type == KEYWORD)
             data->cmds->str = get_cmd_args(data);
-        if (!redirection_handler(data))
+        if (data->tokens && !redirections_handler(data))
         {
             data->tokens = ptr;
             data->cmds = head;
-            free_cmds_list(data);
-            return(0);
+            return (free_data(data));
         }
         if (data->tokens && data->tokens->type == PIPE)
             next_cmd(data);
     }
-    data->tokens = ptr;
     data->cmds = head;
+    free_tokens_list(data);
     // display_cmds(data->cmds);
     return (head);
+}
+
+////////////////////////////////// PARSE_LINE //////////////////////////////
+
+t_exec  *parser(t_data *data)
+{
+    if (lexer(data))
+    {
+        if (syntax_analyzer(data))
+        {
+            if (expander(data))
+            {
+                // display_tokens(data->tokens);
+                return (tokens_to_cmds(data));
+            }
+        }
+    }
+    return (0);
 }

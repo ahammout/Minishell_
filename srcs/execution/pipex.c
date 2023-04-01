@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:06:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/03/31 15:15:43 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/01 03:42:02 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int pipes_redirection(t_exec *tmp, int file_, int i, t_data *data)
 {
     int         status;
 
-    if (redirection_handler(data))
+    if (tmp)
     {
         if (tmp->in_file == -1)
             return (-1);

@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+         #
+#    By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 11:15:10 by ahammout          #+#    #+#              #
-#    Updated: 2023/03/31 02:05:01 by zessadqu         ###   ########.fr        #
+#    Updated: 2023/04/01 04:18:59 by ahammout         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # -fsanitize=address
-CC = gcc   -fsanitize=address
+CC = gcc
 
 #CFLAGS = -Wall -Wextra -Werror -g
 
@@ -19,15 +19,12 @@ READLINEFLAG =   -lreadline
 
 LIBFT = libft/libft.a
 
-NEXTLINE = get_next_line/get_next_line.a
-
 INCLUDES = includes/minishell.h
 
 NAME = minishell
 
 SRCS = 	srcs/main.c \
 		srcs/parsing/tools.c \
-		srcs/parsing/parse_line.c \
 		srcs/parsing/lexer/lexer.c \
 		srcs/parsing/lexer/lexer_check_tools.c \
 		srcs/parsing/lexer/lexer_tools.c \
@@ -69,17 +66,14 @@ all : $(NAME)
 
 $(NAME) : $(OBJS) $(INCLUDES)
 	@make -C libft
-	@make -C get_next_line
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(NEXTLINE) $(READLINEFLAG)  -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(READLINEFLAG)  -o $(NAME)
 
 clean :
 	@make clean -C libft
-	@make clean -C get_next_line
 	@rm -rf $(OBJS)
 
 fclean : clean
 	@make fclean -C libft
-	@make fclean -C get_next_line
 	@rm -rf $(NAME)
 
 re : fclean all
