@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 21:01:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/01 06:09:28 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/01 18:20:04 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,16 @@ void	cmd_call(t_data *data, int her_file)
 	if (path)
 	{
 		execute_command(data->cmds, path, list_to_str(data->env));
-		free(path);
 		//free_data(data);
 		return ;
 	}
-	if (st == 3)
+	else if (st == 3 && ft_strncmp(data->cmds->str[0], "./", 2) == 0)
 	{
 		execute_command(data->cmds, data->cmds->str[0], list_to_str(data->env));
 		//free_data(data);
 		return ;
 	}
-	 if (st == 1)
+	 else if (st == 1 && ft_strncmp(data->cmds->str[0], "./", 2) == 0)
 	{
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(data->cmds->str[0], 2);
@@ -79,7 +78,7 @@ void	cmd_call(t_data *data, int her_file)
 		ft_putstr_fd("\n", 2);
 		//free_data(data);
 	}
-	 if (st == 2)
+	 else if (st == 2 && ft_strncmp(data->cmds->str[0], "./", 2) == 0)
 	{
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(data->cmds->str[0], 2);
@@ -87,14 +86,12 @@ void	cmd_call(t_data *data, int her_file)
 		ft_putstr_fd("\n", 2);
 		//free_data(data);
 	}
-	if (!path && st ==4 )
+	else
 	{
 		ft_putstr_fd("minishell: command not found: ", 2);
 		ft_putstr_fd(data->cmds->str[0], 2);
 		ft_putstr_fd("\n", 2);
 		//free_data(data);
 	}
-
-	//free here
 	return ;
 }

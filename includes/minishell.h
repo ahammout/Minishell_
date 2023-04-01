@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 06:03:10 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/01 17:29:04 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,6 +228,7 @@ void ft_cd(t_data *data);
 char *ft_getenv(t_data *data, char *str);
 void export0(t_data *data);
 char **list_to_str(t_env *env);
+void    free_array(char **array);
 /////////////////////////////////// TOOLS //////////////////////////////////
 
 void            exit_error(t_data *data, char *err);
