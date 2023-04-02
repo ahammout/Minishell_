@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:36:39 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/02 17:43:03 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/02 22:40:30 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ t_exec  *tokens_to_cmds(t_data *data)
             next_cmd(data);
     }
     data->cmds = head;
-    free_tokens_list(data);
+    // free_tokens_list(data);
+    display_tokens(data->tokens);
     // display_cmds(data->cmds);
     return (head);
 }
@@ -107,7 +108,6 @@ t_exec  *parser(t_data *data)
         {
             if (expander(data))
             {
-                // display_tokens(data->tokens);
                 return (tokens_to_cmds(data));
             }
         }
