@@ -6,13 +6,11 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:36:39 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/02 03:34:17 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/02 17:43:03 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-
-//// STOP IN THE LAST WANTED TOKEN
 
 char    *attach_arguments(t_data *data)
 {
