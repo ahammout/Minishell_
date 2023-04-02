@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:06:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/02 22:29:37 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/02 23:28:56 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,22 @@ void file_checker(char *path, t_data *data, t_exec *tmp)
                 exitS = 127;
                 perror("Minishell ");
             }
+            return ;
     }
-	else if (st == 1)
+	else if (st == 1 && ft_strncmp(data->cmds->str[0], "./", 2) == 0)
 		return (is_directory(data), free(path), (void)0);
-	else if (st == 2)
+	else if (st == 2 && ft_strncmp(data->cmds->str[0], "./", 2) == 0)
 		return (is_perms(data), free(path), (void)0);
-	else if (st == 3)
+	else if (st == 3 && ft_strncmp(data->cmds->str[0], "./", 2) == 0)
 		{
             if (execve(tmp->str[0],tmp->str, data->envp_) == -1)
             {
                 exitS = 127;
                 perror("Minishell ");
             }
+            return ;
         }
-	else if (st == 4)
+	else if (st == 4 && ft_strncmp(data->cmds->str[0], "./", 2) == 0)
 		return (is_no_such_file(data), free(path), (void)0);
     else    
         return (is_no_cmd(data), free(path), (void)0);
