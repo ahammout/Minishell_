@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 21:28:51 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/02 01:19:29 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 int exitS;
 
+void ee()
+{
+    system("leaks minishell");
+}
 int main(int ac, char **av, char **envp)
 {
     t_data  data;
@@ -22,6 +26,7 @@ int main(int ac, char **av, char **envp)
     char    path[PATH_MAX];
     int     her_file = 0;
 
+    atexit(ee);
     (void)**av;
     if (ac == 1)
     {

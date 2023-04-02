@@ -1,0 +1,283 @@
+
+leaks Report Version: 4.0
+Process 17340: 634 nodes malloced for 255 KB
+Process 17340: 245 leaks for 9232 total leaked bytes.
+
+    245 (9.02K) << TOTAL >>
+
+      99 (3.09K) ROOT LEAK: 0x7ff1ad501f00 [32]
+         96 (2.97K) 0x7ff1ad501ec0 [32]
+            93 (2.91K) 0x7ff1ad501e40 [32]
+               90 (2.78K) 0x7ff1ad501dd0 [32]
+                  87 (2.67K) 0x7ff1ad501d40 [32]
+                     84 (2.53K) 0x7ff1ad501d00 [32]
+                        81 (2.47K) 0x7ff1ad501cc0 [32]
+                           78 (2.41K) 0x7ff1ad501c50 [32]
+                              75 (2.30K) 0x7ff1ad501c10 [32]
+                                 72 (2.23K) 0x7ff1ad501bd0 [32]
+                                    69 (2.17K) 0x7ff1ad501b80 [32]
+                                       66 (2.09K) 0x7ff1ad501b30 [32]
+                                          63 (2.02K) 0x7ff1ad501a50 [32]
+                                             60 (1.80K) 0x7ff1ad501a00 [32]
+                                                57 (1.72K) 0x7ff1ad5019c0 [32]
+                                                   54 (1.66K) 0x7ff1ad501980 [32]
+                                                      51 (1.59K) 0x7ff1ad501910 [32]
+                                                         48 (1.48K) 0x7ff1ad5018d0 [32]
+                                                            45 (1.42K) 0x7ff1ad501890 [32]
+                                                               42 (1.36K) 0x7ff1ad501840 [32]
+                                                                  39 (1.28K) 0x7ff1ad5017d0 [32]
+                                                                     36 (1.17K) 0x7ff1ad501790 [32]
+                                                                        33 (1.11K) 0x7ff1ad501750 [32]
+                                                                           30 (1.05K) 0x7ff1ad5016e0 [32]
+                                                                              27 (960 bytes) 0x7ff1ad501640 [32]
+                                                                                 24 (800 bytes) 0x7ff1ad501580 [32]
+                                                                                    21 (608 bytes) 0x7ff1ad5014f0 [32]
+                                                                                       18 (464 bytes) 0x7ff1ad5014a0 [32]
+                                                                                          15 (384 bytes) 0x7ff1ad501460 [32]
+                                                                                             12 (320 bytes) 0x7ff1ad501410 [32]
+                                                                                                9 (240 bytes) 0x7ff1ad5013d0 [32]
+                                                                                                   6 (176 bytes) 0x7ff1ad501370 [32]
+                                                                                                      3 (80 bytes) 0x7ff1ad501330 [32]
+                                                                                                         1 (32 bytes) 0x7ff1ad501350 [32]  length: 23  "__CF_USER_TEXT_ENCODING"
+                                                                                                         1 (16 bytes) 0x7ff1ad500bc0 [16]  length: 15  "0x18BDD:0x0:0x0"
+                                                                                                      1 (48 bytes) 0x7ff1ad5013a0 [48]  length: 38  "/Users/zessadqu/Minishell_/./minishell"
+                                                                                                      1 (16 bytes) 0x7ff1ad501390 [16]  length: 1  "_"
+                                                                                                   1 (16 bytes) 0x7ff1ad5013f0 [16]  length: 7  "ZDOTDIR"
+                                                                                                   1 (16 bytes) 0x7ff1ad501400 [16]  length: 15  "/Users/zessadqu"
+                                                                                                1 (32 bytes) 0x7ff1ad501430 [32]  length: 16  "XPC_SERVICE_NAME"
+                                                                                                1 (16 bytes) 0x7ff1ad501450 [16]  length: 1  "0"
+                                                                                             1 (16 bytes) 0x7ff1ad501480 [16]  length: 9  "XPC_FLAGS"
+                                                                                             1 (16 bytes) 0x7ff1ad501490 [16]  length: 3  "0x0"
+                                                                                          1 (32 bytes) 0x7ff1ad5014c0 [32]  length: 16  "VSCODE_INJECTION"
+                                                                                          1 (16 bytes) 0x7ff1ad5014e0 [16]  length: 1  "1"
+                                                                                       1 (80 bytes) 0x7ff1ad501530 [80]  length: 75  "/var/folders/zz/zyxvpxvq6csfxvn_n000cbvm0032yx/T/vscode-git-eecb0f9c2d.sock"
+                                                                                       1 (32 bytes) 0x7ff1ad501510 [32]  length: 21  "VSCODE_GIT_IPC_HANDLE"
+                                                                                    1 (128 bytes) 0x7ff1ad5015c0 [128]  length: 117  "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/..."
+                                                                                    1 (32 bytes) 0x7ff1ad5015a0 [32]  length: 23  "VSCODE_GIT_ASKPASS_NODE"
+                                                                                 1 (96 bytes) 0x7ff1ad501680 [96]  length: 95  "/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/ask..."
+                                                                                 1 (32 bytes) 0x7ff1ad501660 [32]  length: 23  "VSCODE_GIT_ASKPASS_MAIN"
+                                                                              1 (48 bytes) 0x7ff1ad501720 [48]  length: 32  "--ms-enable-electron-run-as-node"
+                                                                              1 (32 bytes) 0x7ff1ad501700 [32]  length: 29  "VSCODE_GIT_ASKPASS_EXTRA_ARGS"
+                                                                           1 (16 bytes) 0x7ff1ad501770 [16]  length: 12  "USER_ZDOTDIR"
+                                                                           1 (16 bytes) 0x7ff1ad501780 [16]  length: 15  "/Users/zessadqu"
+                                                                        1 (16 bytes) 0x7ff1ad5017b0 [16]  length: 4  "USER"
+                                                                        1 (16 bytes) 0x7ff1ad5017c0 [16]  length: 8  "zessadqu"
+                                                                     1 (64 bytes) 0x7ff1ad501800 [64]  length: 49  "/var/folders/zz/zyxvpxvq6csfxvn_n000cbvm0032yx/T/"
+                                                                     1 (16 bytes) 0x7ff1ad5017f0 [16]  length: 6  "TMPDIR"
+                                                                  1 (32 bytes) 0x7ff1ad501860 [32]  length: 20  "TERM_PROGRAM_VERSION"
+                                                                  1 (16 bytes) 0x7ff1ad501880 [16]  length: 6  "1.76.2"
+                                                               1 (16 bytes) 0x7ff1ad5018b0 [16]  length: 12  "TERM_PROGRAM"
+                                                               1 (16 bytes) 0x7ff1ad5018c0 [16]  length: 6  "vscode"
+                                                            1 (16 bytes) 0x7ff1ad5018f0 [16]  length: 4  "TERM"
+                                                            1 (16 bytes) 0x7ff1ad501900 [16]  length: 14  "xterm-256color"
+                                                         1 (64 bytes) 0x7ff1ad501940 [64]  length: 51  "/private/tmp/com.apple.launchd.G4DMNES5sU/Listeners"
+                                                         1 (16 bytes) 0x7ff1ad501930 [16]  length: 13  "SSH_AUTH_SOCK"
+                                                      1 (16 bytes) 0x7ff1ad5019a0 [16]  length: 5  "SHLVL"
+                                                      1 (16 bytes) 0x7ff1ad5019b0 [16]  length: 1  "2"
+                                                   1 (16 bytes) 0x7ff1ad5019e0 [16]  length: 5  "SHELL"
+                                                   1 (16 bytes) 0x7ff1ad5019f0 [16]  length: 8  "/bin/zsh"
+                                                1 (32 bytes) 0x7ff1ad501a30 [32]  length: 26  "/Users/zessadqu/Minishell_"
+                                                1 (16 bytes) 0x7ff1ad501a20 [16]  length: 3  "PWD"
+                                             1 (176 bytes) 0x7ff1ad501a80 [176]  length: 174  "/Users/zessadqu/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/..."
+                                             1 (16 bytes) 0x7ff1ad501a70 [16]  length: 4  "PATH"
+                                          1 (32 bytes) 0x7ff1ad501b50 [32]  length: 28  "ORIGINAL_XDG_CURRENT_DESKTOP"
+                                          1 (16 bytes) 0x7ff1ad501b70 [16]  length: 9  "undefined"
+                                       1 (32 bytes) 0x7ff1ad501bb0 [32]  length: 26  "/Users/zessadqu/Minishell_"
+                                       1 (16 bytes) 0x7ff1ad501ba0 [16]  length: 6  "OLDPWD"
+                                    1 (16 bytes) 0x7ff1ad501bf0 [16]  length: 14  "MallocNanoZone"
+                                    1 (16 bytes) 0x7ff1ad501c00 [16]  length: 1  "0"
+                                 1 (16 bytes) 0x7ff1ad501c30 [16]  length: 7  "LOGNAME"
+                                 1 (16 bytes) 0x7ff1ad501c40 [16]  length: 8  "zessadqu"
+                              1 (64 bytes) 0x7ff1ad501c80 [64]  length: 52  "/Users/zessadqu/local/lib:/Users/zessadqu/local/lib:"
+                              1 (16 bytes) 0x7ff1ad501c70 [16]  length: 15  "LD_LIBRARY_PATH"
+                           1 (16 bytes) 0x7ff1ad501ce0 [16]  length: 4  "LANG"
+                           1 (16 bytes) 0x7ff1ad501cf0 [16]  length: 11  "en_US.UTF-8"
+                        1 (16 bytes) 0x7ff1ad501d20 [16]  length: 4  "HOME"
+                        1 (16 bytes) 0x7ff1ad501d30 [16]  length: 15  "/Users/zessadqu"
+                     1 (96 bytes) 0x7ff1ad501d70 [96]  length: 90  "/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/ask..."
+                     1 (16 bytes) 0x7ff1ad501d60 [16]  length: 11  "GIT_ASKPASS"
+                  1 (64 bytes) 0x7ff1ad501e00 [64]  length: 60  "/Users/zessadqu/local/include:/Users/zessadqu/local/include:"
+                  1 (16 bytes) 0x7ff1ad501df0 [16]  length: 14  "C_INCLUDE_PATH"
+               1 (64 bytes) 0x7ff1ad501e80 [64]  length: 60  "/Users/zessadqu/local/include:/Users/zessadqu/local/include:"
+               1 (32 bytes) 0x7ff1ad501e60 [32]  length: 18  "CPLUS_INCLUDE_PATH"
+            1 (16 bytes) 0x7ff1ad501ee0 [16]  length: 9  "COLORTERM"
+            1 (16 bytes) 0x7ff1ad501ef0 [16]  length: 9  "truecolor"
+         1 (64 bytes) 0x7ff1ad501f40 [64]  length: 47  has-length-byte:  "private/tmp/com.apple.launchd.veZiZwspSt/Render"
+         1 (32 bytes) 0x7ff1ad501f20 [32]  length: 26  "Apple_PubSub_Socket_Render"
+
+      34 (2.11K) ROOT LEAK: 0x7ff1ad414590 [272]
+         1 (192 bytes) 0x7ff1ad413ea0 [192]  length: 179  "PATH=/Users/zessadqu/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/l..."
+         1 (144 bytes) 0x7ff1ad414250 [144]  length: 141  "VSCODE_GIT_ASKPASS_NODE=/Applications/Visual Studio Code.app/Contents/Frameworks/C..."
+         1 (128 bytes) 0x7ff1ad414320 [128]  length: 119  "VSCODE_GIT_ASKPASS_MAIN=/Applications/Visual Studio Code.app/Contents/Resources/ap..."
+         1 (112 bytes) 0x7ff1ad4141c0 [112]  length: 102  "GIT_ASKPASS=/Applications/Visual Studio Code.app/Contents/Resources/app/extensions..."
+         1 (112 bytes) 0x7ff1ad4143a0 [112]  length: 97  "VSCODE_GIT_IPC_HANDLE=/var/folders/zz/zyxvpxvq6csfxvn_n000cbvm0032yx/T/vscode-git-e..."
+         1 (80 bytes) 0x7ff1ad413e00 [80]  length: 75  "Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.veZiZwspSt/Render"
+         1 (80 bytes) 0x7ff1ad413e50 [80]  length: 65  "SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.G4DMNES5sU/Listeners"
+         1 (80 bytes) 0x7ff1ad414070 [80]  length: 68  "LD_LIBRARY_PATH=/Users/zessadqu/local/lib:/Users/zessadqu/local/lib:"
+         1 (80 bytes) 0x7ff1ad4140c0 [80]  length: 75  "C_INCLUDE_PATH=/Users/zessadqu/local/include:/Users/zessadqu/local/include:"
+         1 (80 bytes) 0x7ff1ad414110 [80]  length: 79  "CPLUS_INCLUDE_PATH=/Users/zessadqu/local/include:/Users/zessadqu/local/include:"
+         1 (64 bytes) 0x7ff1ad413050 [64]  length: 56  "TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n000cbvm0032yx/T/"
+         1 (64 bytes) 0x7ff1ad4142e0 [64]  length: 62  "VSCODE_GIT_ASKPASS_EXTRA_ARGS=--ms-enable-electron-run-as-node"
+         1 (48 bytes) 0x7ff1ad413db0 [48]  length: 39  "__CF_USER_TEXT_ENCODING=0x18BDD:0x0:0x0"
+         1 (48 bytes) 0x7ff1ad413fe0 [48]  length: 38  "ORIGINAL_XDG_CURRENT_DESKTOP=undefined"
+         1 (48 bytes) 0x7ff1ad414020 [48]  length: 33  "OLDPWD=/Users/zessadqu/Minishell_"
+         1 (48 bytes) 0x7ff1ad414470 [48]  length: 40  "_=/Users/zessadqu/Minishell_/./minishell"
+         1 (32 bytes) 0x7ff1ad413d90 [32]  length: 20  "HOME=/Users/zessadqu"
+         1 (32 bytes) 0x7ff1ad413de0 [32]  length: 16  "LOGNAME=zessadqu"
+         1 (32 bytes) 0x7ff1ad413f60 [32]  length: 16  "MallocNanoZone=0"
+         1 (32 bytes) 0x7ff1ad413f80 [32]  length: 18  "XPC_SERVICE_NAME=0"
+         1 (32 bytes) 0x7ff1ad413fc0 [32]  length: 30  "PWD=/Users/zessadqu/Minishell_"
+         1 (32 bytes) 0x7ff1ad414050 [32]  length: 19  "TERM_PROGRAM=vscode"
+         1 (32 bytes) 0x7ff1ad414160 [32]  length: 16  "LANG=en_US.UTF-8"
+         1 (32 bytes) 0x7ff1ad414180 [32]  length: 27  "TERM_PROGRAM_VERSION=1.76.2"
+         1 (32 bytes) 0x7ff1ad4141a0 [32]  length: 19  "COLORTERM=truecolor"
+         1 (32 bytes) 0x7ff1ad414230 [32]  length: 23  "ZDOTDIR=/Users/zessadqu"
+         1 (32 bytes) 0x7ff1ad414410 [32]  length: 18  "VSCODE_INJECTION=1"
+         1 (32 bytes) 0x7ff1ad414430 [32]  length: 28  "USER_ZDOTDIR=/Users/zessadqu"
+         1 (32 bytes) 0x7ff1ad414450 [32]  length: 19  "TERM=xterm-256color"
+         1 (16 bytes) 0x7ff1ad413090 [16]  length: 14  "SHELL=/bin/zsh"
+         1 (16 bytes) 0x7ff1ad413fa0 [16]  length: 13  "USER=zessadqu"
+         1 (16 bytes) 0x7ff1ad413fb0 [16]  length: 13  "XPC_FLAGS=0x0"
+         1 (16 bytes) 0x7ff1ad414010 [16]  length: 7  "SHLVL=2"
+
+      34 (2.11K) ROOT LEAK: 0x7ff1ad500220 [272]
+         1 (192 bytes) 0x7ff1ad5003d0 [192]  length: 179  "PATH=/Users/zessadqu/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/l..."
+         1 (144 bytes) 0x7ff1ad500760 [144]  length: 141  "VSCODE_GIT_ASKPASS_NODE=/Applications/Visual Studio Code.app/Contents/Frameworks/C..."
+         1 (128 bytes) 0x7ff1ad500830 [128]  length: 119  "VSCODE_GIT_ASKPASS_MAIN=/Applications/Visual Studio Code.app/Contents/Resources/ap..."
+         1 (112 bytes) 0x7ff1ad5006d0 [112]  length: 102  "GIT_ASKPASS=/Applications/Visual Studio Code.app/Contents/Resources/app/extensions..."
+         1 (112 bytes) 0x7ff1ad5008b0 [112]  length: 97  "VSCODE_GIT_IPC_HANDLE=/var/folders/zz/zyxvpxvq6csfxvn_n000cbvm0032yx/T/vscode-git-e..."
+         1 (80 bytes) 0x7ff1ad500330 [80]  length: 75  "Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.veZiZwspSt/Render"
+         1 (80 bytes) 0x7ff1ad500380 [80]  length: 65  "SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.G4DMNES5sU/Listeners"
+         1 (80 bytes) 0x7ff1ad500580 [80]  length: 68  "LD_LIBRARY_PATH=/Users/zessadqu/local/lib:/Users/zessadqu/local/lib:"
+         1 (80 bytes) 0x7ff1ad5005d0 [80]  length: 75  "C_INCLUDE_PATH=/Users/zessadqu/local/include:/Users/zessadqu/local/include:"
+         1 (80 bytes) 0x7ff1ad500620 [80]  length: 79  "CPLUS_INCLUDE_PATH=/Users/zessadqu/local/include:/Users/zessadqu/local/include:"
+         1 (64 bytes) 0x7ff1ad5001c0 [64]  length: 56  "TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n000cbvm0032yx/T/"
+         1 (64 bytes) 0x7ff1ad5007f0 [64]  length: 62  "VSCODE_GIT_ASKPASS_EXTRA_ARGS=--ms-enable-electron-run-as-node"
+         1 (48 bytes) 0x7ff1ad5004f0 [48]  length: 38  "ORIGINAL_XDG_CURRENT_DESKTOP=undefined"
+         1 (48 bytes) 0x7ff1ad500530 [48]  length: 33  "OLDPWD=/Users/zessadqu/Minishell_"
+         1 (48 bytes) 0x7ff1ad500980 [48]  length: 40  "_=/Users/zessadqu/Minishell_/./minishell"
+         1 (48 bytes) 0x7ff1ad500b20 [48]  length: 39  "__CF_USER_TEXT_ENCODING=0x18BDD:0x0:0x0"
+         1 (32 bytes) 0x7ff1ad500490 [32]  length: 18  "XPC_SERVICE_NAME=0"
+         1 (32 bytes) 0x7ff1ad5004d0 [32]  length: 30  "PWD=/Users/zessadqu/Minishell_"
+         1 (32 bytes) 0x7ff1ad500560 [32]  length: 19  "TERM_PROGRAM=vscode"
+         1 (32 bytes) 0x7ff1ad500670 [32]  length: 16  "LANG=en_US.UTF-8"
+         1 (32 bytes) 0x7ff1ad500690 [32]  length: 27  "TERM_PROGRAM_VERSION=1.76.2"
+         1 (32 bytes) 0x7ff1ad5006b0 [32]  length: 19  "COLORTERM=truecolor"
+         1 (32 bytes) 0x7ff1ad500740 [32]  length: 23  "ZDOTDIR=/Users/zessadqu"
+         1 (32 bytes) 0x7ff1ad500920 [32]  length: 18  "VSCODE_INJECTION=1"
+         1 (32 bytes) 0x7ff1ad500940 [32]  length: 28  "USER_ZDOTDIR=/Users/zessadqu"
+         1 (32 bytes) 0x7ff1ad500960 [32]  length: 19  "TERM=xterm-256color"
+         1 (32 bytes) 0x7ff1ad500b00 [32]  length: 20  "HOME=/Users/zessadqu"
+         1 (32 bytes) 0x7ff1ad500b50 [32]  length: 16  "LOGNAME=zessadqu"
+         1 (32 bytes) 0x7ff1ad500b70 [32]  length: 16  "MallocNanoZone=0"
+         1 (16 bytes) 0x7ff1ad500200 [16]  length: 14  "SHELL=/bin/zsh"
+         1 (16 bytes) 0x7ff1ad5004b0 [16]  length: 13  "USER=zessadqu"
+         1 (16 bytes) 0x7ff1ad5004c0 [16]  length: 13  "XPC_FLAGS=0x0"
+         1 (16 bytes) 0x7ff1ad500520 [16]  length: 7  "SHLVL=2"
+
+      22 (544 bytes) ROOT CYCLE: 0x7ff1ad600080 [32]
+         CYCLE BACK TO 0x7ff1ad600080 [32]
+         20 (496 bytes) ROOT CYCLE: 0x7ff1ad600120 [32]
+            CYCLE BACK TO 0x7ff1ad600080 [32]
+            18 (432 bytes) ROOT CYCLE: 0x7ff1ad600160 [32]
+               16 (384 bytes) ROOT CYCLE: 0x7ff1ad600190 [32]
+                  14 (336 bytes) ROOT CYCLE: 0x7ff1ad6001d0 [32]
+                     12 (288 bytes) ROOT CYCLE: 0x7ff1ad600200 [32]
+                        10 (240 bytes) ROOT CYCLE: 0x7ff1ad600230 [32]
+                           8 (192 bytes) ROOT CYCLE: 0x7ff1ad600260 [32]
+                              6 (144 bytes) ROOT CYCLE: 0x7ff1ad600290 [32]
+                                 4 (96 bytes) ROOT CYCLE: 0x7ff1ad6002c0 [32]
+                                    2 (48 bytes) ROOT CYCLE: 0x7ff1ad6002f0 [32]
+                                       1 (16 bytes) 0x7ff1ad600310 [16]  length: 9  "count.txt"
+                                    1 (16 bytes) 0x7ff1ad6002e0 [16]  length: 1  ">"
+                                 1 (16 bytes) 0x7ff1ad6002b0 [16]  length: 4  "file"
+                              1 (16 bytes) 0x7ff1ad600280 [16]  length: 1  "<"
+                           1 (16 bytes) 0x7ff1ad600250 [16]  length: 2  "-l"
+                        1 (16 bytes) 0x7ff1ad600220 [16]  length: 2  "wc"
+                     1 (16 bytes) 0x7ff1ad6001f0 [16]  length: 1  "|"
+                  1 (16 bytes) 0x7ff1ad6001b0 [16]  length: 4  "file"
+               1 (16 bytes) 0x7ff1ad600180 [16]  length: 1  ">"
+            1 (32 bytes) 0x7ff1ad600140 [32]  length: 20  "includes/minishell.h"
+         1 (16 bytes) 0x7ff1ad600000 [16]  length: 3  "cat"
+
+      4 (112 bytes) ROOT CYCLE: 0x7ff1ad413130 [32]
+         CYCLE BACK TO 0x7ff1ad413130 [32]
+         2 (64 bytes) ROOT CYCLE: 0x7ff1ad413150 [32]
+            CYCLE BACK TO 0x7ff1ad413130 [32]
+            1 (32 bytes) 0x7ff1ad412f60 [32]  length: 20  "includes/minishell.h"
+         1 (16 bytes) 0x7ff1ad403a90 [16]  length: 3  "cat"
+
+      4 (96 bytes) ROOT CYCLE: 0x7ff1ad412f80 [32]
+         CYCLE BACK TO 0x7ff1ad412f80 [32]
+         2 (48 bytes) ROOT CYCLE: 0x7ff1ad412fa0 [32]
+            CYCLE BACK TO 0x7ff1ad412f80 [32]
+            1 (16 bytes) 0x7ff1ad412fc0 [16]  length: 4  "file"
+         1 (16 bytes) 0x7ff1ad4146e0 [16]  length: 2  "rm"
+
+      4 (96 bytes) ROOT CYCLE: 0x7ff1ad500050 [32]
+         CYCLE BACK TO 0x7ff1ad500050 [32]
+         2 (48 bytes) ROOT CYCLE: 0x7ff1ad500080 [32]
+            CYCLE BACK TO 0x7ff1ad500050 [32]
+            1 (16 bytes) 0x7ff1ad5000a0 [16]  length: 3  "-al"
+         1 (16 bytes) 0x7ff1ad500070 [16]  length: 2  "ls"
+
+      4 (96 bytes) ROOT CYCLE: 0x7ff1ad5000b0 [32]
+         CYCLE BACK TO 0x7ff1ad5000b0 [32]
+         2 (48 bytes) ROOT CYCLE: 0x7ff1ad5000f0 [32]
+            CYCLE BACK TO 0x7ff1ad5000b0 [32]
+            1 (16 bytes) 0x7ff1ad500110 [16]  length: 4  "file"
+         1 (16 bytes) 0x7ff1ad5000e0 [16]  length: 3  "vim"
+
+      4 (96 bytes) ROOT CYCLE: 0x7ff1ad600360 [32]
+         CYCLE BACK TO 0x7ff1ad600360 [32]
+         2 (48 bytes) ROOT CYCLE: 0x7ff1ad600390 [32]
+            CYCLE BACK TO 0x7ff1ad600360 [32]
+            1 (16 bytes) 0x7ff1ad6003b0 [16]  length: 9  "count.txt"
+         1 (16 bytes) 0x7ff1ad600380 [16]  length: 3  "vim"
+
+      4 (96 bytes) ROOT CYCLE: 0x7ff1ad600ab0 [32]
+         CYCLE BACK TO 0x7ff1ad600ab0 [32]
+         2 (48 bytes) ROOT CYCLE: 0x7ff1ad600ad0 [32]
+            CYCLE BACK TO 0x7ff1ad600ab0 [32]
+            1 (16 bytes) 0x7ff1ad600af0 [16]  length: 6  "fclean"
+         1 (16 bytes) 0x7ff1ad600e50 [16]  length: 4  "make"
+
+      4 (96 bytes) ROOT CYCLE: 0x7ff1ad700050 [32]
+         CYCLE BACK TO 0x7ff1ad700050 [32]
+         2 (48 bytes) ROOT CYCLE: 0x7ff1ad700080 [32]
+            CYCLE BACK TO 0x7ff1ad700050 [32]
+            1 (16 bytes) 0x7ff1ad7000a0 [16]  length: 9  "count.txt"
+         1 (16 bytes) 0x7ff1ad700070 [16]  length: 2  "rm"
+
+      2 (48 bytes) ROOT LEAK: 0x7ff1ad412f30 [32]
+         1 (16 bytes) 0x7ff1ad412f50 [16]  length: 5  "clear"
+
+      2 (48 bytes) ROOT LEAK: 0x7ff1ad412fe0 [32]
+         1 (16 bytes) 0x7ff1ad413000 [16]  length: 5  "unset"
+
+      2 (48 bytes) ROOT LEAK: 0x7ff1ad500120 [32]
+         1 (16 bytes) 0x7ff1ad500bb0 [16]  length: 6  "export"
+
+      2 (48 bytes) ROOT LEAK: 0x7ff1ad600050 [32]
+         1 (16 bytes) 0x7ff1ad600070 [16]  length: 2  "ls"
+
+      1 (16 bytes) ROOT LEAK: 0x7ff1ad402f80 [16]  length: 1  "1"
+      1 (16 bytes) ROOT LEAK: 0x7ff1ad404030 [16]
+      1 (16 bytes) ROOT LEAK: 0x7ff1ad412fd0 [16]  length: 3  "cat"
+      1 (16 bytes) ROOT LEAK: 0x7ff1ad4130a0 [16]  length: 5  "clear"
+      1 (16 bytes) ROOT LEAK: 0x7ff1ad414580 [16]  length: 14  "/usr/bin/clear"
+      1 (16 bytes) ROOT LEAK: 0x7ff1ad4146a0 [16]  length: 2  "rm"
+      1 (16 bytes) ROOT LEAK: 0x7ff1ad4146b0 [16]  length: 8  "/bin/cat"
+      1 (16 bytes) ROOT LEAK: 0x7ff1ad414730 [16]  length: 7  "/bin/rm"
+      1 (16 bytes) ROOT LEAK: 0x7ff1ad500170 [16]  length: 3  "vim"
+      1 (16 bytes) ROOT LEAK: 0x7ff1ad500210 [16]  length: 2  "ls"
+      1 (16 bytes) ROOT LEAK: 0x7ff1ad500ac0 [16]  length: 7  "/bin/ls"
+      1 (16 bytes) ROOT LEAK: 0x7ff1ad500b90 [16]  length: 12  "/usr/bin/vim"
+      1 (16 bytes) ROOT LEAK: 0x7ff1ad6001c0 [16]  length: 2  "ls"
+      1 (16 bytes) ROOT LEAK: 0x7ff1ad6004d0 [16]  length: 4  "make"
+      1 (16 bytes) ROOT LEAK: 0x7ff1ad600a70 [16]  length: 7  "/bin/ls"
+      1 (16 bytes) ROOT LEAK: 0x7ff1ad600bc0 [16]  length: 3  "vim"
+      1 (16 bytes) ROOT LEAK: 0x7ff1ad600e30 [16]  length: 12  "/usr/bin/vim"
+      1 (16 bytes) ROOT LEAK: 0x7ff1ad600ec0 [16]  length: 13  "/usr/bin/make"
+      1 (16 bytes) ROOT LEAK: 0x7ff1ad700100 [16]  length: 2  "rm"
+      1 (16 bytes) ROOT LEAK: 0x7ff1ad700ac0 [16]  length: 7  "/bin/rm"

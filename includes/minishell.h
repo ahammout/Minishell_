@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 21:28:26 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/02 01:17:16 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,6 +227,7 @@ char    *ft_getenv(t_data *data, char *str);
 void    export0(t_data *data);
 char    **list_to_str(t_env *env);
 void    free_array(char **array);
+char	*ft_strjoin_free1(char *s1, char *s2);
 /////////////////////////////////// TOOLS //////////////////////////////////
 
 void            exit_minishell(t_data *data, char *err, int exit_option);
