@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:45:24 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 18:30:36 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/02 18:05:37 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int q_keyword(t_data *data, char *lexem)
     while (lexem[ref.i] && lexem[ref.i] != EXPAND_)
         data->tokens->lex[ref.j++] = lexem[ref.i++];
     data->tokens->lex[ref.j] = '\0';
+    if (is_quoted(lexem[ref.i]) || lexem[ref.i] == EXPAND_)
+        data->tokens->attach = 1;
     data->tokens->type = KEYWORD;
     return (ref.i);
 }
@@ -47,6 +49,8 @@ void split_token(t_data *data)
     while (lexem[ref.i])
     {
         create_new_node(data, &ref.l);
+        // if (head->attach)
+        //     data->tokens->attach = 1;
         if (lexem[ref.i] == EXPAND_)
             ref.i += expand(data, lexem + ref.i);
         else if (lexem[ref.i] && lexem[ref.i] != EXPAND_)
