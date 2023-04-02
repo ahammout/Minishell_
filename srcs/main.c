@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 21:28:51 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/02 02:24:53 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int main(int ac, char **av, char **envp)
             }
             add_history(data.buffer);
             data.cmds = parser(&data);
+
             /////// EXECUTION PART /////
             if (data.cmds)
                 cmd_call(&data,her_file);

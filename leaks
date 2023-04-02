@@ -1,0 +1,172 @@
+Direct leak of 2304 byte(s) in 4 object(s) allocated from:
+    #0 0x7f87235307cf in  ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x55c84c004a7b in list__interceptor_malloc_to_str (/home/ahammout/Desktop/Minishell_/minishell+0x8a7b)
+    #2 0x55c84c012be6 in cmd_call (/home/ahammout/Desktop/Minishell_/minishell+0x16be6)
+    #3 0x55c84bfff77f in main (/home/ahammout/Desktop/Minishell_/minishell+0x377f)
+    #4 0x7f8723271189 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Direct leak of 224 byte(s) in 7 object(s) allocated from:
+    #0 0x7f87235307cf in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x55c84c00a56e in init_cmds_list (/home/ahammout/Desktop/Minishell_/minishell+0xe56e)
+    #2 0x55c84c00a1a6 in tokens_to_cmds (/home/ahammout/Desktop/Minishell_/minishell+0xe1a6)
+    #3 0x55c84c00a4e4 in parser (/home/ahammout/Desktop/Minishell_/minishell+0xe4e4)
+    #4 0x55c84bfff729 in main (/home/ahammout/Desktop/Minishell_/minishell+0x3729)
+    #5 0x7f8723271189 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Direct leak of 160 byte(s) in 5 object(s) allocated from:
+    #0 0x7f87235307cf in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x55c84c00258a in init_tokens_list (/home/ahammout/Desktop/Minishell_/minishell+0x658a)
+    #2 0x55c84c001b19 in lexer (/home/ahammout/Desktop/Minishell_/minishell+0x5b19)
+    #3 0x55c84c00a4b1 in parser (/home/ahammout/Desktop/Minishell_/minishell+0xe4b1)
+    #4 0x55c84bfff729 in main (/home/ahammout/Desktop/Minishell_/minishell+0x3729)
+    #5 0x7f8723271189 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Direct leak of 112 byte(s) in 7 object(s) allocated from:
+    #0 0x7f87235307cf in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x55c84c012844 in cmd_call (/home/ahammout/Desktop/Minishell_/minishell+0x16844)
+    #2 0x55c84bfff77f in main (/home/ahammout/Desktop/Minishell_/minishell+0x377f)
+    #3 0x7f8723271189 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Direct leak of 98 byte(s) in 4 object(s) allocated from:
+    #0 0x7f87235307cf in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x55c84c00f9c9 in ft_strjoin_free1 (/home/ahammout/Desktop/Minishell_/minishell+0x139c9)
+    #2 0x55c84c010a39 in get_path (/home/ahammout/Desktop/Minishell_/minishell+0x14a39)
+    #3 0x55c84c012b9c in cmd_call (/home/ahammout/Desktop/Minishell_/minishell+0x16b9c)
+    #4 0x55c84bfff77f in main (/home/ahammout/Desktop/Minishell_/minishell+0x377f)
+    #5 0x7f8723271189 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Direct leak of 45 byte(s) in 9 object(s) allocated from:
+    #0 0x7f87235307cf in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x55c84c013f4c in ft_itoa (/home/ahammout/Desktop/Minishell_/minishell+0x17f4c)
+    #2 0x55c84c006cc6 in handle_dolar_sign (/home/ahammout/Desktop/Minishell_/minishell+0xacc6)
+    #3 0x55c84c007079 in expand_handler (/home/ahammout/Desktop/Minishell_/minishell+0xb079)
+    #4 0x55c84c007375 in expander (/home/ahammout/Desktop/Minishell_/minishell+0xb375)
+    #5 0x55c84c00a4d3 in parser (/home/ahammout/Desktop/Minishell_/minishell+0xe4d3)
+    #6 0x55c84bfff729 in main (/home/ahammout/Desktop/Minishell_/minishell+0x3729)
+    #7 0x7f8723271189 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Direct leak of 20 byte(s) in 5 object(s) allocated from:
+    #0 0x7f87235307cf in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x55c84c0138ad in ft_strdup (/home/ahammout/Desktop/Minishell_/minishell+0x178ad)
+    #2 0x55c84c00c54c in ft_tolower1 (/home/ahammout/Desktop/Minishell_/minishell+0x1054c)
+    #3 0x55c84c00c6a7 in builtin (/home/ahammout/Desktop/Minishell_/minishell+0x106a7)
+    #4 0x55c84c012a81 in cmd_call (/home/ahammout/Desktop/Minishell_/minishell+0x16a81)
+    #5 0x55c84bfff77f in main (/home/ahammout/Desktop/Minishell_/minishell+0x377f)
+    #6 0x7f8723271189 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Direct leak of 9 byte(s) in 9 object(s) allocated from:
+    #0 0x7f87235307cf in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x55c84c0138ad in ft_strdup (/home/ahammout/Desktop/Minishell_/minishell+0x178ad)
+    #2 0x55c84c006cd9 in handle_dolar_sign (/home/ahammout/Desktop/Minishell_/minishell+0xacd9)
+    #3 0x55c84c007079 in expand_handler (/home/ahammout/Desktop/Minishell_/minishell+0xb079)
+    #4 0x55c84c007375 in expander (/home/ahammout/Desktop/Minishell_/minishell+0xb375)
+    #5 0x55c84c00a4d3 in parser (/home/ahammout/Desktop/Minishell_/minishell+0xe4d3)
+    #6 0x55c84bfff729 in main (/home/ahammout/Desktop/Minishell_/minishell+0x3729)
+    #7 0x7f8723271189 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Direct leak of 2 byte(s) in 1 object(s) allocated from:
+    #0 0x7f87235307cf in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x55c84c0034f3 in fill_value (/home/ahammout/Desktop/Minishell_/minishell+0x74f3)
+    #2 0x55c84c0040c6 in set_environment (/home/ahammout/Desktop/Minishell_/minishell+0x80c6)
+    #3 0x55c84bfff5ce in main (/home/ahammout/Desktop/Minishell_/minishell+0x35ce)
+    #4 0x7f8723271189 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 16488 byte(s) in 284 object(s) allocated from:
+    #0 0x7f87235307cf in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x55c84c013a5f in ft_strjoin (/home/ahammout/Desktop/Minishell_/minishell+0x17a5f)
+    #2 0x55c84c004b58 in list_to_str (/home/ahammout/Desktop/Minishell_/minishell+0x8b58)
+    #3 0x55c84c012be6 in cmd_call (/home/ahammout/Desktop/Minishell_/minishell+0x16be6)
+    #4 0x55c84bfff77f in main (/home/ahammout/Desktop/Minishell_/minishell+0x377f)
+    #5 0x7f8723271189 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 576 byte(s) in 18 object(s) allocated from:
+    #0 0x7f87235307cf in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x55c84c002687 in add_new_node (/home/ahammout/Desktop/Minishell_/minishell+0x6687)
+    #2 0x55c84c0027c9 in create_new_node (/home/ahammout/Desktop/Minishell_/minishell+0x67c9)
+    #3 0x55c84c001b62 in lexer (/home/ahammout/Desktop/Minishell_/minishell+0x5b62)
+    #4 0x55c84c00a4b1 in parser (/home/ahammout/Desktop/Minishell_/minishell+0xe4b1)
+    #5 0x55c84bfff729 in main (/home/ahammout/Desktop/Minishell_/minishell+0x3729)
+    #6 0x7f8723271189 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 526 byte(s) in 19 object(s) allocated from:
+    #0 0x7f87235307cf in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x55c84c0138ad in ft_strdup (/home/ahammout/Desktop/Minishell_/minishell+0x178ad)
+    #2 0x55c84c009f7b in get_cmd_args (/home/ahammout/Desktop/Minishell_/minishell+0xdf7b)
+    #3 0x55c84c00a2be in tokens_to_cmds (/home/ahammout/Desktop/Minishell_/minishell+0xe2be)
+    #4 0x55c84c00a4e4 in parser (/home/ahammout/Desktop/Minishell_/minishell+0xe4e4)
+    #5 0x55c84bfff729 in main (/home/ahammout/Desktop/Minishell_/minishell+0x3729)
+    #6 0x7f8723271189 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 480 byte(s) in 6 object(s) allocated from:
+    #0 0x7f87235307cf in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x55c84c013842 in ft_calloc (/home/ahammout/Desktop/Minishell_/minishell+0x17842)
+    #2 0x55c84c008240 in var_exist (/home/ahammout/Desktop/Minishell_/minishell+0xc240)
+    #3 0x55c84c0086a2 in expandable (/home/ahammout/Desktop/Minishell_/minishell+0xc6a2)
+    #4 0x55c84c00710d in expand_handler (/home/ahammout/Desktop/Minishell_/minishell+0xb10d)
+    #5 0x55c84c007375 in expander (/home/ahammout/Desktop/Minishell_/minishell+0xb375)
+    #6 0x55c84c00a4d3 in parser (/home/ahammout/Desktop/Minishell_/minishell+0xe4d3)
+    #7 0x55c84bfff729 in main (/home/ahammout/Desktop/Minishell_/minishell+0x3729)
+    #8 0x7f8723271189 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 256 byte(s) in 8 object(s) allocated from:
+    #0 0x7f87235307cf in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x55c84c002687 in add_new_node (/home/ahammout/Desktop/Minishell_/minishell+0x6687)
+    #2 0x55c84c0027c9 in create_new_node (/home/ahammout/Desktop/Minishell_/minishell+0x67c9)
+    #3 0x55c84c003042 in split_token (/home/ahammout/Desktop/Minishell_/minishell+0x7042)
+    #4 0x55c84c006c63 in analyze_quotes (/home/ahammout/Desktop/Minishell_/minishell+0xac63)
+    #5 0x55c84c005b96 in syntax_analyzer (/home/ahammout/Desktop/Minishell_/minishell+0x9b96)
+    #6 0x55c84c00a4c2 in parser (/home/ahammout/Desktop/Minishell_/minishell+0xe4c2)
+    #7 0x55c84bfff729 in main (/home/ahammout/Desktop/Minishell_/minishell+0x3729)
+    #8 0x7f8723271189 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 224 byte(s) in 9 object(s) allocated from:
+    #0 0x7f87235307cf in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x55c84c009e8f in get_cmd_args (/home/ahammout/Desktop/Minishell_/minishell+0xde8f)
+    #2 0x55c84c00a2be in tokens_to_cmds (/home/ahammout/Desktop/Minishell_/minishell+0xe2be)
+    #3 0x55c84c00a4e4 in parser (/home/ahammout/Desktop/Minishell_/minishell+0xe4e4)
+    #4 0x55c84bfff729 in main (/home/ahammout/Desktop/Minishell_/minishell+0x3729)
+    #5 0x7f8723271189 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 70 byte(s) in 15 object(s) allocated from:
+    #0 0x7f87235307cf in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x55c84c00097e in keyword (/home/ahammout/Desktop/Minishell_/minishell+0x497e)
+    #2 0x55c84c001e30 in lexer (/home/ahammout/Desktop/Minishell_/minishell+0x5e30)
+    #3 0x55c84c00a4b1 in parser (/home/ahammout/Desktop/Minishell_/minishell+0xe4b1)
+    #4 0x55c84bfff729 in main (/home/ahammout/Desktop/Minishell_/minishell+0x3729)
+    #5 0x7f8723271189 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 64 byte(s) in 2 object(s) allocated from:
+    #0 0x7f87235307cf in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x55c84c00a6bd in next_cmd (/home/ahammout/Desktop/Minishell_/minishell+0xe6bd)
+    #2 0x55c84c00a41c in tokens_to_cmds (/home/ahammout/Desktop/Minishell_/minishell+0xe41c)
+    #3 0x55c84c00a4e4 in parser (/home/ahammout/Desktop/Minishell_/minishell+0xe4e4)
+    #4 0x55c84bfff729 in main (/home/ahammout/Desktop/Minishell_/minishell+0x3729)
+    #5 0x7f8723271189 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 64 byte(s) in 2 object(s) allocated from:
+    #0 0x7f87235307cf in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x55c84c00258a in init_tokens_list (/home/ahammout/Desktop/Minishell_/minishell+0x658a)
+    #2 0x55c84c001b19 in lexer (/home/ahammout/Desktop/Minishell_/minishell+0x5b19)
+    #3 0x55c84c00a4b1 in parser (/home/ahammout/Desktop/Minishell_/minishell+0xe4b1)
+    #4 0x55c84bfff729 in main (/home/ahammout/Desktop/Minishell_/minishell+0x3729)
+    #5 0x7f8723271189 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 16 byte(s) in 8 object(s) allocated from:
+    #0 0x7f87235307cf in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x55c84c00051c in special_op (/home/ahammout/Desktop/Minishell_/minishell+0x451c)
+    #2 0x55c84c001f3b in lexer (/home/ahammout/Desktop/Minishell_/minishell+0x5f3b)
+    #3 0x55c84c00a4b1 in parser (/home/ahammout/Desktop/Minishell_/minishell+0xe4b1)
+    #4 0x55c84bfff729 in main (/home/ahammout/Desktop/Minishell_/minishell+0x3729)
+    #5 0x7f8723271189 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 8 byte(s) in 4 object(s) allocated from:
+    #0 0x7f87235307cf in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x55c84c002b27 in q_keyword (/home/ahammout/Desktop/Minishell_/minishell+0x6b27)
+    #2 0x55c84c0031fc in split_token (/home/ahammout/Desktop/Minishell_/minishell+0x71fc)
+    #3 0x55c84c006c63 in analyze_quotes (/home/ahammout/Desktop/Minishell_/minishell+0xac63)
+    #4 0x55c84c005b96 in syntax_analyzer (/home/ahammout/Desktop/Minishell_/minishell+0x9b96)
+    #5 0x55c84c00a4c2 in parser (/home/ahammout/Desktop/Minishell_/minishell+0xe4c2)
+    #6 0x55c84bfff729 in main (/home/ahammout/Desktop/Minishell_/minishell+0x3729)
+    #7 0x7f8723271189 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+SUMMARY: AddressSanitizer: 21746 byte(s) leaked in 426 allocation(s).

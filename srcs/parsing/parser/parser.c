@@ -6,11 +6,29 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:36:39 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 18:47:54 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/02 03:18:21 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
+
+//// STOP IN THE LAST WANTED TOKEN
+
+char    *attach_arguments(t_data *data)
+{
+    char    *arg;
+
+    arg = ft_strdup("");
+    while (data->tokens->attach)
+    {
+        if (data->tokens->type != EMPTY)
+            arg = ft_strjoin(arg, data->tokens->lex);
+        data->tokens = data->tokens->next;
+    }
+    if (data->tokens->lex && data->tokens->type != EMPTY)
+        arg = ft_strjoin(arg, data->tokens->lex);
+    return (arg);
+}
 
 int get_size(t_data *data)
 {
@@ -30,8 +48,8 @@ int get_size(t_data *data)
 
 char    **get_cmd_args(t_data *data)
 {
-    t_ref   ref;
-    char    **str;
+    t_ref       ref;
+    char        **str;
 
     ref.i = 0;
     str = malloc(sizeof(char *) * (get_size(data) + 1));
@@ -42,7 +60,10 @@ char    **get_cmd_args(t_data *data)
     {
         if (data->tokens->type != EMPTY)
         {
-            str[ref.i] = ft_strdup(data->tokens->lex);
+            if (data->tokens->attach)
+                str[ref.i] = attach_arguments(data);
+            else
+                str[ref.i] = ft_strdup(data->tokens->lex);
             ref.i++;
         }
         data->tokens = data->tokens->next;
@@ -88,7 +109,8 @@ t_exec  *parser(t_data *data)
         {
             if (expander(data))
             {
-                // display_tokens(data->tokens);
+                display_tokens(data->tokens);
+                // exit(0);
                 return (tokens_to_cmds(data));
             }
         }

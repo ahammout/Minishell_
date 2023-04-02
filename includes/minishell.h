@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 21:28:26 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/02 03:17:45 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct  s_tokens
 {
     char                *lex;
     int                 type;
+    int                 attach;
     int                 lenght;
     struct s_tokens     *next;
     struct s_tokens     *prev;
@@ -162,7 +163,7 @@ void        analyze_end(t_data *data, t_tokens *token);
 t_tokens    *expander(t_data *data);
 void        expand_handler(t_data *data);
 char        *free_old_lex(t_data *data);
-int         handle_dolar_sign(char *lexem, char **pids);
+char        *handle_dolar_sign(char *lexem, int *index);
 void        expandable(t_data *data, char *lexem, char *pids);
 void        unexpandable(t_data *data, char *lexem, char *pids);
 void        non_param(t_data *data, char *lexem, char *str_pid);

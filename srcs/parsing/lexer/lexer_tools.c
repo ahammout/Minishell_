@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:13:51 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 18:30:19 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/02 03:18:36 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void    init_tokens_list(t_data *data)
     data->tokens = malloc(sizeof(t_tokens));
     if (!data->tokens)
         exit_minishell(data, "Minishell: Allocation failed.", 1);
+    data->tokens->attach = 0;
     data->tokens->next = NULL;
     data->tokens->prev = data->tokens;
 }
@@ -30,6 +31,7 @@ void    add_new_node(t_data *data)
     if (!node)
         exit_minishell(data, "Malloc: Allocation failed.", 1);
     node->next = NULL;
+    node->attach = 0;
     node->prev = data->tokens;
     data->tokens->next = node;
 }
@@ -57,6 +59,7 @@ void    display_tokens(t_tokens *token)
         printf("---- Node %d ----\n", n);
         printf("Lexeme: %s\n",head->lex);
         printf("Type: %d\n\n", head->type);
+        printf("Countinu: %d\n", head->attach);
         // printf("---- Previous Node ----\n");
         // printf("Lexeme: %s\n", head->prev->lex);
         // printf("Type: %d\n\n", head->prev->type);

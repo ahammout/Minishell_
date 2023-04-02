@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 18:23:06 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 18:49:00 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/02 02:23:01 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,18 @@ int analyze_quotes(t_data *data)
         if (!data->err)
         {
             abs_syntax(data, ft_strlen(data->tokens->lex), n_q);
-            if (!data->tokens->lex || ft_strchr(data->tokens->lex, DQUOTE)
-                || data->tokens->type == SQUOTE || data->tokens->prev->type == HEREDOC)
+            if (data->tokens->lex)
             {
-                data->tokens->type = KEYWORD;   
-                return (0);
+                if (data->tokens->lex || ft_strchr(data->tokens->lex, DQUOTE)
+                    || data->tokens->type == SQUOTE || data->tokens->prev->type == HEREDOC)
+                {
+                    data->tokens->type = KEYWORD;   
+                    return (0);
+                }
+                data->tokens->type = KEYWORD;
+                if (ft_strchr(data->tokens->lex, EXPAND_))
+                    split_token(data);
             }
-            data->tokens->type = KEYWORD;
-            if (ft_strchr(data->tokens->lex, EXPAND_))
-                split_token(data);
         }
     }
 }

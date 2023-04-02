@@ -6,34 +6,34 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 18:13:17 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/31 23:01:43 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/02 00:29:51 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-int handle_dolar_sign(char *lexem, char **pids)
+char	*handle_dolar_sign(char *lexem, int	*index)
 {
-    char    *pid;
+    char    *pids;
     int     i;
 
     i = 0;
-    pid = ft_itoa(getppid());
-    (*pids) = ft_strdup("");
+    pids = ft_strdup("");
     while (lexem[i] == EXPAND_)
     {
         if (lexem[i] == EXPAND_ && lexem[i + 1] == EXPAND_)
         {
-            (*pids) = ft_strjoin((*pids), pid);
-            i += 2;
+			pids = ft_strjoin(pids, ft_itoa(getppid()));
+			i += 2;
         }
         else
         {
-            (*pids) = ft_strjoin((*pids), "$");
+            pids = ft_strjoin(pids, "$");
             i++;
         }
     }
-    return (i);
+	*index = i;
+    return (pids);
 }
 
 char    *free_old_lex(t_data *data)
@@ -53,7 +53,7 @@ void    expand_handler(t_data *data)
     int     index;
 
     lexem = free_old_lex(data);
-    index = handle_dolar_sign(lexem, &pids);
+    pids = handle_dolar_sign(lexem, &index);
     if ((index % 2) && lexem[index])
         expandable(data, lexem, pids);
     else if (!(index % 2) && lexem[index])

@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:13:35 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 18:29:43 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/02 03:19:04 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int keyword(t_data *data, char *lexem)
     while (lexem[ref.i] && is_keyword(lexem[ref.i]))
         data->tokens->lex[ref.j++] = lexem[ref.i++];
     data->tokens->lex[ref.j] = '\0';
+    if (is_quoted(lexem[ref.i]) || lexem[ref.i] == EXPAND_)
+        data->tokens->attach = 1;
     data->tokens->type = KEYWORD;
     return (ref.i);
 }
@@ -74,6 +76,8 @@ int expand(t_data *data, char *lexem)
         || lexem[ref.i] == '_' || lexem[ref.i] == '?')
         data->tokens->lex[ref.j++] = lexem[ref.i++];
     data->tokens->lex[ref.j] = '\0';
+    if (is_quoted(lexem[ref.i]) || lexem[ref.i] == EXPAND_ || is_keyword(lexem[ref.i]))
+        data->tokens->attach = 1;
     data->tokens->type = EXPAND_;
     return (ref.i);
 }
@@ -108,6 +112,8 @@ int quotes(t_data *data, char *lexem, char type)
             break;
     }
     data->tokens->lex[ref.j] = '\0';
+    if (is_quoted(lexem[ref.i]) || lexem[ref.i] == EXPAND_ || is_keyword(lexem[ref.i]))
+        data->tokens->attach = 1;
     data->tokens->type = type;
     return (ref.i);
 }
