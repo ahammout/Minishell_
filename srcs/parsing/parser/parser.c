@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:36:39 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/02 03:18:21 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/02 03:34:17 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,7 @@ t_exec  *parser(t_data *data)
         {
             if (expander(data))
             {
-                display_tokens(data->tokens);
-                // exit(0);
+                // display_tokens(data->tokens);
                 return (tokens_to_cmds(data));
             }
         }
