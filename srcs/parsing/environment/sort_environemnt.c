@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:58:36 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/01 05:45:40 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/02 01:31:59 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,7 @@ char **list_to_str(t_env *env)
         if (tmp->value)
         {
             tmp2 = ft_strjoin(tmp->name, "=");
-            envp[i] = ft_strjoin(tmp2, tmp->value);
-            free(tmp2);
+            envp[i] = ft_strjoin_free1(tmp2, tmp->value);
         }
         else
             envp[i] = ft_strdup(tmp->name);
@@ -167,7 +166,7 @@ t_env   *sort_environment(t_data *data)
     t_env *tmp;
 
     envp = list_to_str(data->env);
-    envp = sort_env(envp);
+    sort_env(envp);
     tmp = strToList(envp);
     free_array(envp);
     return (tmp);
