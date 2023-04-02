@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/02 03:26:38 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/02 21:23:51 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,6 +229,14 @@ void    export0(t_data *data);
 char    **list_to_str(t_env *env);
 void    free_array(char **array);
 char    *ft_strjoin_free1(char *s1, char *s2);
+int check_file(const char *filename) ;
+void	shell_cmd(t_data *data, char *path, char **tmp);
+void executable_f(t_data *data, char **tmp);
+void	is_directory(t_data *data);
+void	is_perms(t_data *data);
+void is_no_such_file(t_data *data);
+void	is_no_cmd(t_data *data);
+void	cmd_extra(t_data *data, char *path, char **tmp, int st);
 
 /////////////////////////////////// TOOLS //////////////////////////////////
 

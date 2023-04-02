@@ -6,11 +6,42 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:06:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/02 18:03:33 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/02 22:29:37 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+void file_checker(char *path, t_data *data, t_exec *tmp)
+{
+	int st;
+
+	st = check_file(tmp->str[0]);
+    if (path)
+    {
+        if (execve(path,tmp->str, data->envp_) == -1)
+            {
+                exitS = 127;
+                perror("Minishell ");
+            }
+    }
+	else if (st == 1)
+		return (is_directory(data), free(path), (void)0);
+	else if (st == 2)
+		return (is_perms(data), free(path), (void)0);
+	else if (st == 3)
+		{
+            if (execve(tmp->str[0],tmp->str, data->envp_) == -1)
+            {
+                exitS = 127;
+                perror("Minishell ");
+            }
+        }
+	else if (st == 4)
+		return (is_no_such_file(data), free(path), (void)0);
+    else    
+        return (is_no_cmd(data), free(path), (void)0);
+}
 
 int pipes_redirection(t_exec *tmp, int file_, int i, t_data *data)
 {
@@ -100,6 +131,7 @@ void    restore_parent(int  *stds, int status, int  *pids, t_data   *data)
 void    pipe_exe(int *pids, t_data  *data, t_exec *tmp, int i)
 {
     int status;
+    char *path;
 
     if (pids[i] == 0)
     {
@@ -108,12 +140,8 @@ void    pipe_exe(int *pids, t_data  *data, t_exec *tmp, int i)
             ;
         else
         {
-            if (execve(get_path(tmp->str[0], data, &status),
-                    tmp->str, data->envp_) == -1)
-            {
-                exitS = 127;
-                perror("Minishell ");
-            }
+              path = get_path(tmp->str[0], data, &status);
+              file_checker(path, data, tmp);    
         }
         exit(exitS);
     }
