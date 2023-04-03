@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:06:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/02 23:28:56 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/03 00:44:10 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void file_checker(char *path, t_data *data, t_exec *tmp)
             }
             return ;
     }
-	else if (st == 1 && ft_strncmp(data->cmds->str[0], "./", 2) == 0)
-		return (is_directory(data), free(path), (void)0);
-	else if (st == 2 && ft_strncmp(data->cmds->str[0], "./", 2) == 0)
-		return (is_perms(data), free(path), (void)0);
-	else if (st == 3 && ft_strncmp(data->cmds->str[0], "./", 2) == 0)
+	else if (st == 1 && ft_strncmp(tmp->str[0], "./", 2) == 0)
+		return (is_directory(data, tmp), free(path), (void)0);
+	else if (st == 2 && ft_strncmp(tmp->str[0], "./", 2) == 0)
+		return (is_perms(data, tmp), free(path), (void)0);
+	else if (st == 3 && ft_strncmp(tmp->str[0], "./", 2) == 0)
 		{
             if (execve(tmp->str[0],tmp->str, data->envp_) == -1)
             {
@@ -39,10 +39,10 @@ void file_checker(char *path, t_data *data, t_exec *tmp)
             }
             return ;
         }
-	else if (st == 4 && ft_strncmp(data->cmds->str[0], "./", 2) == 0)
-		return (is_no_such_file(data), free(path), (void)0);
+	else if (st == 4 && ft_strncmp(tmp->str[0], "./", 2) == 0)
+		return (is_no_such_file(data, tmp), free(path), (void)0);
     else    
-        return (is_no_cmd(data), free(path), (void)0);
+        return (is_no_cmd(data, tmp), free(path), (void)0);
 }
 
 int pipes_redirection(t_exec *tmp, int file_, int i, t_data *data)
@@ -135,10 +135,10 @@ void    pipe_exe(int *pids, t_data  *data, t_exec *tmp, int i)
     int status;
     char *path;
 
-    if (pids[i] == 0)
+    if (pids[i] == 0  && tmp->str )
     {
         handle_fds(data, i);
-        if (!builtin(data, tmp))
+        if (!builtin(data, tmp) && tmp->str[0])
             ;
         else
         {

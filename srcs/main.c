@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/03 00:08:35 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/03 01:43:05 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int exitS;
 //  {
 //      system("leaks minishell");
 //  }
-
-
 
 int main(int ac, char **av, char **envp)
 {
@@ -62,5 +60,6 @@ int main(int ac, char **av, char **envp)
                 cmd_call(&data,her_file);
         }
     }
+    free_env_list(&data);
     return (0);
 }
