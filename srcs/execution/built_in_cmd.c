@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 01:41:50 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/03 07:11:22 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/03 23:14:35 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ int	builtin(t_data *data, t_exec *cmd)
 	
 	if (!ft_strcmp(command, "exit"))
 		return (ft_exit(cmd), free(command), 0);
-	
+	free(command);
 	return (1);
 }

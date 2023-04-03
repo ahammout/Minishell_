@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 21:01:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/03 03:13:01 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/03 23:21:16 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	is_no_cmd(t_data *data, t_exec *tmp)
 
 void	cmd_extra(t_data *data, char *path, char **tmp, int st)
 {
-	if (path)
+	if (path && ft_strncmp(data->cmds->str[0], "./", 2))
 		return(shell_cmd(data, path, tmp), (void)0) ;
 	else if (st == 3 && ft_strncmp(data->cmds->str[0], "./", 2) == 0)
 		return ( executable_f(data, tmp), free(path),(void)0) ;
