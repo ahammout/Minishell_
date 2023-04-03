@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:13:35 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/02 03:19:04 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/03 00:24:00 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int special_op(t_data *data, char *lexem, int type)
     while (lexem[ref.l] == type)
         ref.l++;
     data->tokens->lenght = ref.l;
-    data->tokens->lex = malloc(sizeof(char) * ref.l + 1);
+    data->tokens->lex = malloc(sizeof(char) * (ref.l + 1));
     if (!data->tokens->lex)
         exit_minishell(data, "Minishell: Allocation failed.", 1);
     while (lexem[ref.i] == type)
@@ -42,7 +42,7 @@ int keyword(t_data *data, char *lexem)
     while (lexem[ref.l] && is_keyword(lexem[ref.l]))
         ref.l++;
     data->tokens->lenght = ref.l;
-    data->tokens->lex = malloc(sizeof(char) * ref.l + 1);
+    data->tokens->lex = malloc(sizeof(char) * (ref.l + 1));
     if (!data->tokens->lex)
         exit_minishell(data, "Minishell: Allocation failed.", 1);
     while (lexem[ref.i] && is_keyword(lexem[ref.i]))
@@ -66,7 +66,7 @@ int expand(t_data *data, char *lexem)
     while (ft_isalpha(lexem[ref.l]) || ft_isdigit(lexem[ref.l]) \
         || lexem[ref.l] == '_' || lexem[ref.l] == '?')
         ref.l++;
-    data->tokens->lex = malloc(sizeof(char) * ref.l + 1);
+    data->tokens->lex = malloc(sizeof(char) * (ref.l + 1));
     if (!data->tokens->lex)
         exit_minishell(data, "Minishell: Allocation failed.", 1);
     while (lexem[ref.i] == EXPAND_ || lexem[ref.i] == '@' \
@@ -99,7 +99,7 @@ int quotes(t_data *data, char *lexem, char type)
         if (quote == 2)
             break;
     }
-    data->tokens->lex = malloc(sizeof(char) * ref.l + 1);
+    data->tokens->lex = malloc(sizeof(char) * (ref.l + 1));
     if (!data->tokens->lex)
         exit_minishell(data, "Minishell: Allocation failed.", 1);
     quote = 0;

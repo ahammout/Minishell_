@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:36:39 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/02 22:40:30 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/03 01:38:10 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,27 @@ char    **get_cmd_args(t_data *data)
     char        **str;
 
     ref.i = 0;
-    str = malloc(sizeof(char *) * (get_size(data) + 1));
-    if (!str)
-        exit_minishell(data, "Minishell: Allocation failed.", 2);
-    while (data->tokens && !is_redirection(data->tokens->type) \
-        && data->tokens->type != PIPE)
+    ref.l = get_size(data);
+    if (ref.l)
     {
-        if (data->tokens->type != EMPTY)
+        str = malloc(sizeof(char *) * (get_size(data) + 1));
+        if (!str)
+            exit_minishell(data, "Minishell: Allocation failed.", 2);
+        while (data->tokens && !is_redirection(data->tokens->type) \
+            && data->tokens->type != PIPE)
         {
-            if (data->tokens->attach)
-                str[ref.i] = attach_arguments(data);
-            else
-                str[ref.i] = ft_strdup(data->tokens->lex);
-            ref.i++;
+            if (data->tokens->type != EMPTY)
+            {
+                if (data->tokens->attach)
+                    str[ref.i] = attach_arguments(data);
+                else
+                    str[ref.i] = ft_strdup(data->tokens->lex);
+                ref.i++;
+            }
+            data->tokens = data->tokens->next;
         }
-        data->tokens = data->tokens->next;
+        str[ref.i] = NULL;
     }
-    str[ref.i] = NULL;
     return (str);
 }
 
@@ -93,7 +97,6 @@ t_exec  *tokens_to_cmds(t_data *data)
     }
     data->cmds = head;
     // free_tokens_list(data);
-    display_tokens(data->tokens);
     // display_cmds(data->cmds);
     return (head);
 }
