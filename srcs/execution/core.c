@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 21:01:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/02 23:52:22 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/03 03:13:01 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	cmd_call(t_data *data, int her_file)
 				free_array(tmp), free_data(data), (void)0);
 	}
 
-	if (!data->cmds->str[0] || !builtin(data, data->cmds))
+	if (!data->cmds->str || !builtin(data, data->cmds))
 		return (free_array(tmp),free_data(data),(void)0);
 	st = check_file(data->cmds->str[0]);
 	path = get_path(data->cmds->str[0], data, &check);
