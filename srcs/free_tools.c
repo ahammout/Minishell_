@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_tools.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 17:59:17 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/03 06:05:00 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/03 04:39:33 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void free_data(t_data *data)
 {
     free_tokens_list(data);
-    //free_cmds_list(data);
+    free_cmds_list(data);
     if (data->err)
         free(data->err);
 }
@@ -46,12 +46,15 @@ int free_cmds_list(t_data *data)
     while (data->cmds != NULL)
     {
         i = 0;
-        while (data->cmds->str[i])
+        if (data->cmds->str)
         {
-            free(data->cmds->str[i]);
-            i++;
-        }
+            while (data->cmds->str[i])
+            {
+                free(data->cmds->str[i]);
+                i++;
+            }
         free(data->cmds->str);
+        }
         if (data->cmds->in_file != 0)
             close(data->cmds->in_file);
         if (data->cmds->out_file != 1)

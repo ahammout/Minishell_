@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+         #
+#    By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 11:15:10 by ahammout          #+#    #+#              #
-#    Updated: 2023/04/03 01:42:39 by ahammout         ###   ########.fr        #
+#    Updated: 2023/04/03 04:18:41 by zessadqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # -fsanitize=address
-CC = gcc -fsanitize=address
+CC = gcc #-fsanitize=address
 
 #CFLAGS = -Wall -Wextra -Werror -g
 
