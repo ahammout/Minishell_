@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 18:12:56 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/30 02:35:20 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/03 16:46:21 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void    non_param (t_data *data, char *lexem, char *pids)
     }
     data->tokens->lex[ref.l] = '\0';
     data->tokens->type = KEYWORD;
-    printf ("%s\n", data->tokens->lex);
 }
 
 void    unexpandable(t_data *data, char *lexem, char *pids)
