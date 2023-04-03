@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 16:12:53 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 22:23:17 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/03 04:41:59 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,20 @@ int fill_value(t_data *data, char *envp)
     ref.l = 1;
     ref.j = 1;
     ref.i = 0;
-    while (envp[ref.l])
-        ref.l++;
-    data->env->value = malloc(sizeof (char) * (ref.l));
-    if (!data->env->value)
-        exit_minishell(data, "Minishell: Allocation failed.", 0);
-    while (envp[ref.j])
-        data->env->value[ref.i++] = envp[ref.j++];
-    data->env->value[ref.i] = '\0';
-    return (ref.j);
+    
+    if (envp[ref.l])
+    {
+        while (envp[ref.l])
+            ref.l++;
+        data->env->value = malloc(sizeof(char) * (ref.l));
+        if (!data->env->value)
+            exit_minishell(data, "Minishell: Allocation failed.", 0);
+        while (envp[ref.j])
+            data->env->value[ref.i++] = envp[ref.j++];
+        data->env->value[ref.i] = '\0';
+        return (ref.j);
+    }
+    return (ref.l);
 }
 
 int fill_name(t_data *data, char *envp)

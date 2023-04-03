@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:09:59 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 17:20:18 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/03 06:00:29 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int redin_handler(t_data *data)
     if (data->cmds->in_file == -1)
     {
         data->err = no_such_file(data->tokens->lex);
-        return (generate_error(data));
+        return (generate_error(data), 0);
     }
     data->tokens = data->tokens->next;
     if (data->tokens && (data->tokens->type == KEYWORD || data->tokens->type == REDIN))

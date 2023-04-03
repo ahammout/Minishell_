@@ -6,33 +6,39 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 20:19:49 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 23:38:17 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/03 02:53:55 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char *ft_strjoin(char const *s1, char const *s2)
 {
-	char	*word;
 	size_t	i;
-	size_t	ls1;
-	size_t	ls2;
+	size_t	j;
+	size_t	s1_len;
+	size_t	s2_len;
+	char	*newstr;
 
-	if (!s1 || !s2)
-		return (0);
 	i = 0;
-	ls1 = ft_strlen(s1);
-	ls2 = ft_strlen(s2);
-	word = (char *) malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!word)
+	j = 0;
+	if (!s2)
+		return ((char *)s1);
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	newstr = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
+	if (!newstr)
 		return (0);
-	ft_memcpy(word, s1, ls1);
-	while (s2[i] && i < ls2)
+	while (s1[j])
 	{
-		word[ls1 + i] = s2[i];
+		newstr[j] = s1[j];
+		j++;
+	}
+	while (i < s2_len)
+	{
+		newstr[s1_len + i] = s2[i];
 		i++;
 	}
-	word[ls1 + i] = '\0';
-	return (word);
+	newstr[s1_len + i] = '\0';
+	return (newstr);
 }

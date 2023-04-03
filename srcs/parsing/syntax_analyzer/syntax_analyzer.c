@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 18:12:24 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 03:46:06 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/03 05:58:18 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ t_tokens    *syntax_analyzer (t_data *data)
     }
     data->tokens = head;
     if (data->err && !data->heredoc)
-        return (generate_error(data));
+        return (generate_error(data), (void *)0);
     return (head);
 }

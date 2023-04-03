@@ -6,18 +6,18 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:46 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 21:59:14 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/03 05:57:46 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int generate_error(t_data *data)
+void generate_error(t_data *data)
 {
     exitS = 2;
     ft_putstr_fd(data->err, 2);
     ft_putstr_fd("\n", 2);
-    return (0);
+    // return (0);
 }
 
 /// Exit Minishell 
@@ -36,7 +36,7 @@ void    exit_minishell(t_data *data, char *err, int exit_option)
         if (data->err)
             free(data->err);
         free_env_list(data);
-        free_tokens_list(data);
+        // free_tokens_list(data);
         free_cmds_list(data);
     }
     if (err)

@@ -6,11 +6,13 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:36:39 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/03 01:38:10 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/03 05:59:37 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
+
+////// LEAKS IN FIRST ALLOCATION.
 
 char    *attach_arguments(t_data *data)
 {
@@ -90,13 +92,14 @@ t_exec  *tokens_to_cmds(t_data *data)
         {
             data->tokens = ptr;
             data->cmds = head;
-            return (free_data(data));
+            return (free_data(data), (void *)0);
         }
         if (data->tokens && data->tokens->type == PIPE)
             next_cmd(data);
     }
     data->cmds = head;
-    // free_tokens_list(data);
+    data->tokens = ptr;
+    free_tokens_list(data);
     // display_cmds(data->cmds);
     return (head);
 }
@@ -109,6 +112,7 @@ t_exec  *parser(t_data *data)
     {
         if (syntax_analyzer(data))
         {
+            // display_tokens(data->tokens);
             if (expander(data))
             {
                 return (tokens_to_cmds(data));

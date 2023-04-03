@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 18:13:06 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/30 02:52:55 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/03 05:49:39 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,7 @@ void var_not_exist(t_data *data, char *lexem, char *pids)
     ref.j = 0;
     ref.l = 0;
     size = update_size(lexem, pids, NULL, NULL);
-    if (size <= 1)
-    {
-        data->tokens->lex = NULL;
-        data->tokens->type = EMPTY;
-    }
-    else
+    if (size > 1)
     {
         data->tokens->lex = ft_calloc(size, sizeof(char));
         while (pids[ref.j + 1])
@@ -40,44 +35,60 @@ void var_not_exist(t_data *data, char *lexem, char *pids)
         }
         data->tokens->type = KEYWORD;
     }
+    else
+    {
+        data->tokens->lex = NULL;
+        data->tokens->type = EMPTY;
+    }
 }
 
 void    exit_status(t_data *data, char *lexem, char *pids)
 {
-    t_ref ref;
-    char *e_status;
-    int e;
+    t_ref   ref;
+    int     size;
+    char    *e_status;
+    int     e;
 
     ref.i = 1;
     ref.j = 0;
     ref.l = 0;
     e = 0;
     e_status = ft_itoa(exitS);
-    data->tokens->lex = ft_calloc(update_size(lexem, pids, NULL, e_status), sizeof(char));
-    while (pids[ref.j + 1])
-        data->tokens->lex[ref.l++] = pids[ref.j++];
-    while (e_status[e])
-        data->tokens->lex[ref.l++] = e_status[e++];
-    while (lexem[ref.i])
-        data->tokens->lex[ref.l++] = lexem[ref.i++];
-    data->tokens->lex[ref.l] = '\0';
-    data->tokens->type = KEYWORD;
+    size = update_size(lexem, pids, NULL, e_status);
+    if (size)
+    {
+        data->tokens->lex = ft_calloc(size, sizeof(char));
+        while (pids[ref.j + 1])
+            data->tokens->lex[ref.l++] = pids[ref.j++];
+        while (e_status[e])
+            data->tokens->lex[ref.l++] = e_status[e++];
+        while (lexem[ref.i])
+            data->tokens->lex[ref.l++] = lexem[ref.i++];
+        data->tokens->lex[ref.l] = '\0';
+        data->tokens->type = KEYWORD;
+    }
+    free(e_status);
 }
 
 void    var_exist(t_data *data, char *pids, char *value)
 {
-    t_ref ref;
+    t_ref   ref;
+    int     size;
 
     ref.i = 0;
     ref.j = 0;
     ref.l = 0;
-    data->tokens->lex = ft_calloc((update_size(NULL, pids, value, NULL)), sizeof(char));
-    while (pids[ref.j + 1])
-        data->tokens->lex[ref.l++] = pids[ref.j++];
-    while (value[ref.i])
-        data->tokens->lex[ref.l++] = value[ref.i++];
-    data->tokens->lex[ref.l] = '\0';
-    data->tokens->type = KEYWORD;
+    size = update_size(NULL, pids, value, NULL);
+    if (size > 1)
+    {
+        data->tokens->lex = ft_calloc(size, sizeof(char));
+        while (pids[ref.j + 1])
+            data->tokens->lex[ref.l++] = pids[ref.j++];
+        while (value[ref.i])
+            data->tokens->lex[ref.l++] = value[ref.i++];
+        data->tokens->lex[ref.l] = '\0';
+        data->tokens->type = KEYWORD;
+    }
 }
 
 void    expandable(t_data *data, char *lexem, char *pids)
@@ -95,5 +106,6 @@ void    expandable(t_data *data, char *lexem, char *pids)
         exit_status(data, lexem + i, pids);
     else
         var_not_exist(data, lexem + i, pids);
-    free(value);
+    if (value)
+        free(value);
 }

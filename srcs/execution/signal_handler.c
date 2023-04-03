@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:46:44 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/03/31 18:07:34 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/03 02:17:47 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static void	signals_router(int signal, siginfo_t *siginfo, void *content)
 	siginfo = NULL;
 	if (signal == SIGINT)
 	{
+		exitS = 130;
 		ft_putstr_fd("\n", 1);
 		rl_on_new_line();
 		//rl_replace_line("", 0);

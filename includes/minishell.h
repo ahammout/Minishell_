@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/02 23:49:16 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/03 05:59:02 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,8 +241,8 @@ void	cmd_extra(t_data *data, char *path, char **tmp, int st);
 /////////////////////////////////// TOOLS //////////////////////////////////
 
 void            exit_minishell(t_data *data, char *err, int exit_option);
-int             free_data(t_data *data);
-int             generate_error(t_data *data);
+void            free_data(t_data *data);
+void            generate_error(t_data *data);
 char            **ft_2strdup(char **str);
 int             white_check(char *str);
 void            display_tokens(t_tokens *token);

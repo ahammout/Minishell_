@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:45:24 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/02 18:05:37 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/03 05:16:48 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,18 @@ int q_keyword(t_data *data, char *lexem)
     ref.j = 0;
     while (lexem[ref.l] && lexem[ref.l] != EXPAND_)
         ref.l++;
-    data->tokens->lex = malloc(sizeof(char) * ref.l + 1);
-    if (!data->tokens->lex)
-        exit_minishell(data, "Minishell: Allocation failed.", 1);
-    while (lexem[ref.i] && lexem[ref.i] != EXPAND_)
-        data->tokens->lex[ref.j++] = lexem[ref.i++];
-    data->tokens->lex[ref.j] = '\0';
-    if (is_quoted(lexem[ref.i]) || lexem[ref.i] == EXPAND_)
-        data->tokens->attach = 1;
-    data->tokens->type = KEYWORD;
+    if (ref.l)
+    {
+        data->tokens->lex = malloc(sizeof(char) * ref.l + 1);
+        if (!data->tokens->lex)
+            exit_minishell(data, "Minishell: Allocation failed.", 1);
+        while (lexem[ref.i] && lexem[ref.i] != EXPAND_)
+            data->tokens->lex[ref.j++] = lexem[ref.i++];
+        data->tokens->lex[ref.j] = '\0';
+        if (is_quoted(lexem[ref.i]) || lexem[ref.i] == EXPAND_)
+            data->tokens->attach = 1;
+        data->tokens->type = KEYWORD;
+    }
     return (ref.i);
 }
 
@@ -44,13 +47,14 @@ void split_token(t_data *data)
     next = data->tokens->next;
     lexem = ft_strdup(data->tokens->lex);
     free(data->tokens->lex);
+    data->tokens->lex = NULL;
     ref.i = 0;
     ref.l = 0;
     while (lexem[ref.i])
     {
         create_new_node(data, &ref.l);
-        // if (head->attach)
-        //     data->tokens->attach = 1;
+        if (head->attach && next)
+            data->tokens->attach = 1;
         if (lexem[ref.i] == EXPAND_)
             ref.i += expand(data, lexem + ref.i);
         else if (lexem[ref.i] && lexem[ref.i] != EXPAND_)

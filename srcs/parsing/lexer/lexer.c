@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:13:35 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/03 00:24:00 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/03 04:24:25 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,12 +123,14 @@ t_tokens *lexer(t_data *data)
     t_tokens    *head;
     int         add_node;
     int         i;
+    int         check;
     
     head = NULL;
     if (white_check (data->buffer))
     {
         i = 0;
         add_node = 0;
+        check = 0;
         init_tokens_list(data);
         head = data->tokens;
         while (data->buffer[i] && white_check (data->buffer + i))

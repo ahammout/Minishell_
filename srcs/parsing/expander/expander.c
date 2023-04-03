@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 18:13:17 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/02 00:29:51 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/03 03:36:53 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,40 @@
 char	*handle_dolar_sign(char *lexem, int	*index)
 {
     char    *pids;
+    char    *p;
+    int     fst_alloc;
     int     i;
 
     i = 0;
-    pids = ft_strdup("");
+    fst_alloc = 1;
+    p = ft_itoa(getppid());
     while (lexem[i] == EXPAND_)
     {
         if (lexem[i] == EXPAND_ && lexem[i + 1] == EXPAND_)
         {
-			pids = ft_strjoin(pids, ft_itoa(getppid()));
+            if (fst_alloc)
+            {
+                pids = ft_strdup(p);
+                fst_alloc = 0;
+            }
+            else
+			    pids = ft_strjoin(pids, p);
 			i += 2;
         }
         else
         {
-            pids = ft_strjoin(pids, "$");
+            if (fst_alloc)
+            {
+                pids = ft_strdup("$");
+                fst_alloc = 0;
+            }
+            else
+                pids = ft_strjoin(pids, "$");
             i++;
         }
     }
 	*index = i;
+    free(p);
     return (pids);
 }
 

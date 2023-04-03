@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:37:05 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/01 18:48:29 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/03 06:00:56 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,6 @@ int heredoc_handler(t_data *data)
     waitpid(pid, &status, 0);
     heredoc_action(data, status, fd);
     if (data->err)
-        return (generate_error(data));
+        return (generate_error(data), 0);
     return (1);
 }
