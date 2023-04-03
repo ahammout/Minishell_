@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 18:11:47 by ahammout          #+#    #+#             */
-/*   Updated: 2023/03/31 22:52:41 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/03 17:55:59 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,18 @@
 
 void    analyze_begin(t_data *data, t_tokens *token)
 {
-    char    c1;
-
     if (!data->err)
     {
-        c1 = token->lex[0];
-        if (c1 == AND || c1 == SEMICOLONE || c1 == PIPE)
+        if (token->lex[0] == AND || token->lex[0] == SEMICOLONE || token->lex[0] == PIPE)
             data->err = ft_strdup("Minishell: syntax error near unexpected token `newline'");
     }
 }
 
 void    analyze_end(t_data *data, t_tokens *token)
 {
-    char c1;
-
     if (!data->err)
     {
-        c1 = token->lex[0];
-        if (c1 == PIPE || c1 == AND || c1 == REDIN || c1 == REDOUT)
+        if (token->lex[0] == PIPE || token->lex[0] == AND || token->lex[0] == REDIN || token->lex[0] == REDOUT)
             data->err = ft_strdup("Minishell: syntax error near unexpected token `newline'");
     }
 }

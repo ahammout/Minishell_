@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_exec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:16:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/01 06:07:33 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/03 22:29:21 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,12 @@ void exec_command(int pid, t_exec *exc, char *path, char **envp)
         if (exc->out_file != STDOUT_FILENO) {
             close(exc->out_file);
         }
-        if (execve(path, exc->str, envp) == -1) {
-            perror("execve");
-            exit(EXIT_FAILURE);
-        }
+        execve(path, exc->str, envp);
+        //  if (execve(path, exc->str, envp) == -1)
+        // {
+        //     perror("execve");
+        //     exit(EXIT_FAILURE);
+        // }
     }
 }
 void execute_command(t_exec *exec, char *path, char **envp) {

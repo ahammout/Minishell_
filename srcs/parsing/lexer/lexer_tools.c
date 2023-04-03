@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:13:51 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/03 04:23:48 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/03 17:46:52 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void    init_tokens_list(t_data *data)
     data->heredoc = 0;
     data->tokens = malloc(sizeof(t_tokens));
     if (!data->tokens)
-        exit_minishell(data, "Minishell: Allocation failed.", 1);
+        exit_minishell(data, "Minishell: Allocation failed.");
     data->tokens->attach = 0;
     data->tokens->next = NULL;
     data->tokens->prev = data->tokens;
@@ -29,7 +29,7 @@ void    add_new_node(t_data *data)
 
     node = malloc(sizeof(t_tokens));
     if (!node)
-        exit_minishell(data, "Malloc: Allocation failed.", 1);
+        exit_minishell(data, "Malloc: Allocation failed.");
     node->next = NULL;
     node->attach = 0;
     node->prev = data->tokens;

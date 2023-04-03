@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/03 05:59:02 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/03 17:45:23 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@ typedef struct  s_vars
 
 typedef struct  s_data
 {
-    char        *buffer;
     char        **envp_;
     t_env       *env;
+    char        *buffer;
     t_tokens    *tokens;
     t_exec      *cmds;
     char        *err;
@@ -240,10 +240,9 @@ void	cmd_extra(t_data *data, char *path, char **tmp, int st);
 
 /////////////////////////////////// TOOLS //////////////////////////////////
 
-void            exit_minishell(t_data *data, char *err, int exit_option);
+void            exit_minishell(t_data *data, char *err);
 void            free_data(t_data *data);
 void            generate_error(t_data *data);
-char            **ft_2strdup(char **str);
 int             white_check(char *str);
 void            display_tokens(t_tokens *token);
 void            display_table(char **dstr);
