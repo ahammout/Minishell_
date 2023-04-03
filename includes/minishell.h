@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/02 23:17:22 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/02 23:49:16 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,10 +232,10 @@ char    *ft_strjoin_free1(char *s1, char *s2);
 int check_file(const char *filename) ;
 void	shell_cmd(t_data *data, char *path, char **tmp);
 void executable_f(t_data *data, char **tmp);
-void	is_directory(t_data *data);
-void	is_perms(t_data *data);
-void is_no_such_file(t_data *data);
-void	is_no_cmd(t_data *data);
+void	is_directory(t_data *data, t_exec *tmp);
+void	is_perms(t_data *data, t_exec *tmp);
+void is_no_such_file(t_data *data, t_exec *tmp);
+void	is_no_cmd(t_data *data, t_exec *tmp);
 void	cmd_extra(t_data *data, char *path, char **tmp, int st);
 
 /////////////////////////////////// TOOLS //////////////////////////////////
