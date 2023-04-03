@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 17:59:17 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/03 05:58:51 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/03 06:05:00 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void free_data(t_data *data)
 {
     free_tokens_list(data);
-    free_cmds_list(data);
+    //free_cmds_list(data);
     if (data->err)
         free(data->err);
 }

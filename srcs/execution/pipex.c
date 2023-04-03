@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:06:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/03 00:44:10 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/03 03:36:26 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,10 +135,10 @@ void    pipe_exe(int *pids, t_data  *data, t_exec *tmp, int i)
     int status;
     char *path;
 
-    if (pids[i] == 0  && tmp->str )
+    if (pids[i] == 0 )
     {
         handle_fds(data, i);
-        if (!builtin(data, tmp) && tmp->str[0])
+        if (!builtin(data, tmp))
             ;
         else
         {
@@ -168,7 +168,8 @@ void    exec_pipes(t_exec *exc, t_data *data, int file_, char **envp_)
         data->pipex->p_fd = pipe_gener(data->pipex->p_c);
     while (pipe.i <= data->pipex->p_c && pipe.tmp)
     {
-        handle_loop(pipe, file_, data);
+        if (pipe.tmp->str)
+            handle_loop(pipe, file_, data);
         pipe.tmp = pipe.tmp->next;
         pipe.i++;
     }
