@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:09:59 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/03 06:00:29 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/04 01:26:06 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char    *no_such_file(char *file_name)
     char    *error;
 
     error = ft_strjoin("Minshell: ", file_name);
-    error = ft_strjoin(error, ": No such file or directory");
+    error = ft_strjoin_free1(error, ": No such file or directory");
     return (error);
 }
 
