@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:58:36 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/03 04:33:52 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/04 03:20:51 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static t_env   *strToList(char **envp)
     t_env *env;
     t_env *tmp;
     int i;
-    char **tmp2;
 
     i = 0;
     env = NULL;
@@ -50,7 +49,7 @@ static t_env   *strToList(char **envp)
     {
         tmp = (t_env *)malloc(sizeof(t_env));
         tmp->name = ft_substr(envp[i], 0, find_eq(envp[i]));
-        if (find_eq(envp[i]) == ft_strlen(envp[i]))
+        if ((unsigned int)find_eq(envp[i]) == ft_strlen(envp[i]))
             tmp->value = NULL;
         else
             tmp->value = ft_substr(envp[i],find_eq(envp[i]) + 1, ft_strlen(envp[i]) - find_eq(envp[i]));

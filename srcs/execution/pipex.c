@@ -6,20 +6,20 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:06:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/03 23:52:16 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/04 03:44:24 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void file_checker(char *path, t_data *data, t_exec *tmp)
+void file_checker(char *path, t_data *data, t_exec *tmp, char **envp)
 {
 	int st;
 
 	st = check_file(tmp->str[0]);
     if (path && ft_strncmp(tmp->str[0], "./", 2))
     {
-        if (execve(path,tmp->str, data->envp_) == -1)
+        if (execve(path,tmp->str, envp) == -1)
             {
                 exitS = 127;
                 perror("Minishell ");
@@ -32,7 +32,7 @@ void file_checker(char *path, t_data *data, t_exec *tmp)
 		return (is_perms(data, tmp), free(path), (void)0);
 	else if (st == 3 && ft_strncmp(tmp->str[0], "./", 2) == 0)
 		{
-            if (execve(tmp->str[0],tmp->str, data->envp_) == -1)
+            if (execve(tmp->str[0],tmp->str, envp) == -1)
             {
                 exitS = 127;
                 perror("Minishell ");
@@ -45,10 +45,11 @@ void file_checker(char *path, t_data *data, t_exec *tmp)
         return (is_no_cmd(data, tmp), free(path), (void)0);
 }
 
-int pipes_redirection(t_exec *tmp, int file_, int i, t_data *data)
+int pipes_redirection(t_exec *tmp, int i, t_data *data)
 {
     int         status;
 
+    status = 0;
     if (tmp)
     {
         if (tmp->in_file == -1)
@@ -130,7 +131,7 @@ void    restore_parent(int  *stds, int status, int  *pids, t_data   *data)
     }
 }
 
-void    pipe_exe(int *pids, t_data  *data, t_exec *tmp, int i)
+void    pipe_exe(int *pids, t_data  *data, t_exec *tmp, int i, char **envp)
 {
     int status;
     char *path;
@@ -143,7 +144,7 @@ void    pipe_exe(int *pids, t_data  *data, t_exec *tmp, int i)
         else
         {
               path = get_path(tmp->str[0], data, &status);
-              file_checker(path, data, tmp);    
+              file_checker(path, data, tmp, envp);    
         }
         exit(exitS);
     }
@@ -157,7 +158,7 @@ void    pipe_exe(int *pids, t_data  *data, t_exec *tmp, int i)
     pipe->pids = malloc(sizeof(int) * (data->pipex->p_c + 1));
     pipe->std = save_std();
 }
-void    exec_pipes(t_exec *exc, t_data *data, int file_, char **envp_)
+void    exec_pipes(t_exec *exc, t_data *data, char **envp)
 {
     t_vars  pipe;
     int i;
@@ -169,7 +170,7 @@ void    exec_pipes(t_exec *exc, t_data *data, int file_, char **envp_)
     while (pipe.i <= data->pipex->p_c && pipe.tmp)
     {
         if (pipe.tmp->str)
-            handle_loop(pipe, file_, data);
+            handle_loop(pipe, data, envp);
         pipe.tmp = pipe.tmp->next;
         pipe.i++;
     }

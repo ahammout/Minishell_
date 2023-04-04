@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 21:01:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/03 23:21:16 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/04 03:45:16 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	cmd_extra(t_data *data, char *path, char **tmp, int st)
 	else
 		return (is_no_cmd(data, data->cmds), free_array(tmp), free(path), (void)0);
 }
-void	cmd_call(t_data *data, int her_file)
+void	cmd_call(t_data *data)
 {
 	int		i;
 	int		check;
@@ -112,7 +112,7 @@ void	cmd_call(t_data *data, int her_file)
     {
 		data->pipex= malloc(sizeof(t_pipe));
 		data->pipex->p_c = check;
-		return (exec_pipes(data->cmds, data, her_file, data->envp_),
+		return (exec_pipes(data->cmds, data, tmp),
 				free_array(tmp), free_data(data), (void)0);
 	}
 

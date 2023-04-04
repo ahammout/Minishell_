@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:24:41 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/03/31 14:42:07 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/04 03:27:53 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static char    *extract_name(char *str, bool *append)
         
 }
 
-static char    *extract_value(char *str, bool append)
+static char    *extract_value(char *str)
 {
         int     i;
 
@@ -205,7 +205,7 @@ void    ft_export(t_data *data, t_exec *cmd)
                 name = extract_name(cmd->str[i], &append);
                 if (!name)
                         return;
-                value = extract_value(cmd->str[i], append);
+                value = extract_value(cmd->str[i]);
                 export1(data, name, value, append);
                 free(name);
                 free(value);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:36:39 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/04 00:17:25 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/04 03:26:21 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 char    *join_arguments(t_data *data)
 {
     char    *arg;
-    char    *to_free;
 
     arg = ft_strdup("");
     while (data->tokens->attach)
@@ -58,6 +57,8 @@ char    **get_cmd_args(t_data *data)
     char        **str;
 
     ref.i = 0;
+    ref.l = 0;
+    str = NULL;
     ref.l = get_size(data);
     if (ref.l)
     {

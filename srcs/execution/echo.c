@@ -6,24 +6,11 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 01:55:15 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/03/30 23:40:49 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/04 03:47:15 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-static void free_tab(char **tab)
-{
-	int i;
-
-	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
-}
 
 static	int	option(t_exec	*exec, bool	*mode)
 {

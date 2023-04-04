@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 20:17:53 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/01 00:09:47 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/04 03:46:52 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	red_inp(t_exec	*tmp, int status, t_data	*data, int i)
 		else
 			dup2(tmp->in_file, 0);
 	}
-	return ;
+	return(status = 0, (void)0) ;
 }
 
 int	* save_std(void)
@@ -118,11 +118,10 @@ void	close_fd(t_data	*data)
 	}
 }
 
-void	handle_loop(t_vars	pipe, int her_file, t_data	*data)
+void	handle_loop(t_vars	pipe, t_data	*data, char **envp)
 {
 	restore_parent(pipe.std, 0, pipe.pids, data);
-	//herdoc handler
-	pipe.status = pipes_redirection(pipe.tmp, her_file, pipe.i, data);
+	pipe.status = pipes_redirection(pipe.tmp, pipe.i, data);
 	if (pipe.status == -1)
 		return ;
 	pipe.pids[pipe.i] = fork();
@@ -135,7 +134,7 @@ void	handle_loop(t_vars	pipe, int her_file, t_data	*data)
 	}
 	if (pipe.pids[pipe.i])
 		ignore_signal();
-	pipe_exe(pipe.pids, data, pipe.tmp, pipe.i);
+	pipe_exe(pipe.pids, data, pipe.tmp, pipe.i, envp);
 }
 
 char *ft_getenv(t_data *data, char *str)

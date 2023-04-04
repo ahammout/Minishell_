@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/03 17:45:23 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/04 03:45:07 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void        init_tokens_list(t_data *data);
 void        create_new_node(t_data *data, int *add_node);
 void        add_new_node(t_data *data);
 int         free_tokens_list(t_data *data);
-void        cmd_call(t_data *data, int her_file);
+void        cmd_call(t_data *data);
 int         count_pps(t_exec	*exec);
 void        updt_shlvl(t_data *data);
 
@@ -195,15 +195,14 @@ void    ft_echo(t_exec *exec);
 int     builtin(t_data *data, t_exec *cmd);
 int     count_pps(t_exec *exec);
 void    signals_handler(void);
-void    handle_loop(t_vars pipe, int her_file, t_data *data);
+void    handle_loop(t_vars pipe, t_data *data, char **envp);
 int     *save_std(void);
 int     **pipe_gener(int count);
 void    red_inp(t_exec *tmp, int status, t_data *data, int i);
 void    close_fd(t_data *data);
-void    handle_loop(t_vars pipe, int her_file, t_data *data);
-int     pipes_redirection(t_exec *tmp, int file_, int i, t_data *data);
-void    exec_pipes(t_exec *exc, t_data *data, int file_, char **envp_);
-void    pipe_exe(int *pids, t_data *data, t_exec *tmp, int i);
+int     pipes_redirection(t_exec *tmp, int i, t_data *data);
+void    exec_pipes(t_exec *exc, t_data *data, char **envp_);
+void    pipe_exe(int *pids, t_data *data, t_exec *tmp, int i, char **envp);
 void    restore_parent(int *stds, int status, int *pids, t_data *data);
 void    handle_fds(t_data *data, int i);
 void    ft_exit(t_exec *cmd);

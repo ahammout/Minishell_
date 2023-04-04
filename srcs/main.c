@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/03 23:26:49 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/04 03:19:04 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int init_data(t_data *data)
     data->err = NULL;
     data->tokens = NULL;
     data->cmds = NULL;
+    return (0);
 }
 
 void    read_line(t_data *data)
@@ -50,8 +51,6 @@ void    read_line(t_data *data)
 int main(int ac, char **av, char **envp)
 {
     t_data  data;
-    int     status;
-    char    path[PATH_MAX];
     int     her_file = 0;
 
     // atexit(ee);
