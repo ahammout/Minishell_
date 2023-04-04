@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:06:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/03 03:36:26 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/03 23:52:16 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void file_checker(char *path, t_data *data, t_exec *tmp)
 	int st;
 
 	st = check_file(tmp->str[0]);
-    if (path)
+    if (path && ft_strncmp(tmp->str[0], "./", 2))
     {
         if (execve(path,tmp->str, data->envp_) == -1)
             {
