@@ -6,27 +6,26 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:36:39 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/03 17:51:02 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/04 00:17:25 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-////// LEAKS IN FIRST ALLOCATION.
-
-char    *attach_arguments(t_data *data)
+char    *join_arguments(t_data *data)
 {
     char    *arg;
+    char    *to_free;
 
     arg = ft_strdup("");
     while (data->tokens->attach)
     {
         if (data->tokens->type != EMPTY)
-            arg = ft_strjoin(arg, data->tokens->lex);
+            arg = ft_strjoin_free1(arg, data->tokens->lex);
         data->tokens = data->tokens->next;
     }
     if (data->tokens->lex && data->tokens->type != EMPTY)
-        arg = ft_strjoin(arg, data->tokens->lex);
+        arg = ft_strjoin_free1(arg, data->tokens->lex);
     return (arg);
 }
 
@@ -40,7 +39,14 @@ int get_size(t_data *data)
     while (tmp && !is_redirection(tmp->type) && tmp->type != PIPE)
     {
         if (tmp->type != EMPTY)
+        {
+            if (tmp->attach)
+            {
+                while (tmp->attach)
+                    tmp = tmp->next;
+            }
             size++;
+        }
         tmp = tmp->next;
     }
     return (size);
@@ -64,7 +70,7 @@ char    **get_cmd_args(t_data *data)
             if (data->tokens->type != EMPTY)
             {
                 if (data->tokens->attach)
-                    str[ref.i] = attach_arguments(data);
+                    str[ref.i] = join_arguments(data);
                 else
                     str[ref.i] = ft_strdup(data->tokens->lex);
                 ref.i++;
