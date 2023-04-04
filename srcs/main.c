@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/04 03:19:04 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/04 14:59:28 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ void    read_line(t_data *data)
 int main(int ac, char **av, char **envp)
 {
     t_data  data;
-    int     her_file = 0;
-
+    
     // atexit(ee);
     (void)**av;
     if (ac == 1)
@@ -68,7 +67,7 @@ int main(int ac, char **av, char **envp)
             data.cmds = parser(&data);
             /////// EXECUTION PART /////
             if (data.cmds)
-               cmd_call(&data,her_file);
+               cmd_call(&data);
             
         }
     }
