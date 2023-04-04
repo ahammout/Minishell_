@@ -6,14 +6,14 @@
 #    By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 11:15:10 by ahammout          #+#    #+#              #
-#    Updated: 2023/04/04 03:17:31 by zessadqu         ###   ########.fr        #
+#    Updated: 2023/04/04 18:39:59 by zessadqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # -fsanitize=address
-CC = gcc -fsanitize=address
+CC = gcc #-fsanitize=address
 
-CFLAGS = -Wall -Wextra -Werror -g
+#CFLAGS = -Wall -Wextra -Werror -g
 
 READLINEFLAG =   -lreadline 
 

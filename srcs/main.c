@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/04 14:59:28 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/04 17:02:49 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 int exitS;
 
-//  void ee()
-//  {
-//      system("leaks minishell");
-//  }
+ void ee()
+ {
+     system("leaks minishell");
+ }
 
 int init_data(t_data *data)
 {
@@ -52,7 +52,7 @@ int main(int ac, char **av, char **envp)
 {
     t_data  data;
     
-    // atexit(ee);
+     atexit(ee);
     (void)**av;
     if (ac == 1)
     {
