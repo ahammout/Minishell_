@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:58:36 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/05 18:07:21 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 18:24:34 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,14 +127,15 @@ void	printEnv(t_data *data)
 	while (tmp)
 	{
 		if (tmp->value)
-	{
 		{
-			ft_putstr_fd(tmp->name, data->cmds->out_file);
-			ft_putstr_fd("=", data->cmds->out_file);
-			ft_putstr_fd(tmp->value, data->cmds->out_file);
-			ft_putstr_fd("\n", data->cmds->out_file);
+			{
+				ft_putstr_fd(tmp->name, data->cmds->out_file);
+				ft_putstr_fd("=", data->cmds->out_file);
+				ft_putstr_fd(tmp->value, data->cmds->out_file);
+				ft_putstr_fd("\n", data->cmds->out_file);
 		}
 		tmp = tmp->next;
+		}
 	}
 }
 
