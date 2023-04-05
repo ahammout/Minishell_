@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 22:15:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/05 17:43:52 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 18:30:59 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	special_case(t_data *data, char *tmp)
 	tofree = tmp;
 	if (data->check == 0)
 	{
-		perror("cd: error retrieving current directory");
+		ft_putstr_fd( "cd: error retrieving current directory: ",1);
 		perror("getcwd");
 		data->check++;
 	}
@@ -37,8 +37,8 @@ static int	special_case(t_data *data, char *tmp)
 	else
 	{
 		tmp = ft_substr(tofree, 0, find_last_slash(tmp));
-		special_case(data, tmp);
 		free(tofree);
+		special_case(data, tmp);
 	}
 }
 
