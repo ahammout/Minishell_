@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:46 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/05 01:50:52 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/05 03:04:05 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,4 @@ int white_check(char *str)
         i++;
     }
     return (0);
-}
-
-void    display_table(char **dstr)
-{
-    int i;
-
-    i = 0;
-    while (dstr[i])
-    {
-        printf ("Line[ %d ]: %s\n",i, dstr[i]);
-        i++;
-    }
 }

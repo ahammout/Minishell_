@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/04 03:45:07 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 03:56:10 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,20 @@ typedef struct  s_vars
     int i;
 }               t_vars;
 
+typedef struct t_vars_base
+{
+    char    *path[PATH_MAX];
+    char    *pwd;
+    char    *oldpwd;
+    char    *shlvl;
+}               t_vars_base;
+
+
 typedef struct  s_data
 {
     char        **envp_;
     t_env       *env;
+    t_vars_base *vars;
     char        *buffer;
     t_tokens    *tokens;
     t_exec      *cmds;
@@ -140,7 +150,7 @@ void        updt_shlvl(t_data *data);
 ///////////////////////////////// ENVIRONMENT /////////////////////////////////
 
 void        set_environment(t_data *data, char **envp);
-void        init_env_list(t_data *data);
+void        init_env_list(t_data *data, char **envp);
 void        add_node(t_data *data, int *new_node);
 int         fill_name(t_data *data, char *envp);
 int         fill_value(t_data *data, char *envp);

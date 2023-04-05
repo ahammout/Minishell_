@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 16:12:53 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/03 17:50:46 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/05 03:49:55 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,9 @@ void    add_node(t_data *data, int *new_node)
         *new_node = 1;
 }
 
-void    init_env_list(t_data *data)
+void    init_env_list(t_data *data, char **envp)
 {
+    data->envp_ = envp;
     data->env = malloc(sizeof(t_env));
     if (!data->env)
         exit_minishell(data, "Minishell: Allocation failed.");
@@ -84,7 +85,7 @@ void    set_environment(t_data *data, char **envp)
     t_env   *head;
     t_ref   ref;
 
-    init_env_list(data);
+    init_env_list(data, envp);
     head = data->env;
     ref.i = 0;
     ref.j = 0;
