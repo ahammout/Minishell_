@@ -3,16 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 22:15:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/04 21:56:08 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/05 03:51:40 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
 //cd: error retrieving current directory
+int find_last_slash(char *str);
+
+int   special_case(t_data *data, char  *tmp)
+{
+    if (data->check == 0)
+    {
+        perror("cd: error retrieving current directory");
+        perror("getcwd");
+        data->check++;
+    }
+    if(access(tmp, X_OK) !=-1)
+        {
+            chdir(tmp);
+            export1(data, "PWD", tmp, false);
+            export1(data, "OLDPWD", data->path, false);
+            free(tmp);
+            return (0);
+        }
+        else
+        {
+            tmp = ft_substr(tmp , 0, find_last_slash(tmp));
+            special_case(data, tmp);
+        }
+}
 int find_last_slash(char *str)
 {
     int i;
@@ -46,10 +70,10 @@ static int	change_to_home_directory(t_data *data, char *home_dir)
     if (chdir(home_dir) == -1)
     {
         perror(home_dir);
-        free(cwd);
+        //free(cwd);
         return 1;
     }
-    free(cwd);
+    //free(cwd);
     export1(data, "PWD", home_dir, false);
     return 0;
 }
@@ -60,17 +84,10 @@ static int	change_to_directory(t_data *data, char *dir_path)
     char *tmp;
     
     cwd = getcwd(data->path, PATH_MAX);
+    tmp = ft_strdup(data->path);
     if ((!ft_strcmp(dir_path, "..") || !ft_strcmp(dir_path, ".")) && cwd == NULL)
     {
-        exitS = 1;
-        tmp = ft_strdup(dir_path);
-        while (chdir(tmp) == -1)
-        {
-            tmp = ft_strjoin_free1(tmp, "../");
-        }
-        export1(data, "PWD", tmp, false);
-        export1(data, "OLDPWD", dir_path, false);
-        free(tmp);
+        special_case(data, tmp);
         return(0) ;
     }
     if (cwd == NULL)
@@ -82,7 +99,7 @@ static int	change_to_directory(t_data *data, char *dir_path)
     if (chdir(dir_path) == -1)
     {
         perror(dir_path);
-        // free(cwd);
+        free(cwd);
         return 1;
     }
     if (ft_strcmp(dir_path, "..") == 0)
