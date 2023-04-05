@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 22:15:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/05 09:09:16 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:43:52 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ static int	special_case(t_data *data, char *tmp)
 		perror("getcwd");
 		data->check++;
 	}
-	if (access(tmp, X_OK) != -1)
+	else if (access(tmp, X_OK) != -1)
 	{
 		chdir(tmp);
 		export1(data, "PWD", tmp, false);
 		export1(data, "OLDPWD", data->path, false);
 		free(tmp);
+		data->check = 0;
 		return (0);
 	}
 	else

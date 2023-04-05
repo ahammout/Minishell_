@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:16:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/05 09:23:41 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 15:17:37 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	execute_command(t_exec *exec, char *path, char **envp)
 	int		status;
 	int		saved_stdin;
 	int		saved_stdout;
-	t_pid		pid;
+	pid_t	pid;
 
 	save_file_descriptors(&saved_stdin, &saved_stdout);
 	redirect_file_descriptors(exec->in_file, exec->out_file);

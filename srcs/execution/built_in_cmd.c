@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 01:41:50 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/05 08:58:49 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 15:32:02 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_tolower1(char *str)
 {
 	char	*tmp;
-	int	i;
+	int		i;
 
 	i = 0;
 	tmp = ft_strdup(str);
@@ -53,5 +53,5 @@ int	builtin(t_data *data, t_exec *cmd)
 	}
 	if (!ft_strcmp(command, "exit"))
 		return (ft_exit(cmd), free(command), 0);
-	return (free(commande), 1);
+	return (free(command), 1);
 }

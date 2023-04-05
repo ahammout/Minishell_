@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/05 04:19:14 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:38:04 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,7 +219,7 @@ void    ft_exit(t_exec *cmd);
 void    ft_export(t_data *data, t_exec *cmd);
 void    export1(t_data *data, char *name, char *value, bool append);
 t_env   *sort_environment(t_data *data);
-int     errorIn(const char *str);
+int     error_in(const char *str);
 void    setLastNode(t_env *env);
 t_env   *find_node(char *str, t_data *data);
 void    ft_unset(t_exec *cmd, t_data *data);
