@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_tools.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 17:59:17 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/05 02:40:14 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/05 07:38:26 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int free_tokens_list(t_data *data)
 int free_env_list(t_data *data)
 {
     t_env *tmp;
-
+	
     while (data->env)
     {
 		free(data->env->name);
