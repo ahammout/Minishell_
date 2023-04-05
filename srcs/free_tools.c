@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 17:59:17 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/05 07:38:26 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 22:45:31 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void exit_minishell(t_data *data, char *err)
 		ft_putstr_fd(err, 2);
 		exit(EXIT_FAILURE);
     }
-    exit(exitS);
+    exit(g_exit_status);
 }
 
 int free_cmds_list(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 00:06:12 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/03/26 22:15:28 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 22:45:31 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_exit(t_exec	*cmd)
 	if (cmd->str[1])
 	{
 		if (cmd->str[2])
-			return (exitS = 1, ft_putstr_fd("exit\ntoo many arguments\n",
+			return (g_exit_status = 1, ft_putstr_fd("exit\ntoo many arguments\n",
 					2));
 		while (cmd->str[1][i])
 		{

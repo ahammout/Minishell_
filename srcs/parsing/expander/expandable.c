@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expandable.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 18:13:06 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/03 05:49:39 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/05 22:45:31 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void    exit_status(t_data *data, char *lexem, char *pids)
     ref.j = 0;
     ref.l = 0;
     e = 0;
-    e_status = ft_itoa(exitS);
+    e_status = ft_itoa(g_exit_status);
     size = update_size(lexem, pids, NULL, e_status);
     if (size)
     {

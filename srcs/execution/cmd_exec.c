@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:16:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/05 15:17:37 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 22:45:31 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	handle_exit_status(int status)
 {
 	if (WIFEXITED(status))
-		exitS = WEXITSTATUS(status);
+		g_exit_status = WEXITSTATUS(status);
 	else if (WIFSIGNALED(status))
 	{
 		ft_putstr_fd("\n", 1);
-		exitS = 128 + WTERMSIG(status);
+		g_exit_status = 128 + WTERMSIG(status);
 	}
 }
 

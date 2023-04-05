@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:24:41 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/05 16:00:43 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 22:45:31 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char	*extract_name(char *str, bool *append)
 		name = ft_substr(str, 0, i);
 	if (error_in(name))
 	{
-		exitS = 3;
+		g_exit_status = 3;
 		ft_putstr_fd("not valid in this context\n", 2);
 		return (NULL);
 	}

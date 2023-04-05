@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_environment.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 16:12:53 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/05 03:49:55 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/05 22:43:59 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,15 @@ int fill_value(t_data *data, char *envp)
     ref.l = 1;
     ref.j = 1;
     ref.i = 0;
-    
-    if (envp[ref.l])
-    {
-        while (envp[ref.l])
-            ref.l++;
-        data->env->value = malloc(sizeof(char) * (ref.l));
-        if (!data->env->value)
-            exit_minishell(data, "Minishell: Allocation failed.");
-        while (envp[ref.j])
-            data->env->value[ref.i++] = envp[ref.j++];
-        data->env->value[ref.i] = '\0';
-        return (ref.j);
-    }
-    return (ref.l);
+    while (envp[ref.l])
+        ref.l++;
+    data->env->value = malloc(sizeof(char) * (ref.l));
+    if (!data->env->value)
+        exit_minishell(data, "Minishell: Allocation failed.");
+    while (envp[ref.j])
+        data->env->value[ref.i++] = envp[ref.j++];
+    data->env->value[ref.i] = '\0';
+    return (ref.j);
 }
 
 int fill_name(t_data *data, char *envp)

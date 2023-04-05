@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:14:55 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/05 17:38:12 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 22:45:31 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_unset(t_exec *cmd, t_data *data)
 	i = 1;
     t_env *node = NULL;
     if (!data->env)
-        return (exitS = 0, (void)0);
+        return (g_exit_status = 0, (void)0);
     while (cmd->str[i])
 	{
 		if (!error_in(cmd->str[i]))
@@ -82,13 +82,13 @@ void	ft_unset(t_exec *cmd, t_data *data)
         }
 		else
 		{
-			exitS = 1598;
+			g_exit_status = 1598;
 			ft_putstr_fd("invalid identifier \n", 2);
 		}
 		i++;
 	}
-	if (exitS == 1598)
-        exitS = 1;
+	if (g_exit_status == 1598)
+        g_exit_status = 1;
 	else
-		exitS = 0;
+		g_exit_status = 0;
 }

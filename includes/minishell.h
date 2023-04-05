@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/05 17:38:04 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 22:44:46 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 #include <readline/history.h>
 #include <sys/stat.h>
 
-extern int exitS;
+extern int g_exit_status;
 
 enum
 {

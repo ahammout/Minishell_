@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:46:44 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/05 17:25:32 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 22:45:31 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	signals_router(int signal, siginfo_t *siginfo, void *content)
 	siginfo = NULL;
 	if (signal == SIGINT)
 	{
-		exitS = 130;
+		g_exit_status = 130;
 		ft_putstr_fd("\n", 1);
 		rl_on_new_line();
 		//rl_replace_line("", 0);
