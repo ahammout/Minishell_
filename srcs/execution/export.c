@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:24:41 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/05 22:45:31 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 23:06:50 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	append_env(t_data *data, const char *name, const char *val)
     {
 		if (node->value)
 		{
-			new_val_len = strlen(node->value) + strlen(val);
+			new_val_len = ft_strlen(node->value) + ft_strlen(val);
 			new_val = malloc(new_val_len + 1);
 			ft_strlcpy(new_val, node->value, new_val_len + 1);
 			ft_strlcat(new_val, val, new_val_len + 1);
