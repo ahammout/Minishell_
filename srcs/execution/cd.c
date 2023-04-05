@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 22:15:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/05 22:45:31 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 23:32:02 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static int	special_case(t_data *data, char *tmp)
 	{
 		ft_putstr_fd( "cd: error retrieving current directory: ",1);
 		perror("getcwd");
+		free(tmp);
 		data->check++;
 	}
 	else if (access(tmp, X_OK) != -1)
@@ -102,7 +103,7 @@ static int	change_to_directory(t_data *data, char *dir_path)
 	tmp = ft_strdup(data->path);
 	if ((!ft_strcmp(dir_path, "..")
 			|| !ft_strcmp(dir_path, ".")) && cwd == NULL)
-		return (special_case(data, tmp), 0);
+		return (special_case(data, tmp), free(cwd), 0);
 	else if (cwd == NULL)
 	{
 		perror("getcwd");
@@ -116,6 +117,8 @@ static int	change_to_directory(t_data *data, char *dir_path)
 	cwd = getcwd(NULL, PATH_MAX);
 	export1(data, "OLDPWD", data->path, false);
 	export1(data, "PWD", cwd, false);
+	free(tmp);
+	free(cwd);
 	return (0);
 }
 
