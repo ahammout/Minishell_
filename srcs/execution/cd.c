@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 22:15:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/04 19:32:04 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/04 21:56:08 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,19 @@ static int	change_to_directory(t_data *data, char *dir_path)
     char *tmp;
     
     cwd = getcwd(data->path, PATH_MAX);
-    // if ((!ft_strcmp(dir_path, "..") || !ft_strcmp(dir_path, ".")) && cwd == NULL)
-    // {
-    //     // exitS = 1;
-    //     // tmp = ft_strdup(dir_path);
-    //     // while (chdir(tmp) == -1)
-    //     // {
-    //     //     tmp = ft_strjoin_free1(tmp, "../");
-    //     // }
-    //     // export1(data, "PWD", tmp, false);
-    //     // export1(data, "OLDPWD", dir_path, false);
-    //     // free(tmp);
-    //     printf("*********%s", data->path);
-    //     return(0) ;
-    // }
+    if ((!ft_strcmp(dir_path, "..") || !ft_strcmp(dir_path, ".")) && cwd == NULL)
+    {
+        exitS = 1;
+        tmp = ft_strdup(dir_path);
+        while (chdir(tmp) == -1)
+        {
+            tmp = ft_strjoin_free1(tmp, "../");
+        }
+        export1(data, "PWD", tmp, false);
+        export1(data, "OLDPWD", dir_path, false);
+        free(tmp);
+        return(0) ;
+    }
     if (cwd == NULL)
     {
         perror("getcwd");
@@ -83,7 +82,7 @@ static int	change_to_directory(t_data *data, char *dir_path)
     if (chdir(dir_path) == -1)
     {
         perror(dir_path);
-        free(cwd);
+        // free(cwd);
         return 1;
     }
     if (ft_strcmp(dir_path, "..") == 0)
