@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:58:36 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/04 03:20:51 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 08:15:02 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ void    export0(t_data *data)
         ft_putstr_fd("\n", data->cmds->out_file); // is for test only to be replaced by cmds->out_file
         head = head->next;
     }
-    free_env(tmp);
+    //free_env(tmp);
 }
 
 t_env   *sort_environment(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 21:01:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/04 03:45:16 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 07:27:07 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void	cmd_call(t_data *data)
 	char	*path;
 	char	**tmp;
 	int 	st;
+	int j = 0;
 
 	i = 0;
 	check = count_pps(data->cmds);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_handler.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:37:05 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/03 17:49:23 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/05 07:55:47 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void heredoc_action(t_data *data, int status, int fd[2])
         close(fd[1]);
         free_env_list(data);
         free_data(data);
-        main(1, NULL, data->envp_);
+        main(1, NULL, list_to_str(data->env));
     }
 }
 
