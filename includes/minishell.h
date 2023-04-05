@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/05 03:56:10 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/05 04:19:14 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ typedef struct  s_vars
 
 typedef struct t_vars_base
 {
-    char    *path[PATH_MAX];
     char    *pwd;
     char    *oldpwd;
     char    *shlvl;
@@ -111,6 +110,7 @@ typedef struct  s_data
     char        *buffer;
     t_tokens    *tokens;
     t_exec      *cmds;
+    int         check;
     char        *err;
     t_pipe      *pipex;
     char        path[PATH_MAX];

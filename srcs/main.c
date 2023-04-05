@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/05 04:02:42 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/05 04:18:53 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void	read_line(t_data *data)
 void	set_beta_env(t_data *data)
 {
 	data->envp_ = NULL;
-	data->vars->path = ft_strdup(getenv("PATH"));
+	// data->path = ft_strdup(getenv("PATH"));
 	data->vars->pwd = ft_strdup(getenv("PWD"));
-	data->vars->pwd = ft_strdup(getenv("OLDPWD"));
+	data->vars->oldpwd = ft_strdup(getenv("OLDPWD"));
 	data->vars->shlvl = ft_strdup(getenv("SHLVL"));
 }
 
@@ -71,7 +71,7 @@ int main(int ac, char **av, char **envp)
 		else
 		{
 			data.env = NULL;
-			set_env_beta(&data);
+			// set_env_beta(&data);
 		}
 		updt_shlvl(&data);
 		while (1)
