@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/05 22:45:31 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 22:47:37 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int main(int ac, char **av, char **envp)
 			read_line(&data);
 			add_history(data.buffer);
 			data.cmds = parser(&data);
-			/////// EXECUTION PART /////
+			////// EXECUTION PART ////
 			if (data.cmds)
 				cmd_call(&data);
 			
