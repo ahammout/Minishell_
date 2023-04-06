@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 22:15:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/05 18:30:59 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 23:32:02 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,27 @@
 
 static int	find_last_slash(char *str);
 
+static char *ft_substr_free1(char *s1, int start, int end)
+{
+    char *str;
+
+    if (!s1)
+        return (NULL);
+    else
+    {
+        str = ft_substr(s1, start, end);
+        free(s1);
+        return (str);
+    }
+}
+
 static int	special_case(t_data *data, char *tmp)
 {
-	char	*tofree;
-
-	tofree = tmp;
 	if (data->check == 0)
 	{
 		ft_putstr_fd( "cd: error retrieving current directory: ",1);
 		perror("getcwd");
+		free(tmp);
 		data->check++;
 	}
 	else if (access(tmp, X_OK) != -1)
@@ -36,8 +48,7 @@ static int	special_case(t_data *data, char *tmp)
 	}
 	else
 	{
-		tmp = ft_substr(tofree, 0, find_last_slash(tmp));
-		free(tofree);
+		tmp = ft_substr_free1(tmp, 0, find_last_slash(tmp));
 		special_case(data, tmp);
 	}
 }
@@ -92,7 +103,7 @@ static int	change_to_directory(t_data *data, char *dir_path)
 	tmp = ft_strdup(data->path);
 	if ((!ft_strcmp(dir_path, "..")
 			|| !ft_strcmp(dir_path, ".")) && cwd == NULL)
-		return (special_case(data, tmp), 0);
+		return (special_case(data, tmp), free(cwd), 0);
 	else if (cwd == NULL)
 	{
 		perror("getcwd");
@@ -106,6 +117,8 @@ static int	change_to_directory(t_data *data, char *dir_path)
 	cwd = getcwd(NULL, PATH_MAX);
 	export1(data, "OLDPWD", data->path, false);
 	export1(data, "PWD", cwd, false);
+	free(tmp);
+	free(cwd);
 	return (0);
 }
 
@@ -118,7 +131,7 @@ void	ft_cd(t_data *data)
 	tmp = data->cmds;
 	home_dir = ft_getenv(data, "HOME");
 	if (!tmp->str[1] && ft_strcmp(tmp->str[0], "cd") == 0)
-		exitS = change_to_home_directory(data, home_dir);
+		g_exit_status = change_to_home_directory(data, home_dir);
 	else
 	{
 		dir_path = tmp->str[1];

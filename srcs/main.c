@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/06 00:18:17 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/06 00:26:01 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	g_exit_status;
 
- void ee()
- {
-     system("leaks minishell");
- }
+//  void ee()
+//  {
+//      system("leaks minishell");
+//  }
 
 int init_data(t_data *data)
 {
@@ -51,7 +51,7 @@ int main(int ac, char **av, char **envp)
 {
     t_data  data;
     
-     atexit(ee);
+    //  atexit(ee);
     (void)**av;
     if (ac == 1)
     {
@@ -63,7 +63,7 @@ int main(int ac, char **av, char **envp)
 			read_line(&data);
 			add_history(data.buffer);
 			data.cmds = parser(&data);
-			/////// EXECUTION PART /////
+			////// EXECUTION PART ////
 			if (data.cmds)
 				cmd_call(&data);
 			

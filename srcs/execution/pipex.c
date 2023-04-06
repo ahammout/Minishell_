@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:06:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/05 17:18:30 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 22:45:31 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	mini_execve(char *path, t_exec *tmp, char **envp, int i)
 	{
 		if (execve(path, tmp->str, envp) == -1)
 		{
-			exitS = 127;
+			g_exit_status = 127;
 			perror("Minishell ");
 		}
 	}
@@ -26,7 +26,7 @@ static void	mini_execve(char *path, t_exec *tmp, char **envp, int i)
 	{
 		if (execve(tmp->str[0], tmp->str, envp) == -1)
 		{
-			exitS = 127;
+			g_exit_status = 127;
 			perror("Minishell ");
 		}
 	}
@@ -126,13 +126,13 @@ void	restore_parent(int *stds, int status, int *pids, t_data *data)
 		{
 			waitpid(pids[i], &status, 0);
 			if (WIFEXITED(status))
-				exitS = WEXITSTATUS(status);
+				g_exit_status = WEXITSTATUS(status);
 			if (WIFSIGNALED(status))
 			{
 				if (WTERMSIG(status) == SIGINT)
 				{
 					ft_putstr_fd("\n", 1);
-					exitS = 128 + WTERMSIG(status);
+					g_exit_status = 128 + WTERMSIG(status);
 				}
 			}
 		}
@@ -155,7 +155,7 @@ void	pipe_exe(int *pids, t_data *data, t_exec *tmp, int i, char **envp)
 		   	path = get_path(tmp->str[0], data, &status);
 			file_checker(path, data, tmp, envp);    
 		}
-		exit(exitS);
+		exit(g_exit_status);
 	}
 }
 
