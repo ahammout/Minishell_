@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:14:55 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/05 22:45:31 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/06 02:46:27 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,15 @@ void	ft_unset(t_exec *cmd, t_data *data)
 			node = find_env_node(cmd->str[i], data);
 			if (node)
                 free_env_node(node);
+			g_exit_status = 0;
         }
 		else
 		{
-			g_exit_status = 1598;
-			ft_putstr_fd("invalid identifier \n", 2);
+			g_exit_status = 1;
+			ft_putstr_fd("Minishell: unset: `", 2);
+			ft_putstr_fd(cmd->str[i], 2);
+			ft_putstr_fd("': not a valid identifier\n", 2);
 		}
 		i++;
 	}
-	if (g_exit_status == 1598)
-        g_exit_status = 1;
-	else
-		g_exit_status = 0;
 }

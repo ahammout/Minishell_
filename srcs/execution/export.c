@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:24:41 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/05 23:06:50 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/06 02:48:03 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ static char	*extract_name(char *str, bool *append)
 		name = ft_substr(str, 0, i);
 	if (error_in(name))
 	{
-		g_exit_status = 3;
-		ft_putstr_fd("not valid in this context\n", 2);
+		g_exit_status = 1;
+		ft_putstr_fd("Minishell: export: `", 2);
+		ft_putstr_fd(name, 2);
+		ft_putstr_fd("': not a valid identifier\n", 2);
 		return (NULL);
 	}
 	return (name);
