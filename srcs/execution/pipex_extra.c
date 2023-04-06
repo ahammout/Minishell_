@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 20:17:53 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/04 03:46:52 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:09:34 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ char	*ft_strjoin_free1(char *s1, char *s2)
 	free(s1);
 	return (str);
 }
-void free_array(char **array)
+
+void	free_array(char **array)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (array[i])
@@ -93,10 +94,10 @@ void	red_inp(t_exec	*tmp, int status, t_data	*data, int i)
 		else
 			dup2(tmp->in_file, 0);
 	}
-	return(status = 0, (void)0) ;
+	return (status = 0, (void)0) ;
 }
 
-int	* save_std(void)
+int	*save_std(void)
 {
 	int	*stds;
 
@@ -137,10 +138,11 @@ void	handle_loop(t_vars	pipe, t_data	*data, char **envp)
 	pipe_exe(pipe.pids, data, pipe.tmp, pipe.i, envp);
 }
 
-char *ft_getenv(t_data *data, char *str)
+char	*ft_getenv(t_data *data, char *str)
 {
-	t_env *tmp = data->env;
+	t_env	*tmp;
 
+	tmp = data->env;
 	while (tmp != NULL)
 	{
 		if (ft_strcmp(tmp->name, str) == 0)
@@ -158,30 +160,18 @@ char	*get_path(char *str, t_data *data, int *status)
 
 	path = ft_getenv(data,"PATH");
 	if (!path)
- 	{
-		*status = 127;
-  		return (NULL);
-	}
+		return (*status = 127, NULL);
 	paths = ft_split(path, ':');
 	if (!paths)
-	{
-		*status = 1;
-		return (NULL);
-	}
-
+		return (*status = 1, NULL);
 	i = -1;
 	while (paths[++i])
 	{
 		path = ft_strjoin(paths[i], "/");
 		path = ft_strjoin_free1(path, str);
 		if (access(path, F_OK) == 0)
-		{
-			free_array(paths);
-			return (path);
-		}
+			return (free_array(paths), path);
 		free(path);
 	}
-	*status = 127;
-	free_array(paths);
-	return (NULL);
+	return (*status = 127, free_array(paths), NULL);
 }

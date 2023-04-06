@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/05 04:19:14 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/06 00:17:46 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 #include <readline/history.h>
 #include <sys/stat.h>
 
-extern int exitS;
+extern int g_exit_status;
 
 enum
 {
@@ -94,19 +94,10 @@ typedef struct  s_vars
     int i;
 }               t_vars;
 
-typedef struct t_vars_base
-{
-    char    *pwd;
-    char    *oldpwd;
-    char    *shlvl;
-}               t_vars_base;
-
-
 typedef struct  s_data
 {
     char        **envp_;
     t_env       *env;
-    t_vars_base *vars;
     char        *buffer;
     t_tokens    *tokens;
     t_exec      *cmds;
@@ -150,6 +141,7 @@ void        updt_shlvl(t_data *data);
 ///////////////////////////////// ENVIRONMENT /////////////////////////////////
 
 void        set_environment(t_data *data, char **envp);
+void        set_environment_beta(t_data *data);
 void        init_env_list(t_data *data, char **envp);
 void        add_node(t_data *data, int *new_node);
 int         fill_name(t_data *data, char *envp);
@@ -219,7 +211,7 @@ void    ft_exit(t_exec *cmd);
 void    ft_export(t_data *data, t_exec *cmd);
 void    export1(t_data *data, char *name, char *value, bool append);
 t_env   *sort_environment(t_data *data);
-int     errorIn(const char *str);
+int     error_in(const char *str);
 void    setLastNode(t_env *env);
 t_env   *find_node(char *str, t_data *data);
 void    ft_unset(t_exec *cmd, t_data *data);

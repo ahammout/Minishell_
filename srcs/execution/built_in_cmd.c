@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 01:41:50 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/05 17:05:33 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/05 22:13:10 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_tolower1(char *str)
 {
 	char	*tmp;
-	int	i;
+	int		i;
 
 	i = 0;
 	tmp = ft_strdup(str);

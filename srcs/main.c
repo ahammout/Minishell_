@@ -6,20 +6,18 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/05 17:04:11 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/06 00:18:17 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
+int	g_exit_status;
 
-//
-int	exitS;
-
-//  void ee()
-//  {
-//      system("leaks minishell");
-//  }
+ void ee()
+ {
+     system("leaks minishell");
+ }
 
 int init_data(t_data *data)
 {
@@ -41,7 +39,7 @@ void	read_line(t_data *data)
 		data->buffer = readline("(minishell@Developers)$> ");
 		if (!data->buffer)
 		{
-			exitS = 2;
+			g_exit_status = 2;
 			ft_putstr_fd("exit\n", 1);
 			exit_minishell(data, NULL);
 		}
@@ -49,36 +47,15 @@ void	read_line(t_data *data)
     }
 }
 
-void	set_beta_env(t_data *data)
-{
-	data->env = (t_env *)malloc(sizeof(t_env));
-	data->env->name = ft_strdup("PWD");
-	data->env->value = getcwd(NULL, 0);
-	data->env->next = (t_env *)malloc(sizeof(t_env));
-	data->env->next->name = ft_strdup("OLDPWD");
-	data->env->next->value = (char *)malloc(sizeof(char) * 1);
-	data->env->next->value[0] = '\0';
-	data->env->next->next = (t_env *)malloc(sizeof(t_env));
-	data->env->next->next->name = ft_strdup("SHLVL");
-	data->env->next->next->value = ft_strdup("0");
-	data->env->next->next->next = (t_env *)malloc(sizeof(t_env));
-	data->env->next->next->next->name = ft_strdup("PATH");
-	data->env->next->next->next->value = ft_strdup("/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin");
-	data->env->next->next->next->next = NULL;
-}
-
 int main(int ac, char **av, char **envp)
 {
     t_data  data;
     
-    //  atexit(ee);
+     atexit(ee);
     (void)**av;
     if (ac == 1)
     {
-		if (envp[0])
-			set_environment(&data, envp);
-		else
-			set_beta_env(&data);
+		set_environment(&data, envp);
 		updt_shlvl(&data);
 		while (1)
 		{

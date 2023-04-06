@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 16:12:53 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/05 03:49:55 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/06 00:14:58 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int fill_value(t_data *data, char *envp)
     ref.l = 1;
     ref.j = 1;
     ref.i = 0;
-    
+
     if (envp[ref.l])
     {
         while (envp[ref.l])
@@ -77,6 +77,8 @@ void    init_env_list(t_data *data, char **envp)
     data->env = malloc(sizeof(t_env));
     if (!data->env)
         exit_minishell(data, "Minishell: Allocation failed.");
+    data->env->name = NULL;
+    data->env->value = NULL;
     data->env->next = NULL;
 }
 
@@ -85,22 +87,28 @@ void    set_environment(t_data *data, char **envp)
     t_env   *head;
     t_ref   ref;
 
-    init_env_list(data, envp);
-    head = data->env;
-    ref.i = 0;
-    ref.j = 0;
-    ref.l = 0;
-    while (envp[ref.i])
+    if (envp[0])
     {
-        add_node(data, &ref.l);
+        init_env_list(data, envp);
+        head = data->env;
+        ref.i = 0;
         ref.j = 0;
-        while (envp[ref.i][ref.j])
-        {  
-            ref.j += fill_name(data, envp[ref.i] + ref.j);
-            ref.j += fill_value(data, envp[ref.i] + ref.j);
+        ref.l = 0;
+        while (envp[ref.i])
+        {
+            add_node(data, &ref.l);
+            ref.j = 0;
+            while (envp[ref.i][ref.j])
+            {  
+                ref.j += fill_name(data, envp[ref.i] + ref.j);
+                ref.j += fill_value(data, envp[ref.i] + ref.j);
+            }
+            ref.i++;
         }
-        ref.i++;
+        data->env = head;
     }
-    data->env = head;
+    else
+        set_environment_beta(data);
+
     // display_environment(data);
 }

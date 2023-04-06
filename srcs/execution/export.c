@@ -6,211 +6,207 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:24:41 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/04 03:27:53 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:00:43 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/minishell.h"
-#include <string.h>
 
-t_env *newEnvNode(char *name, char *value);
+t_env	*new_env_node(char *name, char *value);
 
-void addBackEnvNode(t_env **env, t_env *new_node);
+void	add_back_env_node(t_env **env, t_env *new_node);
 
-void print_env(t_env *env);
+int		error_in(const char *str);
 
-int errorIn(const char* str) ;
-
-static int     check_append(char *str)
+static int	check_append(char *str)
 {
-        int     i;
+	int	i;
 
-        i = 0;
-        while (str[i] && str[i] != '=')
-                i++;
-        if (str[i] == '=' && str[i - 1] == '+')
-                return (1);
-        return (0);
+	i = 0;
+	while (str[i] && str[i] != '=')
+		i++;
+	if (str[i] == '=' && str[i - 1] == '+')
+		return (1);
+	return (0);
 }
 
-static char    *extract_name(char *str, bool *append)
+static char	*extract_name(char *str, bool *append)
 {
-        int     i;
-        char    *name;
+	int		i;
+	char	*name;
 
-        i = 1;
-        while (str[i] && str[i] != '=')
-                i++;
-        if (str[i] == '=' && check_append(str))
-                *append = true;
-        if(*append)
-        {
-                name = ft_substr(str, 0, i - 1);
-        }
-        else
-        {
-                name = ft_substr(str, 0, i);
-        }
-        if(errorIn(name))
-        {
-                exitS = 3;
+	i = 1;
+	while (str[i] && str[i] != '=')
+		i++;
+	if (str[i] == '=' && check_append(str))
+		*append = true;
+	if (*append)
+		name = ft_substr(str, 0, i - 1);
+	else
+		name = ft_substr(str, 0, i);
+	if (error_in(name))
+	{
+		exitS = 3;
 		ft_putstr_fd("not valid in this context\n", 2);
-                return (NULL);
-        }
-        return (name);
-        
+		return (NULL);
+	}
+	return (name);
 }
 
-static char    *extract_value(char *str)
+static char	*extract_value(char *str)
 {
-        int     i;
+	int	i;
 
-        i = 0;
-        while (str[i] && str[i] != '=')
-                i++;
-        if (str[i] == '=')
-                return (ft_substr(str, i + 1, ft_strlen(str) - i));
-        return (NULL);
-}
-int errorIn(const char* str)
-{
-        int i = 0;
-        if (!ft_isalpha(str[i]) && str[i] != '_')
-                return 1;
-        while (str[++i])
-        {
-                if (!ft_isalnum(str[i]) && str[i] != '_')
-                        return 1;
-        }
-        return 0;
+	i = 0;
+	while (str[i] && str[i] != '=')
+		i++;
+	if (str[i] == '=')
+		return (ft_substr(str, i + 1, ft_strlen(str) - i));
+	return (NULL);
 }
 
-static t_env *find_env_node(t_env *env, const char *name)
+int	error_in(const char *str)
 {
-        t_env   *tmp;
+	int	i;
 
-        tmp = env;
-        while (tmp)
-        {
-                if (!ft_strcmp(tmp->name, name))
-                        return tmp;
-        tmp = tmp->next;
-        }
-        return NULL;
+	i = 0;
+	if (!ft_isalpha(str[i]) && str[i] != '_')
+		return (1);
+	while (str[++i])
+	{
+		if (!ft_isalnum(str[i]) && str[i] != '_')
+			return (1);
+	}
+	return (0);
 }
 
-void appendEnv(t_data *data, const char *name, const char *val)
+static t_env	*find_env_node(t_env *env, const char *name)
 {
-        char    *new_val;
-        size_t  new_val_len ;
-        t_env   *node;
-        t_env   *new_node;
+	t_env	*tmp;
 
-        node = find_env_node(data->env, name);
+	tmp = env;
+	while (tmp)
+	{
+		if (!ft_strcmp(tmp->name, name))
+			return (tmp);
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
+
+void	append_env(t_data *data, const char *name, const char *val)
+{
+	char	*new_val;
+	size_t	new_val_len ;
+	t_env	*node;
+	t_env	*new_node;
+
+	node = find_env_node(data->env, name);
     if (node)
     {
-        if (node->value)
-        {
-            new_val_len = strlen(node->value) + strlen(val);
-            new_val = malloc(new_val_len + 1);
-            ft_strlcpy(new_val, node->value, new_val_len + 1);
-            ft_strlcat(new_val, val, new_val_len + 1);
-            free(node->value);
-            node->value = new_val;
-        }
-        else
-                node->value = ft_strdup(val);
-    }
-    else
-    {
-        new_node = newEnvNode(ft_strdup(name), ft_strdup(val));
-        addBackEnvNode(&data->env, new_node);
-    }
+		if (node->value)
+		{
+			new_val_len = strlen(node->value) + strlen(val);
+			new_val = malloc(new_val_len + 1);
+			ft_strlcpy(new_val, node->value, new_val_len + 1);
+			ft_strlcat(new_val, val, new_val_len + 1);
+			free(node->value);
+			node->value = new_val;
+		}
+		else
+			node->value = ft_strdup(val);
+	}
+	else
+	{
+		new_node = new_env_node(ft_strdup(name), ft_strdup(val));
+		add_back_env_node(&data->env, new_node);
+	}
 }
 
-t_env *newEnvNode(char *name, char *value)
+t_env	*new_env_node(char *name, char *value)
 {
-    t_env *node = malloc(sizeof(t_env));
-    if (!node) {
-        return NULL;
-    }
-    node->name = name;
-    node->value = value;
-    node->next = NULL;
-    return node;
+    t_env	*node;
+
+    node = malloc(sizeof(t_env));
+    if (!node)
+		return (NULL);
+	node->name = name;
+	node->value = value;
+	node->next = NULL;
+	return (node);
 }
 
-void addBackEnvNode(t_env **env, t_env *new_node)
+void	add_back_env_node(t_env **env, t_env *new_node)
 {
-        t_env *current;
-        
-        if (!env || !new_node)
-                return;
-        if (!*env)
-        {
-                *env = new_node;
-                return ;
-        }
-        current = *env;
-        while (current->next)
-                current = current->next;
+	t_env	*current;
+	
+	if (!env || !new_node)
+		return ;
+	if (!*env)
+	{
+		*env = new_node;
+		return ;
+	}
+	current = *env;
+	while (current->next)
+		current = current->next;
     current->next = new_node;
 }
 
-
-
-void export1(t_data *data, char *name, char *value, bool append)
+void	export1(t_data *data, char *name, char *value, bool append)
 {
-        t_env *node;
+	t_env	*node;
 
-        if (append)
-        {
-                appendEnv(data, name, value);
-                return;
-        }
+	if (append)
+	{
+		append_env(data, name, value);
+		return;
+	}
 	node = find_env_node(data->env, name);
-        if (node)
-        {
-                if (value)
-                {
-                        free(node->value);
-                        node->value = ft_strdup(value);
-                }
-        }
-        else
-        {
-                if (value)
-                        addBackEnvNode(&data->env, newEnvNode(ft_strdup(name), ft_strdup(value)));
-                else
-                        addBackEnvNode(&data->env, newEnvNode(ft_strdup(name), NULL));
-        }
+	if (node)
+	{
+		if (value)
+		{
+			free(node->value);
+			node->value = ft_strdup(value);
+		}
+	}
+	else
+	{
+		if (value)
+			add_back_env_node(&data->env,
+			new_env_node(ft_strdup(name), ft_strdup(value)));
+		else
+			add_back_env_node(&data->env,
+			new_env_node(ft_strdup(name), NULL));
+	}
 }
 
-void    ft_export(t_data *data, t_exec *cmd)
+void	ft_export(t_data *data, t_exec *cmd)
 {
-        char    *name;
-        char    *value;
-        int     i;
-        bool    append;
-        
-        i = 1;
-        if(cmd->str[1] == NULL)
-        {       
-               export0(data);
-               return ;
-        }
-        while (cmd->str[i])
-        {
-                append = false;
-                name = extract_name(cmd->str[i], &append);
-                if (!name)
-                        return;
-                value = extract_value(cmd->str[i]);
-                export1(data, name, value, append);
-                free(name);
-                free(value);
-                i++;
-        }
+	char	*name;
+	char	*value;
+	int		i;
+	bool	append;
+
+	i = 1;
+	if (cmd->str[1] == NULL)
+	{
+		export0(data);
+		return ;
+	}
+	while (cmd->str[i])
+	{
+		append = false;
+		name = extract_name(cmd->str[i], &append);
+		if (!name)
+			return;
+		value = extract_value(cmd->str[i]);
+		export1(data, name, value, append);
+		free(name);
+		free(value);
+		i++;
+	}
 }
 
 /***************************test section***********************************/

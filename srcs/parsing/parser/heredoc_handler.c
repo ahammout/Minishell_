@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_handler.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:37:05 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/05 07:55:47 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 22:48:57 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void heredoc_action(t_data *data, int status, int fd[2])
 {
     if (status == 0)
     {
-        exitS = 0;
+        g_exit_status = 0;
         close(fd[1]);
         data->cmds->in_file = fd[0];
         data->tokens = data->tokens->next->next;
     }
     else
     {
-        exitS = 130;
+        g_exit_status = 130;
         close(fd[0]);
         close(fd[1]);
         free_env_list(data);

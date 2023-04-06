@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   signal_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:46:44 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/03 07:17:35 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/05 22:47:43 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-void	here_handler(int sig)
-{
-	if (sig == SIGINT)
-	{
-		ft_putstr_fd("\b\b  \b\b\n", 1);
-		exit(1);
-	}
-}
-
 
 void	ignore_signal(void)
 {
@@ -54,5 +44,3 @@ void	signals_handler(void)
 	sigaction(SIGINT, &sa, NULL);
 	sigaction(SIGQUIT, &sa, NULL);
 }
-
-

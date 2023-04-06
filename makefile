@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+         #
+#    By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 11:15:10 by ahammout          #+#    #+#              #
-#    Updated: 2023/04/05 08:09:26 by zessadqu         ###   ########.fr        #
+#    Updated: 2023/04/06 00:16:24 by ahammout         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # -fsanitize=address
-CC = gcc -fsanitize=address
+CC = gcc #-fsanitize=address
 
 # CFLAGS = -Wall -Wextra -Werror -g
 
@@ -31,8 +31,8 @@ SRCS = 	srcs/main.c \
 		srcs/parsing/lexer/lexer_tools.c \
 		srcs/parsing/lexer/lexer_quotes.c \
 		srcs/parsing/environment/set_environment.c \
+		srcs/parsing/environment/set_environment_beta.c \
 		srcs/parsing/environment/sort_environemnt.c \
-		srcs/parsing/environment/set_env_tools.c \
 		srcs/parsing/syntax_analyzer/syntax_analyzer.c \
 		srcs/parsing/syntax_analyzer/syntax_analyzer_.c \
 		srcs/parsing/syntax_analyzer/syntax_quotes.c \
