@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/06 06:44:29 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:04:32 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,7 +249,7 @@ void	append_env(t_data *data, const char *name, const char *val);
 t_env	*new_env_node(char *name, char *value);
 void	add_back_env_node(t_env **env, t_env *new_node);
 char	*ft_substr_free1(char *s1, int start, int end);
-
+void	check_bash(char *path, t_exec *exc, char **envp);
 /////////////////////////////////// TOOLS //////////////////////////////////
 
 void            exit_minishell(t_data *data, char *err);

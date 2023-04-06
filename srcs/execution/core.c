@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 21:01:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 06:57:18 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/06 16:29:00 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	cmd_extra(t_data *data, char *path, char **tmp, int st)
 {
 	if (path && ft_strncmp(data->cmds->str[0], "./", 2))
 		return (shell_cmd(data, path, tmp), (void)0);
-	else if (st == 3 && ft_strncmp(data->cmds->str[0], "./", 2) == 0)
+	else if (st == 3)
 		return (executable_f(data, tmp), free(path), (void)0);
 	else if (st == 1 && ft_strncmp(data->cmds->str[0], "./", 2) == 0)
 		return (is_directory(data, data->cmds),
