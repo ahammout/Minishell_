@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   utiles_04.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/25 11:14:46 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/06 06:57:18 by zessadqu         ###   ########.fr       */
+/*   Created: 2023/04/06 06:43:28 by zessadqu          #+#    #+#             */
+/*   Updated: 2023/04/06 06:43:55 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	g_exit_status;
-
-void generate_error(t_data *data)
+char	*ft_substr_free1(char *s1, int start, int end)
 {
-    g_exit_status = 2;
-    ft_putstr_fd(data->err, 2);
-    ft_putstr_fd("\n", 2);
-}
+	char	*str;
 
-int white_check(char *str)
-{
-    int i;
-
-    i = 0;
-    while (str[i])
-    {
-        if (ft_isprint(str[i]))
-            return (1);
-        i++;
-    }
-    return (0);
+	if (!s1)
+		return (NULL);
+	else
+	{
+		str = ft_substr(s1, start, end);
+		free(s1);
+		return (str);
+	}
 }

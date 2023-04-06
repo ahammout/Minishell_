@@ -6,95 +6,13 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:24:41 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 02:48:03 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/06 06:57:18 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/minishell.h"
 
-t_env	*new_env_node(char *name, char *value);
-
-void	add_back_env_node(t_env **env, t_env *new_node);
-
-int		error_in(const char *str);
-
-static int	check_append(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] && str[i] != '=')
-		i++;
-	if (str[i] == '=' && str[i - 1] == '+')
-		return (1);
-	return (0);
-}
-
-static char	*extract_name(char *str, bool *append)
-{
-	int		i;
-	char	*name;
-
-	i = 1;
-	while (str[i] && str[i] != '=')
-		i++;
-	if (str[i] == '=' && check_append(str))
-		*append = true;
-	if (*append)
-		name = ft_substr(str, 0, i - 1);
-	else
-		name = ft_substr(str, 0, i);
-	if (error_in(name))
-	{
-		g_exit_status = 1;
-		ft_putstr_fd("Minishell: export: `", 2);
-		ft_putstr_fd(name, 2);
-		ft_putstr_fd("': not a valid identifier\n", 2);
-		return (NULL);
-	}
-	return (name);
-}
-
-static char	*extract_value(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] && str[i] != '=')
-		i++;
-	if (str[i] == '=')
-		return (ft_substr(str, i + 1, ft_strlen(str) - i));
-	return (NULL);
-}
-
-int	error_in(const char *str)
-{
-	int	i;
-
-	i = 0;
-	if (!ft_isalpha(str[i]) && str[i] != '_')
-		return (1);
-	while (str[++i])
-	{
-		if (!ft_isalnum(str[i]) && str[i] != '_')
-			return (1);
-	}
-	return (0);
-}
-
-static t_env	*find_env_node(t_env *env, const char *name)
-{
-	t_env	*tmp;
-
-	tmp = env;
-	while (tmp)
-	{
-		if (!ft_strcmp(tmp->name, name))
-			return (tmp);
-		tmp = tmp->next;
-	}
-	return (NULL);
-}
+int	g_exit_status;
 
 void	append_env(t_data *data, const char *name, const char *val)
 {
@@ -104,8 +22,8 @@ void	append_env(t_data *data, const char *name, const char *val)
 	t_env	*new_node;
 
 	node = find_env_node(data->env, name);
-    if (node)
-    {
+	if (node)
+	{
 		if (node->value)
 		{
 			new_val_len = ft_strlen(node->value) + ft_strlen(val);
@@ -127,10 +45,10 @@ void	append_env(t_data *data, const char *name, const char *val)
 
 t_env	*new_env_node(char *name, char *value)
 {
-    t_env	*node;
+	t_env	*node;
 
-    node = malloc(sizeof(t_env));
-    if (!node)
+	node = malloc(sizeof(t_env));
+	if (!node)
 		return (NULL);
 	node->name = name;
 	node->value = value;
@@ -141,7 +59,7 @@ t_env	*new_env_node(char *name, char *value)
 void	add_back_env_node(t_env **env, t_env *new_node)
 {
 	t_env	*current;
-	
+
 	if (!env || !new_node)
 		return ;
 	if (!*env)
@@ -152,7 +70,7 @@ void	add_back_env_node(t_env **env, t_env *new_node)
 	current = *env;
 	while (current->next)
 		current = current->next;
-    current->next = new_node;
+	current->next = new_node;
 }
 
 void	export1(t_data *data, char *name, char *value, bool append)
@@ -162,7 +80,7 @@ void	export1(t_data *data, char *name, char *value, bool append)
 	if (append)
 	{
 		append_env(data, name, value);
-		return;
+		return ;
 	}
 	node = find_env_node(data->env, name);
 	if (node)
@@ -177,10 +95,10 @@ void	export1(t_data *data, char *name, char *value, bool append)
 	{
 		if (value)
 			add_back_env_node(&data->env,
-			new_env_node(ft_strdup(name), ft_strdup(value)));
+				new_env_node(ft_strdup(name), ft_strdup(value)));
 		else
 			add_back_env_node(&data->env,
-			new_env_node(ft_strdup(name), NULL));
+				new_env_node(ft_strdup(name), NULL));
 	}
 }
 
@@ -202,7 +120,7 @@ void	ft_export(t_data *data, t_exec *cmd)
 		append = false;
 		name = extract_name(cmd->str[i], &append);
 		if (!name)
-			return;
+			return ;
 		value = extract_value(cmd->str[i]);
 		export1(data, name, value, append);
 		free(name);
@@ -210,9 +128,7 @@ void	ft_export(t_data *data, t_exec *cmd)
 		i++;
 	}
 }
-
 /***************************test section***********************************/
-
 // t_env *env_to_linked_list(char **envp) {
 //     t_env *head = NULL;
 //     t_env *prev = NULL;
@@ -232,14 +148,12 @@ void	ft_export(t_data *data, t_exec *cmd)
 //     }
 //     return head;
 // }
-
 // void print_env(t_env *env) {
 //     while (env != NULL) {
 //         printf("%s=%s\n", env->name, env->value);
 //         env = env->next;
 //     }
 // }
-
 // void free_env(t_env *env) {
 //     t_env *temp;
 //     while (env != NULL) {
@@ -250,7 +164,6 @@ void	ft_export(t_data *data, t_exec *cmd)
 //         free(temp);
 //     }
 // }
-
 // void add_env(t_env **env, char *name, char *value) {
 //     t_env *new_node = malloc(sizeof(t_env));
 //     new_node->name = ft_strdup(name);
@@ -258,8 +171,6 @@ void	ft_export(t_data *data, t_exec *cmd)
 //     new_node->next = *env;
 //     *env = new_node;
 // }
-
-
 // int main(int argc, char **argv, char **envp) {
 //     t_exec new_node;
 //     t_exec cmd ;

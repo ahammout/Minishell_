@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   signal_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:46:44 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 00:28:23 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/06 06:57:18 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+int	g_exit_status;
 
 void	ignore_signal(void)
 {

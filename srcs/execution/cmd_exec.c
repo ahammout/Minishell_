@@ -6,11 +6,13 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:16:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/05 22:45:31 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/06 06:57:18 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+int	g_exit_status;
 
 void	handle_exit_status(int status)
 {
