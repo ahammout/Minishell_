@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 20:17:53 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 15:48:14 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/06 18:07:28 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	*get_path(char *str, t_data *data, int *status)
 
 	path = ft_getenv(data, "PATH");
 	if (!path)
-		return (*status = 127, NULL);
+		path = ft_strdup("/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin");
 	paths = ft_split(path, ':');
 	if (!paths)
 		return (*status = 1, NULL);

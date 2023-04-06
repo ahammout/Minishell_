@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_beta_env.c                                     :+:      :+:    :+:   */
+/*   set_environment_beta.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 00:11:34 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/06 00:14:18 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:59:22 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ void    set_environment_beta(t_data *data)
     data->env->next->next->name = ft_strdup("SHLVL");
     data->env->next->next->value = ft_strdup("0");
     data->env->next->next->next = (t_env *)malloc(sizeof(t_env));
-    data->env->next->next->next->name = ft_strdup("PATH");
-    data->env->next->next->next->value = ft_strdup("/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin");
-    data->env->next->next->next->next = NULL;
+    data->env->next->next->next = NULL;
 }
 
 void display_environment(t_data *data)
