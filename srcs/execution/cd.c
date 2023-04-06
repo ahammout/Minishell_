@@ -6,33 +6,21 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 22:15:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/05 23:32:02 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/06 06:57:18 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
+int	g_exit_status;
+
 static int	find_last_slash(char *str);
-
-static char *ft_substr_free1(char *s1, int start, int end)
-{
-    char *str;
-
-    if (!s1)
-        return (NULL);
-    else
-    {
-        str = ft_substr(s1, start, end);
-        free(s1);
-        return (str);
-    }
-}
 
 static int	special_case(t_data *data, char *tmp)
 {
 	if (data->check == 0)
 	{
-		ft_putstr_fd( "cd: error retrieving current directory: ",1);
+		ft_putstr_fd("cd: error retrieving current directory: ", 1);
 		perror("getcwd");
 		free(tmp);
 		data->check++;

@@ -6,11 +6,13 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:46 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/06 17:20:19 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:25:17 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+int	g_exit_status;
 
 void generate_error(t_data *data)
 {

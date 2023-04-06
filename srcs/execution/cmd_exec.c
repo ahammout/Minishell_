@@ -6,11 +6,13 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:16:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/05 22:45:31 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:04:01 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+int	g_exit_status;
 
 void	handle_exit_status(int status)
 {
@@ -46,10 +48,7 @@ void	exec_command(int pid, t_exec *exc, char *path, char **envp)
 		if (exc->out_file != STDOUT_FILENO)
 			close(exc->out_file);
 		if (execve(path, exc->str, envp) == -1)
-		{
-			perror("execve");
-			exit(EXIT_FAILURE);
-		}
+			check_bash(path, exc, envp);
 	}
 }
 

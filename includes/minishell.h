@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/06 03:38:55 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:25:36 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,14 +197,14 @@ void    ft_echo(t_exec *exec);
 int     builtin(t_data *data, t_exec *cmd);
 int     count_pps(t_exec *exec);
 void    signals_handler(void);
-void    handle_loop(t_vars pipe, t_data *data, char **envp);
+void    handle_loop(t_vars pipe, t_data *data);
 int     *save_std(void);
 int     **pipe_gener(int count);
 void    red_inp(t_exec *tmp, int status, t_data *data, int i);
 void    close_fd(t_data *data);
 int     pipes_redirection(t_exec *tmp, int i, t_data *data);
-void    exec_pipes(t_exec *exc, t_data *data, char **envp_);
-void    pipe_exe(int *pids, t_data *data, t_exec *tmp, int i, char **envp);
+void    exec_pipes(t_exec *exc, t_data *data);
+void    pipe_exe(int *pids, t_data *data, t_exec *tmp, int i);
 void    restore_parent(int *stds, int status, int *pids, t_data *data);
 void    handle_fds(t_data *data, int i);
 void    ft_exit(t_exec *cmd);
@@ -238,7 +238,18 @@ void	is_perms(t_data *data, t_exec *tmp);
 void is_no_such_file(t_data *data, t_exec *tmp);
 void	is_no_cmd(t_data *data, t_exec *tmp);
 void	cmd_extra(t_data *data, char *path, char **tmp, int st);
-
+void	mini_execve(char *path, t_exec *tmp, char **envp, int i);
+void	close_fds(t_data *data);
+void	file_checker(char *path, t_data *data, t_exec *tmp, char **envp);
+int	check_append(char *str);
+char	*extract_name(char *str, bool *append);
+char	*extract_value(char *str);
+t_env	*find_env_node(t_env *env, const char *name);
+void	append_env(t_data *data, const char *name, const char *val);
+t_env	*new_env_node(char *name, char *value);
+void	add_back_env_node(t_env **env, t_env *new_node);
+char	*ft_substr_free1(char *s1, int start, int end);
+void	check_bash(char *path, t_exec *exc, char **envp);
 /////////////////////////////////// TOOLS //////////////////////////////////
 
 void            exit_minishell(t_data *data, char *err);

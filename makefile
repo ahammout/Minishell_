@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+         #
+#    By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 11:15:10 by ahammout          #+#    #+#              #
-#    Updated: 2023/04/06 00:26:30 by ahammout         ###   ########.fr        #
+#    Updated: 2023/04/06 06:49:34 by zessadqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,11 @@ SRCS = 	srcs/main.c \
 		srcs/execution/cd.c \
 		srcs/execution/core.c\
 		srcs/execution/update_sh.c\
+		srcs/execution/utiles_00.c\
+		srcs/execution/utiles_01.c\
+		srcs/execution/utiles_02.c\
+		srcs/execution/utiles_03.c\
+		srcs/execution/utiles_04.c\
 
 OBJS = $(SRCS:.c=.o)
 
