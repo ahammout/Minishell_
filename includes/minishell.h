@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/06 00:28:40 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/06 03:38:55 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,6 +245,7 @@ void            exit_minishell(t_data *data, char *err);
 void            free_data(t_data *data);
 void            generate_error(t_data *data);
 int             white_check(char *str);
+char            **ft_2strdup(char **tab1);
 void            display_tokens(t_tokens *token);
 void            display_table(char **dstr);
 void            display_cmds(t_exec *cmds);

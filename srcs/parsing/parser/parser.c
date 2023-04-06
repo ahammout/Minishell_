@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:36:39 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/04 03:26:21 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/06 16:47:32 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-char    *join_arguments(t_data *data)
+char *join_arguments(t_data *data)
 {
-    char    *arg;
+    char *arg;
 
     arg = ft_strdup("");
     while (data->tokens->attach)
@@ -30,8 +30,8 @@ char    *join_arguments(t_data *data)
 
 int get_size(t_data *data)
 {
-    t_tokens    *tmp;
-    int         size;
+    t_tokens *tmp;
+    int size;
 
     tmp = data->tokens;
     size = 0;
@@ -51,22 +51,21 @@ int get_size(t_data *data)
     return (size);
 }
 
-char    **get_cmd_args(t_data *data)
+void    command_arguments_handler(t_data *data)
 {
-    t_ref       ref;
-    char        **str;
+    t_ref   ref;
+    char    **str;
+    int     size; 
 
     ref.i = 0;
-    ref.l = 0;
     str = NULL;
-    ref.l = get_size(data);
-    if (ref.l)
+    size = get_size(data);
+    if (size)
     {
-        str = malloc(sizeof(char *) * (get_size(data) + 1));
+        str = malloc(sizeof(char *) * (size + 1));
         if (!str)
             exit_minishell(data, "Minishell: Allocation failed.");
-        while (data->tokens && !is_redirection(data->tokens->type) \
-            && data->tokens->type != PIPE)
+        while (data->tokens && data->tokens->type != PIPE)
         {
             if (data->tokens->type != EMPTY)
             {
@@ -80,40 +79,38 @@ char    **get_cmd_args(t_data *data)
         }
         str[ref.i] = NULL;
     }
-    return (str);
+    data->cmds->str = str;
 }
 
-t_exec  *tokens_to_cmds(t_data *data)
+t_exec *tokens_to_cmds(t_data *data)
 {
-    t_exec      *head;
-    t_tokens    *ptr;
+    t_exec *head;
+    t_tokens *ptr;
 
     init_cmds_list(data);
     head = data->cmds;
     ptr = data->tokens;
     while (data->tokens)
     {
-        if (data->tokens && data->tokens->type == KEYWORD)
-            data->cmds->str = get_cmd_args(data);
-        if (data->tokens && !redirections_handler(data))
+        if (!redirections_handler(data))
         {
             data->tokens = ptr;
             data->cmds = head;
             return (free_data(data), (void *)0);
         }
+        command_arguments_handler(data);
         if (data->tokens && data->tokens->type == PIPE)
             next_cmd(data);
     }
     data->cmds = head;
     data->tokens = ptr;
     free_tokens_list(data);
-    // display_cmds(data->cmds);
     return (head);
 }
 
 ////////////////////////////////// PARSE_LINE //////////////////////////////
 
-t_exec  *parser(t_data *data)
+t_exec *parser(t_data *data)
 {
     if (lexer(data))
     {

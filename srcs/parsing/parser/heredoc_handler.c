@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:37:05 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/06 00:27:18 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:19:18 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ void heredoc_action(t_data *data, int status, int fd[2])
     {
         g_exit_status = 0;
         close(fd[1]);
+        if (data->cmds->in_file != 0)
+            close(data->cmds->in_file);
         data->cmds->in_file = fd[0];
+        data->tokens->type = EMPTY;
+        data->tokens->next->type = EMPTY;
         data->tokens = data->tokens->next->next;
     }
     else
