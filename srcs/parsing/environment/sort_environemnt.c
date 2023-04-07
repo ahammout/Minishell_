@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_environemnt.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:58:36 by zessadqu          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/07 23:21:31 by zessadqu         ###   ########.fr       */
-=======
-/*   Updated: 2023/04/07 21:05:58 by ahammout         ###   ########.fr       */
->>>>>>> 5787793f65f30532dd0961ff9198555e7092a6c3
+/*   Updated: 2023/04/07 23:39:00 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,11 +144,7 @@ void	printEnv(t_data *data)
 	}
 }
 
-<<<<<<< HEAD
-t_env    *export0(t_data *data)
-=======
 void	export0(t_data *data)
->>>>>>> 5787793f65f30532dd0961ff9198555e7092a6c3
 {
 	t_env	*tmp;
 	t_env	*head;

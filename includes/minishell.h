@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/07 23:16:44 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/07 23:38:42 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,7 @@ char    *ft_getenv(t_data *data, char *str);
 int     ft_pwd(t_data *data);
 void    ft_cd(t_data *data);
 char    *ft_getenv(t_data *data, char *str);
-t_env    *export0(t_data *data);
+void    export0(t_data *data);
 char    **list_to_str(t_env *env);
 void    free_array(char **array);
 char    *ft_strjoin_free1(char *s1, char *s2);

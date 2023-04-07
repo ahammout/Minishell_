@@ -6,29 +6,17 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/07 23:30:32 by zessadqu         ###   ########.fr       */
-=======
-/*   Updated: 2023/04/07 21:09:35 by ahammout         ###   ########.fr       */
->>>>>>> 5787793f65f30532dd0961ff9198555e7092a6c3
+/*   Updated: 2023/04/07 23:40:19 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-<<<<<<< HEAD
-int	g_exit_status;
-
- void ee()
- {
-     system("leaks minishell");
- }
-=======
+int g_exit_status ;
 // void ee()
 // {
 // 	system("leaks minishell");
 // }
->>>>>>> 5787793f65f30532dd0961ff9198555e7092a6c3
 
 int init_data(t_data *data)
 {
@@ -76,7 +64,7 @@ int	main(int ac, char **av, char **envp)
 			data.cmds = parser(&data);
 			if (data.cmds)
 				cmd_call(&data);
-			// display_cmds(data.cmds);
+			display_cmds(data.cmds);
 		}
 	}
 	return (0);
