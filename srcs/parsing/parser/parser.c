@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:36:39 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/07 15:36:01 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:59:14 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,6 @@ t_exec *tokens_to_cmds(t_data *data)
     data->cmds = head;
     data->tokens = tmp;
     free_tokens_list(data);
-    display_cmds(data->cmds);
-    exit (0);
     return (head);
 }
 
