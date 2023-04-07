@@ -1,18 +1,18 @@
 /* ************************************************************************** */
-/*																			  */
-/*														  :::	   ::::::::   */
-/*	 free_tools.c										:+:		 :+:	:+:   */
-/*													  +:+ +:+		  +:+	  */
-/*	 By: zessadqu <zessadqu@student.42.fr>			+#+  +:+	   +#+		  */
-/*												  +#+#+#+#+#+	+#+			  */
-/*	 Created: 2023/04/01 17:59:17 by ahammout		   #+#	  #+#			  */
-/*	 Updated: 2023/04/06 06:57:18 by zessadqu		  ###	########.fr		  */
-/*																			  */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_tools.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/01 17:59:17 by ahammout          #+#    #+#             */
+/*   Updated: 2023/04/07 21:05:45 by ahammout         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	free_data(t_data *data)
+void free_data(t_data *data)
 {
 	free_tokens_list(data);
 	free_cmds_list(data);
@@ -52,6 +52,8 @@ int	free_cmds_list(t_data *data)
 			}
 			free(data->cmds->str);
 		}
+		if (data->cmds->cmd_status)
+			free(data->cmds->cmd_status);
 		if (data->cmds->in_file != 0)
 			close(data->cmds->in_file);
 		if (data->cmds->out_file != 1)

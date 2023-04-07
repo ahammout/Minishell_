@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 18:59:47 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/03 17:51:31 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:47:27 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void init_cmds_list(t_data *data)
     if (!data->cmds)
         exit_minishell(data, "Minishell: Allocation failed");
     data->cmds->str = NULL;
+    data->cmds->cmd_status = NULL;
     data->cmds->in_file = 0;
     data->cmds->out_file = 1;
     data->cmds->next = NULL;
@@ -38,6 +39,7 @@ void next_cmd(t_data *data)
     if (!node)
         exit_minishell(data, "Minishell: Allocation failed");
     node->str = NULL;
+    data->cmds->cmd_status = NULL;
     node->in_file = 0;
     node->out_file = 1;
     node->next = NULL;
@@ -58,10 +60,13 @@ void    display_cmds(t_exec *cmds)
     {
         i = 0;
         printf ("-------------- CMD %d -----------------\n\n", n++);
-        while (cmds->str[i])
+        if (cmds->str)
         {
-            printf("  + Str [ %d ]: %s\n", i, cmds->str[i]);
-            i++;
+            while (cmds->str[i])
+            {
+                printf("  + Str [ %d ]: %s\n", i, cmds->str[i]);
+                i++;
+            }
         }
         printf("\n");
         printf("* Input FD: %d\n", cmds->in_file);

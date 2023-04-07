@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utiles_02.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 06:02:03 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 21:51:13 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:18:23 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-int	g_exit_status;
 
 int	check_append(char *str)
 {

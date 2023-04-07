@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 00:06:12 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 06:57:18 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/06 18:11:55 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-int	g_exit_status;
 
 void	ft_exit(t_exec	*cmd)
 {

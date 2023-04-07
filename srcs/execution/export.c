@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:24:41 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 21:52:31 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:18:07 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/minishell.h"
-
-int	g_exit_status;
 
 void	append_env(t_data *data, const char *name, const char *val)
 {

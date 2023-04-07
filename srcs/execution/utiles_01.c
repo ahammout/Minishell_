@@ -6,13 +6,11 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 05:45:32 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 06:57:18 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/07 17:18:05 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-int	g_exit_status;
 
 void	mini_execve(char *path, t_exec *tmp, char **envp, int i)
 {
@@ -28,8 +26,13 @@ void	mini_execve(char *path, t_exec *tmp, char **envp, int i)
 	{
 		if (execve(tmp->str[0], tmp->str, envp) == -1)
 		{
-			g_exit_status = 127;
-			perror("Minishell ");
+			if (errno == ETXTBSY)
+			{
+				perror("Minishell");
+				g_exit_status = 126;
+			}
+			else
+				check_bash(tmp->str[0], tmp, envp);
 		}
 	}
 }
@@ -45,7 +48,7 @@ void	file_checker(char *path, t_data *data, t_exec *tmp, char **envp)
 		return (is_directory(data, tmp), free(path), (void)0);
 	else if (st == 2 && ft_strncmp(tmp->str[0], "./", 2) == 0)
 		return (is_perms(data, tmp), free(path), (void)0);
-	else if (st == 3 && ft_strncmp(tmp->str[0], "./", 2) == 0)
+	else if (st == 3)
 		return (mini_execve(path, tmp, envp, 1), (void)0);
 	else if (st == 4 && ft_strncmp(tmp->str[0], "./", 2) == 0)
 		return (is_no_such_file(data, tmp), free(path), (void)0);

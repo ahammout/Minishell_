@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*																			  */
-/*														  :::	   ::::::::   */
-/*	 main.c												:+:		 :+:	:+:   */
-/*													  +:+ +:+		  +:+	  */
-/*	 By: ahammout <ahammout@student.42.fr>			+#+  +:+	   +#+		  */
-/*												  +#+#+#+#+#+	+#+			  */
-/*	 Created: 2022/12/25 11:14:07 by ahammout		   #+#	  #+#			  */
-/*	 Updated: 2023/04/07 01:50:07 by ahammout		  ###	########.fr		  */
-/*																			  */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
+/*   Updated: 2023/04/07 21:09:35 by ahammout         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
@@ -17,7 +17,7 @@
 // 	system("leaks minishell");
 // }
 
-int	init_data(t_data *data)
+int init_data(t_data *data)
 {
 	data->buffer = NULL;
 	data->err = NULL;

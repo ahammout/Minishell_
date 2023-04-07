@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utiles_00.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 05:36:49 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 06:57:18 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/06 18:12:34 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-int	g_exit_status;
 
 char	*ft_strjoin_free1(char *s1, char *s2)
 {

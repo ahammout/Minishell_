@@ -6,13 +6,11 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:46:44 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 23:26:47 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/07 20:51:38 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-int	g_exit_status;
 
 void	ignore_signal(void)
 {
@@ -43,6 +41,7 @@ void	signals_handler(void)
 
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = &signals_router;
+	//rl_catch_signals = 0;
 	sigaction(SIGINT, &sa, NULL);
 	// sigaction(SIGQUIT, &sa, NULL);
 }

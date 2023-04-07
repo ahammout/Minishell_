@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   expandable.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 18:13:06 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/06 06:57:18 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/06 18:07:50 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-
-int	g_exit_status;
 
 void var_not_exist(t_data *data, char *lexem, char *pids)
 {

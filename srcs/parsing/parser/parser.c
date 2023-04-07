@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:36:39 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/07 01:47:43 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/07 21:04:59 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void    command_arguments_handler(t_data *data)
     }
     else
     {
-        while (data->tokens)
+        while (data->tokens && data->tokens->type != PIPE)
             data->tokens = data->tokens->next;
     }
     data->cmds->str = str;
