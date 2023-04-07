@@ -6,13 +6,11 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 22:15:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/07 01:46:19 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/07 01:56:25 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-int	g_exit_status;
 
 static int	find_last_slash(char *str);
 
@@ -39,6 +37,7 @@ static int	special_case(t_data *data, char *tmp)
 		tmp = ft_substr_free1(tmp, 0, find_last_slash(tmp));
 		special_case(data, tmp);
 	}
+	return (0);
 }
 
 static int	find_last_slash(char *str)
@@ -100,6 +99,7 @@ static int	change_to_directory(t_data *data, char *dir_path)
 	if (chdir(dir_path) == -1)
 	{
 		perror(dir_path);
+		g_exit_status = 1;
 		return (1);
 	}
 	cwd = getcwd(NULL, PATH_MAX);

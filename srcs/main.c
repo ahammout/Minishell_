@@ -1,41 +1,39 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/07 01:32:37 by ahammout         ###   ########.fr       */
-/*                                                                            */
+/*																			  */
+/*														  :::	   ::::::::   */
+/*	 main.c												:+:		 :+:	:+:   */
+/*													  +:+ +:+		  +:+	  */
+/*	 By: ahammout <ahammout@student.42.fr>			+#+  +:+	   +#+		  */
+/*												  +#+#+#+#+#+	+#+			  */
+/*	 Created: 2022/12/25 11:14:07 by ahammout		   #+#	  #+#			  */
+/*	 Updated: 2023/04/07 01:50:07 by ahammout		  ###	########.fr		  */
+/*																			  */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	g_exit_status;
+// void ee()
+// {
+// 	system("leaks minishell");
+// }
 
-//  void ee()
-//  {
-//      system("leaks minishell");
-//  }
-
-int init_data(t_data *data)
+int	init_data(t_data *data)
 {
-    data->buffer = NULL;
-    data->err = NULL;
-    data->tokens = NULL;
-    data->cmds = NULL;
-    return (0);
+	data->buffer = NULL;
+	data->err = NULL;
+	data->tokens = NULL;
+	data->cmds = NULL;
+	return (0);
 }
 
 void	read_line(t_data *data)
 {
-    int buffer_size;
+	int	buffer_size;
 
-    init_data(data);
-    buffer_size = 0;
-    while (!buffer_size)
-    {
+	init_data(data);
+	buffer_size = 0;
+	while (!buffer_size)
+	{
 		data->buffer = readline("(minishell@Developers)$> ");
 		if (!data->buffer)
 		{
@@ -44,17 +42,17 @@ void	read_line(t_data *data)
 			exit_minishell(data, NULL);
 		}
 		buffer_size = ft_strlen(data->buffer);
-    }
+	}
 }
 
-int main(int ac, char **av, char **envp)
+int	main(int ac, char **av, char **envp)
 {
-    t_data  data;
-    
-    //  atexit(ee);
-    (void)**av;
-    if (ac == 1)
-    {
+	t_data	data;
+
+	//atexit(ee);
+	(void)**av;
+	if (ac == 1)
+	{
 		set_environment(&data, envp);
 		updt_shlvl(&data);
 		while (1)
@@ -63,12 +61,9 @@ int main(int ac, char **av, char **envp)
 			read_line(&data);
 			add_history(data.buffer);
 			data.cmds = parser(&data);
-			////// EXECUTION PART ////
 			if (data.cmds)
 				cmd_call(&data);
-			
 		}
-    }
-    //free_env_list(&data);
-    return (0);
+	}
+	return (0);
 }

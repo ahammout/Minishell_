@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_environemnt.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/01 20:58:36 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/05 22:32:42 by zessadqu         ###   ########.fr       */
+/*   Created: 2023/04/07 02:11:08 by ahammout          #+#    #+#             */
+/*   Updated: 2023/04/07 02:11:10 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	**list_to_str(t_env *env)
 
 	i = 0;
 	tmp = env;
-    envp = NULL;
+	envp = NULL;
 	while (tmp)
 	{
 		i++;
@@ -142,7 +142,7 @@ void	printEnv(t_data *data)
 	}
 }
 
-void    export0(t_data *data)
+void	export0(t_data *data)
 {
 	t_env	*tmp;
 	t_env	*head;
@@ -162,7 +162,7 @@ void    export0(t_data *data)
 		ft_putstr_fd("\n", data->cmds->out_file);
 		head = head->next;
 	}
-	//free_env(tmp);
+	free_env(tmp);
 }
 
 t_env	*sort_environment(t_data *data)

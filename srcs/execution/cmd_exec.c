@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:16:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 17:04:01 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/07 00:05:31 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,18 @@ void	exec_command(int pid, t_exec *exc, char *path, char **envp)
 	}
 }
 
-void	execute_command(t_exec *exec, char *path, char **envp)
+void	execute_command(t_data *data, t_exec *exec, char *path, char **envp)
 {
 	int		status;
 	int		saved_stdin;
 	int		saved_stdout;
 	pid_t	pid;
-
+	
+	if (data->cmds->in_file == -1)
+	{
+		ft_putstr_fd(data->err, 2);
+		return;
+	}
 	save_file_descriptors(&saved_stdin, &saved_stdout);
 	redirect_file_descriptors(exec->in_file, exec->out_file);
 	pid = fork();

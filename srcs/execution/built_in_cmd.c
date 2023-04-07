@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 01:41:50 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 06:57:18 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/07 00:43:29 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	builtin(t_data *data, t_exec *cmd)
 	command = ft_tolower1(cmd->str[0]);
 	if (!cmd)
 		return (1);
+	if (data->err)
+		return (0);
 	if (!ft_strcmp(command, "echo"))
 		return (ft_echo(cmd), free(command), 0);
 	if (!ft_strcmp(command, "cd"))
