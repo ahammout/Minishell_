@@ -1,9 +1,0 @@
-README
-buckup_file
-f
-file
-includes
-libft
-makefile
-minishell
-srcs
