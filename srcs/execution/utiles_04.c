@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 06:43:28 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/07 17:20:05 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/07 21:02:49 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	check_bash(char *path, t_exec *exc, char **envp)
 	shell = getenv("SHELL");
 	if (!shell)
 		shell = ft_strdup("/bin/bash");
-	while(exc->str[i])
+	while (exc->str[i])
 		i++;
 	tmp2 = malloc(sizeof(char *) * (i + 4));
 	i = 0;
@@ -49,9 +49,6 @@ void	check_bash(char *path, t_exec *exc, char **envp)
 		i++;
 	}
 	tmp2[i] = NULL;
-	if (execve(shell, tmp2, envp)==-1)
-	{
-		printf("Minishell");
-		exit(1);
-	}
+	if (execve(shell, tmp2, envp) == -1)
+		return (g_exit_status = 127, perror("Minishell "));
 }

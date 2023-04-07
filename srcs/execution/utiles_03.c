@@ -6,13 +6,13 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 06:32:53 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/07 00:03:07 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/07 21:00:45 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-extern  int  g_exit_status;
+extern int	g_exit_status;
 
 void	executable_f(t_data *data, char **tmp)
 {
