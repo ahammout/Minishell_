@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 06:43:28 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 17:39:09 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/06 21:28:57 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,13 @@ void	check_bash(char *path, t_exec *exc, char **envp)
 	char	**tmp2;
 	int		i;
 
+	i = 0;
 	shell = getenv("SHELL");
 	if (!shell)
 		shell = ft_strdup("/bin/bash");
 	while(exc->str[i])
 		i++;
-	tmp2 = malloc(sizeof(char *) * (i + 3));
+	tmp2 = malloc(sizeof(char *) * (i + 4));
 	i = 0;
 	tmp2[i++] = ft_strdup(shell);
 	tmp2[i++] = ft_strdup("-c");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections_handler.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:09:59 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/06 17:19:55 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/07 00:04:10 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,10 @@ int redin_handler(t_data *data)
 {
     if (data->tokens && data->tokens->type == REDIN)
         data->tokens = data->tokens->next;
-    data->cmds->in_file = open(data->tokens->lex, O_RDONLY);
+    if (!data->err)
+        data->cmds->in_file = open(data->tokens->lex, O_RDONLY);
     if (data->cmds->in_file == -1)
-    {
-        //// NO NEED TO GENERATE ERROR HERE {RETURN ONLY} => HANDLE IT IN EXECUTION.
-        data->tokens->prev->type = EMPTY;
-        data->tokens->type = EMPTY;
         data->err = no_such_file(data->tokens->lex);
-        return (generate_error(data), 0);
-    }
     data->tokens->prev->type = EMPTY;
     data->tokens->type = EMPTY;
     data->tokens = data->tokens->next;
@@ -59,8 +54,6 @@ int redin_handler(t_data *data)
         close(data->cmds->in_file);
         redin_handler(data);
     }
-    if (data->err)
-        return (0);
     return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:46:44 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 06:57:18 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/06 23:26:47 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ void	signals_handler(void)
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = &signals_router;
 	sigaction(SIGINT, &sa, NULL);
-	sigaction(SIGQUIT, &sa, NULL);
+	// sigaction(SIGQUIT, &sa, NULL);
 }

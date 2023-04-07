@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:36:39 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/06 16:47:32 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/06 23:29:41 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,22 +79,27 @@ void    command_arguments_handler(t_data *data)
         }
         str[ref.i] = NULL;
     }
+    else
+    {
+        while (data->tokens)
+            data->tokens = data->tokens->next;
+    }
     data->cmds->str = str;
 }
 
 t_exec *tokens_to_cmds(t_data *data)
 {
     t_exec *head;
-    t_tokens *ptr;
+    t_tokens *tmp;
 
     init_cmds_list(data);
     head = data->cmds;
-    ptr = data->tokens;
+    tmp = data->tokens;
     while (data->tokens)
     {
         if (!redirections_handler(data))
         {
-            data->tokens = ptr;
+            data->tokens = tmp;
             data->cmds = head;
             return (free_data(data), (void *)0);
         }
@@ -103,7 +108,7 @@ t_exec *tokens_to_cmds(t_data *data)
             next_cmd(data);
     }
     data->cmds = head;
-    data->tokens = ptr;
+    data->tokens = tmp;
     free_tokens_list(data);
     return (head);
 }
