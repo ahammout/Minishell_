@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/07 15:45:40 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/07 23:16:44 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,7 @@ char    *ft_getenv(t_data *data, char *str);
 int     ft_pwd(t_data *data);
 void    ft_cd(t_data *data);
 char    *ft_getenv(t_data *data, char *str);
-void    export0(t_data *data);
+t_env    *export0(t_data *data);
 char    **list_to_str(t_env *env);
 void    free_array(char **array);
 char    *ft_strjoin_free1(char *s1, char *s2);
@@ -250,6 +250,7 @@ t_env	*new_env_node(char *name, char *value);
 void	add_back_env_node(t_env **env, t_env *new_node);
 char	*ft_substr_free1(char *s1, int start, int end);
 void	check_bash(char *path, t_exec *exc, char **envp);
+void	free_env(t_env *env);
 /////////////////////////////////// TOOLS //////////////////////////////////
 
 void            exit_minishell(t_data *data, char *err);

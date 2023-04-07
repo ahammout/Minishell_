@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:06:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/07 16:09:39 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/07 23:26:54 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,4 +103,5 @@ void	exec_pipes(t_exec *exc, t_data *data)
 	free(pipe.std);
 	free(pipe.pids);
 	free_pipes(data);
+	//free_cmds_list(data);
 }

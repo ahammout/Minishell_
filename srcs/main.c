@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/07 15:15:51 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/07 23:30:32 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	g_exit_status;
 
-//  void ee()
-//  {
-//      system("leaks minishell");
-//  }
+ void ee()
+ {
+     system("leaks minishell");
+ }
 
 int init_data(t_data *data)
 {
@@ -66,6 +66,7 @@ int main(int ac, char **av, char **envp)
 			////// EXECUTION PART ////
 			if (data.cmds)
 				cmd_call(&data);
+			// display_cmds(data.cmds);
 		}
     }
     //free_env_list(&data);
