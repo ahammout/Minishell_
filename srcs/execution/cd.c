@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 22:15:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/07 15:17:44 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/07 21:06:46 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static int	special_case(t_data *data, char *tmp)
 		tmp = ft_substr_free1(tmp, 0, find_last_slash(tmp));
 		special_case(data, tmp);
 	}
+	return (0);
 }
 
 static int	find_last_slash(char *str)
