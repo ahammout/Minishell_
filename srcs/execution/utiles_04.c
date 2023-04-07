@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 06:43:28 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 21:28:57 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/07 17:20:05 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ char	*ft_substr_free1(char *s1, int start, int end)
 void	check_bash(char *path, t_exec *exc, char **envp)
 {
 	char	*shell;
-	char	*tmp;
 	char	**tmp2;
 	int		i;
 
@@ -50,5 +49,9 @@ void	check_bash(char *path, t_exec *exc, char **envp)
 		i++;
 	}
 	tmp2[i] = NULL;
-	execve(shell, tmp2, envp);
+	if (execve(shell, tmp2, envp)==-1)
+	{
+		printf("Minishell");
+		exit(1);
+	}
 }

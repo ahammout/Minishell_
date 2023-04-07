@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   core.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 21:01:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/07 15:17:53 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/07 16:58:47 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	cmd_call(t_data *data)
 		data->pipex = malloc(sizeof(t_pipe));
 		data->pipex->p_c = check;
 		return (exec_pipes(data->cmds, data),
-			free_array(tmp), free_data(data), (void)0);
+			free_array(tmp), (void)0);
 	}
 	if (!data->cmds->str || !builtin(data, data->cmds))
 	{

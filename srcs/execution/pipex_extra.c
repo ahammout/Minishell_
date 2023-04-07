@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_extra.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 20:17:53 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/07 15:18:11 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/07 16:07:56 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	handle_loop(t_vars	pipe, t_data	*data)
 	if (pipe.status == -1)
 	{
 		perror("");
-		return;
 	}
 	pipe.pids[pipe.i] = fork();
 	if (pipe.pids[pipe.i] == -1)
