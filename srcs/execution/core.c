@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 21:01:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/07 17:59:32 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/07 23:12:28 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	shell_cmd(t_data *data, char *path, char **tmp)
 void	cmd_extra(t_data *data, char *path, char **tmp, int st)
 {
 	if (data->cmds->in_file == -1)
-		return(perror("Minishell"), (void)0);
+		return (perror("Minishell"), (void)0);
 	if (path && ft_strncmp(data->cmds->str[0], "./", 2))
 		return (shell_cmd(data, path, tmp), (void)0);
 	else if (st == 3)

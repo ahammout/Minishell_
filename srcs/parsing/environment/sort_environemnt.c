@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_environemnt.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:58:36 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/07 21:05:58 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/07 23:39:00 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 void	free_env(t_env *env)
 {
+	t_env	*tmp;
 	while (env)
 	{
 		free(env->name);
 		free(env->value);
-		free(env);
+		tmp = env;
 		env = env->next;
+		free(tmp);
 	}
 }
 
@@ -162,7 +164,7 @@ void	export0(t_data *data)
 		ft_putstr_fd("\n", data->cmds->out_file);
 		head = head->next;
 	}
-	//free_env(tmp);
+	free_env(tmp);
 }
 
 t_env	*sort_environment(t_data *data)
