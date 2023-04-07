@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:24:41 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 18:12:00 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:18:07 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void	ft_export(t_data *data, t_exec *cmd)
 	if (cmd->str[1] == NULL)
 	{
 		export0(data);
+		g_exit_status =	0;
 		return ;
 	}
 	while (cmd->str[i])

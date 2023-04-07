@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 22:15:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 18:11:36 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:17:44 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ static int	change_to_directory(t_data *data, char *dir_path)
 	if (chdir(dir_path) == -1)
 	{
 		perror(dir_path);
+		g_exit_status = 1;
 		return (1);
 	}
 	cwd = getcwd(NULL, PATH_MAX);

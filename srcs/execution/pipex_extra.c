@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 20:17:53 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 18:12:05 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:18:11 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ void	handle_loop(t_vars	pipe, t_data	*data)
 	restore_parent(pipe.std, 0, pipe.pids, data);
 	pipe.status = pipes_redirection(pipe.tmp, pipe.i, data);
 	if (pipe.status == -1)
-		return ;
+	{
+		perror("");
+		return;
+	}
 	pipe.pids[pipe.i] = fork();
 	if (pipe.pids[pipe.i] == -1)
 	{
@@ -75,7 +78,7 @@ char	*get_path(char *str, t_data *data, int *status)
 
 	path = ft_getenv(data, "PATH");
 	if (!path)
-		return (*status = 127, NULL);
+		path = ft_strdup("/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin");
 	paths = ft_split(path, ':');
 	if (!paths)
 		return (*status = 1, NULL);

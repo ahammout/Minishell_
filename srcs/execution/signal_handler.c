@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:46:44 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 18:12:21 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:18:19 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,5 @@ void	signals_handler(void)
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = &signals_router;
 	sigaction(SIGINT, &sa, NULL);
-	sigaction(SIGQUIT, &sa, NULL);
+	// sigaction(SIGQUIT, &sa, NULL);
 }

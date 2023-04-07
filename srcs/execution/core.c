@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 21:01:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 18:11:46 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:17:53 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	check_file(const char *filename)
 
 void	shell_cmd(t_data *data, char *path, char **tmp)
 {
-	execute_command(data->cmds, path, tmp);
+	execute_command(data, data->cmds, path, tmp);
 	free_array(tmp);
 	free(path);
 	free_data(data);
@@ -41,6 +41,12 @@ void	shell_cmd(t_data *data, char *path, char **tmp)
 
 void	cmd_extra(t_data *data, char *path, char **tmp, int st)
 {
+	if (data->cmds->in_file == -1)
+	{
+		ft_putstr_fd(data->err, 2);
+		ft_putchar_fd('\n', 2);
+		return;
+	}
 	if (path && ft_strncmp(data->cmds->str[0], "./", 2))
 		return (shell_cmd(data, path, tmp), (void)0);
 	else if (st == 3)
@@ -78,7 +84,14 @@ void	cmd_call(t_data *data)
 			free_array(tmp), free_data(data), (void)0);
 	}
 	if (!data->cmds->str || !builtin(data, data->cmds))
+	{
+		if (data->cmds->in_file == -1)
+	{
+		ft_putstr_fd(data->err, 2);
+		ft_putchar_fd('\n', 2);
+	}
 		return (free_array(tmp), free_data(data), (void)0);
+	}
 	st = check_file(data->cmds->str[0]);
 	path = get_path(data->cmds->str[0], data, &check);
 	return (cmd_extra(data, path, tmp, st), (void)0);
