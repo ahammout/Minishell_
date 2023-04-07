@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:36:39 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/06 23:29:41 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:36:01 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void    command_arguments_handler(t_data *data)
     }
     else
     {
-        while (data->tokens)
+        while (data->tokens && data->tokens->type != PIPE)
             data->tokens = data->tokens->next;
     }
     data->cmds->str = str;
@@ -110,6 +110,8 @@ t_exec *tokens_to_cmds(t_data *data)
     data->cmds = head;
     data->tokens = tmp;
     free_tokens_list(data);
+    display_cmds(data->cmds);
+    exit (0);
     return (head);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 17:59:17 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/07 15:14:32 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:48:25 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int free_cmds_list(t_data *data)
 			}
 			free(data->cmds->str);
 		}
+		if (data->cmds->cmd_status)
+			free(data->cmds->cmd_status);
 		if (data->cmds->in_file != 0)
 			close(data->cmds->in_file);
 		if (data->cmds->out_file != 1)

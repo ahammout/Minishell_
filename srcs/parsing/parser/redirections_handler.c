@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:09:59 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/07 15:16:29 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:46:01 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,31 +19,6 @@ char    *no_such_file(char *file_name)
     error = ft_strjoin("Minshell: ", file_name);
     error = ft_strjoin_free1(error, ": No such file or directory");
     return (error);
-}
-
-int redin_handler(t_data *data)
-{
-    if (data->tokens && data->tokens->type == REDIN)
-        data->tokens = data->tokens->next;
-    data->cmds->in_file = open(data->tokens->lex, O_RDONLY);
-    if (data->cmds->in_file == -1)
-    {
-        //// NO NEED TO GENERATE ERROR HERE {RETURN ONLY} => HANDLE IT IN EXECUTION.
-        data->tokens->prev->type = EMPTY;
-        data->tokens->type = EMPTY;
-        return (0);
-    }
-    data->tokens->prev->type = EMPTY;
-    data->tokens->type = EMPTY;
-    data->tokens = data->tokens->next;
-    if (data->tokens && data->tokens->type == REDIN)
-    {
-        close(data->cmds->in_file);
-        redin_handler(data);
-    }
-    if (data->err)
-        return (0);
-    return (1);
 }
 
 void append_handler(t_data *data)
@@ -67,10 +42,10 @@ int redin_handler(t_data *data)
 {
     if (data->tokens && data->tokens->type == REDIN)
         data->tokens = data->tokens->next;
-    if (!data->err)
+    if (!data->cmds->cmd_status)
         data->cmds->in_file = open(data->tokens->lex, O_RDONLY);
     if (data->cmds->in_file == -1)
-        data->err = no_such_file(data->tokens->lex);
+        data->cmds->cmd_status = no_such_file(data->tokens->lex);
     data->tokens->prev->type = EMPTY;
     data->tokens->type = EMPTY;
     data->tokens = data->tokens->next;
@@ -81,40 +56,6 @@ int redin_handler(t_data *data)
     }
     return (1);
 }
-
-// int redirections_handler(t_data *data)
-// {
-//     if (data->tokens && is_redirection(data->tokens->type))
-//     {
-//         while (data->tokens && data->tokens->type != PIPE)
-//         {
-//             if (data->tokens && data->tokens->type == REDOUT)
-//                 redout_handler(data);
-//             else if (data->tokens && data->tokens->type == APPEND)
-//                 append_handler(data);
-//             else if (data->tokens && data->tokens->type == REDIN)
-//             {
-//                 if (!redin_handler(data))
-//                     return (0);
-//             }
-//             else if (data->tokens->type == HEREDOC)
-//             {
-//                 if (!heredoc_handler(data))
-//                     return (0);
-//             }
-//             else
-//                 return (1);
-//         }
-//     }
-//     exit(0);
-//     return (1);
-// }
-
-// void    remove_redirection(t_data *data)
-// {
-//     data->tokens->prev->type = EMPTY;
-//     data->tokens->type = EMPTY; 
-// }
 
 void redout_handler(t_data *data)
 {

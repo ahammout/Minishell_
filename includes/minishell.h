@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/06 23:41:43 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:45:40 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ typedef struct  s_tokens
 
 typedef struct  s_exec
 {
-    char **str;
-    char *flg;
-    int in_file;
-    int out_file;
+    char    **str;
+    char    *cmd_status;
+    int     in_file;
+    int     out_file;
     struct s_exec *next;
 }               t_exec;
 
