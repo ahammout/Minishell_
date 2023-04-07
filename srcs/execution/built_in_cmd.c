@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   built_in_cmd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 01:41:50 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/07 15:17:48 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/07 17:39:47 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ int	builtin(t_data *data, t_exec *cmd)
 {
 	char	*command ;
 
-	command = ft_tolower1(cmd->str[0]);
 	if (!cmd)
 		return (1);
-	if (data->err)
-		return (0);
+	if (cmd->in_file == -1 || cmd->out_file == -1)
+		return (perror("Minishell"), 0);	
+	command = ft_tolower1(cmd->str[0]);
 	if (!ft_strcmp(command, "echo"))
 		return (ft_echo(cmd), free(command), 0);
 	if (!ft_strcmp(command, "cd"))
