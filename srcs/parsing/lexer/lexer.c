@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 03:31:28 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 17:41:08 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/08 21:41:36 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,8 @@ int	quotes(t_data *data, char *lexem, char type)
 	t_ref	ref;
 	int		quote;
 
-	quote = 0;
 	ref.i = 0;
 	ref.j = 0;
-	ref.l = 0;
 	data->tokens->lex = malloc(sizeof(char) * (quotes_size(lexem, type) + 1));
 	if (!data->tokens->lex)
 		exit_minishell(data, "Minishell: Allocation failed.");
