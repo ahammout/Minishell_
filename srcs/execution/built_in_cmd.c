@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 01:41:50 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 01:36:15 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 02:19:31 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char	*ft_tolower1(char *str)
 	int		i;
 
 	i = 0;
+	tmp = NULL;
 	tmp = ft_strdup(str);
 	while (tmp[i])
 	{
@@ -39,6 +40,7 @@ int	builtin(t_data *data, t_exec *cmd)
 {
 	char	*command ;
 
+	command = NULL;
 	if (!cmd)
 		return (1);
 	if (cmd->in_file == -1 || cmd->out_file == -1)

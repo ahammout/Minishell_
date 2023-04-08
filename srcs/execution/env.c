@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:37:04 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 02:04:12 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 02:22:25 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ t_env	*str_to_list(char **envp)
 
 	i = 0;
 	env = NULL;
+    tmp = NULL;
 	while (envp[i])
 	{
 		tmp = (t_env *)malloc(sizeof(t_env));

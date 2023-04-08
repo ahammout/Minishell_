@@ -6,48 +6,35 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:58:36 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 02:03:54 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 02:15:06 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-static char	**fill_envp(char **envp, t_env *env)
+static char	**fill_envp(char **envp, t_env *tmp)
 {
 	int	i;
+	char	*tmp2;
 
 	i = 0;
-	while (env)
+	while (tmp)
 	{
-		if (env->value)
+		if (tmp->name && tmp->value)
 		{
-			envp[i] = ft_strjoin(env->name, "=");
-			envp[i] = ft_strjoin(envp[i], env->value);
+			tmp2 = ft_strjoin(tmp->name, "=");
+			envp[i] = ft_strjoin_free1(tmp2, tmp->value);
 		}
+		else if (!tmp->value)
+			envp[i] = ft_strdup(tmp->name);
 		else
-			envp[i] = ft_strdup(env->name);
+			break ;
+		tmp = tmp->next;
 		i++;
-		env = env->next;
 	}
 	envp[i] = NULL;
 	return (envp);
 }
-
-// while (tmp)
-// 	{
-// 		if (tmp->name && tmp->value)
-// 		{
-// 			tmp2 = ft_strjoin(tmp->name, "=");
-// 			envp[i] = ft_strjoin_free1(tmp2, tmp->value);
-// 		}
-// 		else if (!tmp->value)
-// 			envp[i] = ft_strdup(tmp->name);
-// 		else
-// 			break ;
-// 		tmp = tmp->next;
-// 		i++;
-// 	}
-// 	envp[i] = NULL;
 
 static char	**sort_env(char **envp)
 {

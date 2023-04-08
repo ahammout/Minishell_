@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 17:59:17 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 01:13:59 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 02:49:20 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,36 +35,72 @@ void	exit_minishell(t_data *data, char *err)
 	exit(g_exit_status);
 }
 
-int	free_cmds_list(t_data *data)
+int free_cmds_list(t_data *data)
 {
-	t_exec	*tmp;
-	int		i;
+    t_exec *curr = data->cmds;
+    t_exec *prev = NULL;
 
-	while (data->cmds)
+	
+	if (curr == NULL)
+		return (0);
+    while (curr != NULL)
 	{
-		i = 0;
-		if (data->cmds->str)
-		{
-			while (data->cmds->str[i])
-			{
-				free(data->cmds->str[i]);
-				i++;
-			}
-			free(data->cmds->str);
-		}
-		if (data->cmds->cmd_status)
-			free(data->cmds->cmd_status);
-		if (data->cmds->in_file != 0)
-			close(data->cmds->in_file);
-		if (data->cmds->out_file != 1)
-			close(data->cmds->out_file);
-		tmp = data->cmds;
-		data->cmds = data->cmds->next;
-		free(tmp);
-	}
-	data->cmds = NULL;
-	return (0);
+        if (curr->str)
+			free_array(curr->str);
+        if (curr->cmd_status)
+            free(curr->cmd_status);
+        if (curr->in_file != 0)
+            close(curr->in_file);
+        if (curr->out_file != 1) {
+            close(curr->out_file);
+        }
+        prev = curr;
+        curr = curr->next;
+        free(prev);
+        prev = NULL;
+    }
+    
+    data->cmds = NULL;
+    return (0);
 }
+
+// int	free_cmds_list(t_data *data)
+// {
+// 	t_exec	*tmp;
+// 	int		i;
+// 	if (!data->cmds)
+// 		return (0);
+// 	while (data->cmds)
+// 	{
+// 		i = 0;
+// 		if (data->cmds->str)
+// 		{
+// 			if (!data->cmds->str[i])
+// 				free(data->cmds->str);
+// 			else
+// 			{
+				
+// 			while (data->cmds->str[i])
+// 			{
+// 				free(data->cmds->str[i]);
+// 				i++;
+// 			}
+// 			free(data->cmds->str);
+// 			}
+// 		}
+// 		if (data->cmds->cmd_status)
+// 			free(data->cmds->cmd_status);
+// 		if (data->cmds->in_file != 0)
+// 			close(data->cmds->in_file);
+// 		if (data->cmds->out_file != 1)
+// 			close(data->cmds->out_file);
+// 		tmp = data->cmds;
+// 		data->cmds = data->cmds->next;
+// 		free(tmp);
+// 	}
+// 	data->cmds = NULL;
+// 	return (0);
+// }
 
 int	free_tokens_list(t_data *data)
 {

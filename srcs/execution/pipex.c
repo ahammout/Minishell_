@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:06:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 01:22:41 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 02:24:39 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	pipe_exe(int *pids, t_data *data, t_exec *tmp, int i)
 	char	*path;
 	char	**envp;
 
+	path = NULL;
+	envp = NULL;
 	if (pids[i] == 0)
 	{
 		handle_fds(data, i);
@@ -103,5 +105,5 @@ void	exec_pipes(t_exec *exc, t_data *data)
 	free(pipe.std);
 	free(pipe.pids);
 	free_pipes(data);
-	//free_cmds_list(data);
+	free_cmds_list(data);
 }
