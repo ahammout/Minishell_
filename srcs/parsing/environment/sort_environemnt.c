@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:58:36 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 02:15:06 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 15:50:04 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	**fill_envp(char **envp, t_env *tmp)
 {
-	int	i;
+	int		i;
 	char	*tmp2;
 
 	i = 0;

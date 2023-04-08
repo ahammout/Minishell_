@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 03:29:45 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 03:29:47 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/08 14:27:04 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	read_line(t_data *data)
 	while (!buffer_size)
 	{
 		data->buffer = readline("(minishell@Developers)$> ");
-		printf("The buffer is: %s", data->buffer);
+		//printf("The buffer is: %s", data->buffer);
 		if (!data->buffer)
 		{
 			g_exit_status = 2;
