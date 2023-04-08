@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_quotes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 18:23:06 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 16:11:47 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 22:46:26 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void    abs_syntax(t_data *data, int lexem_len, int n_quotes)
 	free(data->tokens->lex);
 	if ((lexem_len - n_quotes) == 0)
 	{
-		data->tokens->lex = NULL;
-		data->tokens->type = EMPTY;
+		data->tokens->lex = ft_strdup("");
+		data->tokens->type = KEYWORD;
 	}
 	else
 	{
