@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 01:07:19 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 02:05:13 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	main(int ac, char **av, char **envp)
 
 	//atexit(ee);
 	(void)**av;
-	if (ac == 1)
 	{
 		set_environment(&data, envp);
 		updt_shlvl(&data);

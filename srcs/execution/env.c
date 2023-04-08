@@ -6,11 +6,25 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:37:04 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 01:39:59 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 02:04:12 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+static int	find_eq(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '=')
+			return (i);
+		i++;
+	}
+	return (i);
+}
 
 void	export0(t_data *data)
 {

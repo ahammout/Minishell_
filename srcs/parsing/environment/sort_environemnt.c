@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:58:36 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 01:39:37 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 02:03:54 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,6 @@ static char	**fill_envp(char **envp, t_env *env)
 // 		i++;
 // 	}
 // 	envp[i] = NULL;
-
-static int	find_eq(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '=')
-			return (i);
-		i++;
-	}
-	return (i);
-}
 
 static char	**sort_env(char **envp)
 {
