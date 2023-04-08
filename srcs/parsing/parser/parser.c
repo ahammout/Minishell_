@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:36:39 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 16:11:12 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 21:34:22 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,6 @@ t_exec *parser(t_data *data)
 	{
 		if (syntax_analyzer(data))
 		{
-			// display_tokens(data->tokens)
 			if (expander(data))
 			{
 				return (tokens_to_cmds(data));
