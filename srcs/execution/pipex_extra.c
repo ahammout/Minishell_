@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 20:17:53 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 21:01:55 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 21:20:51 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,6 @@ void	handle_loop(t_vars	pipe, t_data	*data)
 {
 	restore_parent(pipe.std, 0, pipe.pids, data);
 	pipe.status = pipes_redirection(pipe.tmp, pipe.i, data);
-	if (pipe.status == -1)
-	{
-		//perror(pipe.tmp->cmd_status);
-		g_exit_status = 1;
-	}
 	pipe.pids[pipe.i] = fork();
 	if (pipe.pids[pipe.i] == -1)
 	{

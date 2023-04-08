@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer_tools.c                                      :+:      :+:    :+:   */
+/*   lexer_tools1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/25 11:13:51 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 16:06:46 by zessadqu         ###   ########.fr       */
+/*   Created: 2023/04/08 17:26:53 by ahammout          #+#    #+#             */
+/*   Updated: 2023/04/08 17:43:37 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,6 @@ void	display_tokens(t_tokens *token)
 		printf("Lexeme: %s\n", head->lex);
 		printf("Type: %d\n\n", head->type);
 		printf("Countinu: %d\n", head->attach);
-		// printf("---- Previous Node ----\n");
-		// printf("Lexeme: %s\n", head->prev->lex);
-		// printf("Type: %d\n\n", head->prev->type);
 		n++;
 		head = head->next;
 	}

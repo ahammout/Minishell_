@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   expandable.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 18:13:06 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 15:54:52 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 17:07:26 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
+
+void	empty_lex(t_data *data)
+{
+	data->tokens->lex = NULL;
+	data->tokens->type = EMPTY;
+}
 
 void	var_not_exist(t_data *data, char *lexem, char *pids)
 {
@@ -37,18 +43,15 @@ void	var_not_exist(t_data *data, char *lexem, char *pids)
 		data->tokens->type = KEYWORD;
 	}
 	else
-	{
-		data->tokens->lex = NULL;
-		data->tokens->type = EMPTY;
-	}
+		empty_lex(data);
 }
 
 void	exit_status(t_data *data, char *lexem, char *pids)
 {
-	t_ref   ref;
-	int     size;
-	char    *e_status;
-	int     e;
+	t_ref	ref;
+	int		size;
+	char	*e_status;
+	int		e;
 
 	ref.i = 1;
 	ref.j = 0;
@@ -71,10 +74,10 @@ void	exit_status(t_data *data, char *lexem, char *pids)
 	free(e_status);
 }
 
-void    var_exist(t_data *data, char *pids, char *value)
+void	var_exist(t_data *data, char *pids, char *value)
 {
-	t_ref   ref;
-	int     size;
+	t_ref	ref;
+	int		size;
 
 	ref.i = 0;
 	ref.j = 0;
@@ -92,10 +95,10 @@ void    var_exist(t_data *data, char *pids, char *value)
 	}
 }
 
-void    expandable(t_data *data, char *lexem, char *pids)
+void	expandable(t_data *data, char *lexem, char *pids)
 {
-	char    *value;
-	int     i;
+	char	*value;
+	int		i;
 
 	i = 0;
 	while (lexem[i] == EXPAND_)

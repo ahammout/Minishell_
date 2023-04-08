@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections_handler.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:09:59 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 16:11:16 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 20:20:05 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int redin_handler(t_data *data)
 	if (data->cmds->in_file != -1)
 	{
 		data->cmds->in_file = open(data->tokens->lex, O_RDONLY);
-		if (data->cmds->in_file == -1)
-			data->cmds->cmd_status = ft_strdup_free(no_such_file(data->tokens->lex));
+		if (data->cmds->in_file == -1 && !data->cmds->cmd_status)
+			data->cmds->cmd_status = no_such_file(data->tokens->lex);
 	}
 	data->tokens->prev->type = EMPTY;
 	data->tokens->type = EMPTY;
@@ -97,10 +97,7 @@ int redirections_handler(t_data *data)
 			else if (data->tokens && data->tokens->type == APPEND)
 				append_handler(data);
 			else if (data->tokens && data->tokens->type == REDIN)
-			{
-				if (!redin_handler(data))
-					return (0);
-			}
+				redin_handler(data);
 			else if (data->tokens->type == HEREDOC)
 			{
 				if (!heredoc_handler(data))

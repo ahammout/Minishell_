@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:37:05 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 16:11:02 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 21:25:46 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void heredoc_action(t_data *data, int status, int fd[2])
 	}
 	else
 	{
-		g_exit_status = 130;
+		g_exit_status = 1;
 		close(fd[0]);
 		close(fd[1]);
 		free_env_list(data);
@@ -37,7 +37,7 @@ void heredoc_action(t_data *data, int status, int fd[2])
 void heredoc_sig_handler(int sig)
 {
 	(void)sig;
-	exit(130);
+	exit(1);
 }
 
 void read_input(t_data *data, int fd[2])

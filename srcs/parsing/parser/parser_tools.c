@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_tools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 18:59:47 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 16:11:07 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 20:18:30 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void next_cmd(t_data *data)
 	if (!node)
 		exit_minishell(data, "Minishell: Allocation failed");
 	node->str = NULL;
-	data->cmds->cmd_status = NULL;
+	node->cmd_status = NULL;
 	node->in_file = 0;
 	node->out_file = 1;
 	node->next = NULL;
