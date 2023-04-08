@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 02:02:00 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/08 03:23:51 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	read_line(t_data *data)
 	while (!buffer_size)
 	{
 		data->buffer = readline("(minishell@Developers)$> ");
+		printf("The buffer is: %s", data->buffer);
 		if (!data->buffer)
 		{
 			g_exit_status = 2;
@@ -52,7 +53,6 @@ int	main(int ac, char **av, char **envp)
 
 	//atexit(ee);
 	(void)**av;
-	if (ac == 1)
 	{
 		set_environment(&data, envp);
 		updt_shlvl(&data);
@@ -64,7 +64,7 @@ int	main(int ac, char **av, char **envp)
 			data.cmds = parser(&data);
 			if (data.cmds)
 				cmd_call(&data);
-			// display_cmds(data.cmds);
+			//display_cmds(data.cmds);
 		}
 	}
 	return (0);

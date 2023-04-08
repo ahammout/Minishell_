@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 01:41:50 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/07 20:59:11 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 02:19:31 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	env_check(char *command, t_data *data, t_exec *cmd)
 	if (cmd->str[1])
 		return (ft_putstr_fd("env with No arguments\n", 2)
 			, free(command), 0);
-	return (printEnv(data), free(command), 0);
+	return (print_env(data), free(command), 0);
 }
 
 char	*ft_tolower1(char *str)
@@ -26,6 +26,7 @@ char	*ft_tolower1(char *str)
 	int		i;
 
 	i = 0;
+	tmp = NULL;
 	tmp = ft_strdup(str);
 	while (tmp[i])
 	{
@@ -39,6 +40,7 @@ int	builtin(t_data *data, t_exec *cmd)
 {
 	char	*command ;
 
+	command = NULL;
 	if (!cmd)
 		return (1);
 	if (cmd->in_file == -1 || cmd->out_file == -1)

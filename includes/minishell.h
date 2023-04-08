@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 01:45:05 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/08 03:24:01 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,7 +219,7 @@ void    ft_unset(t_exec *cmd, t_data *data);
 void    execute_command(t_data *data, t_exec *exec, char *path, char **envp);
 void    ignore_signal();
 char    *get_path(char *str, t_data *data, int *status);
-void    printEnv(t_data *data);
+void    print_env(t_data *data);
 t_env   *sort_environment(t_data *data);
 void    restore_parent(int *stds, int status, int *pids, t_data *data);
 void    close_fd(t_data *data);
@@ -252,6 +252,7 @@ void	add_back_env_node(t_env **env, t_env *new_node);
 char	*ft_substr_free1(char *s1, int start, int end);
 void	check_bash(char *path, t_exec *exc, char **envp);
 void	free_env(t_env *env);
+t_env	*str_to_list(char **envp);
 /////////////////////////////////// TOOLS //////////////////////////////////
 
 void            exit_minishell(t_data *data, char *err);

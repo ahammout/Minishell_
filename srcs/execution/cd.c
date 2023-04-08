@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 22:15:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/07 21:06:46 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/08 02:20:37 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static int	change_to_home_directory(t_data *data, char *home_dir)
 {
 	char	*cwd;
 
+	cwd = NULL;
 	cwd = getcwd(NULL, PATH_MAX);
 	if (!home_dir || home_dir[0] == '\0')
 	{
@@ -86,6 +87,8 @@ static int	change_to_directory(t_data *data, char *dir_path)
 	char	*cwd;
 	char	*tmp;
 
+	cwd = NULL;
+	tmp = NULL;
 	cwd = getcwd(data->path, PATH_MAX);
 	tmp = ft_strdup(data->path);
 	if ((!ft_strcmp(dir_path, "..")
@@ -116,6 +119,9 @@ void	ft_cd(t_data *data)
 	char	*home_dir;
 	t_exec	*tmp;
 
+	dir_path = NULL;
+	home_dir = NULL;
+	tmp = NULL;
 	tmp = data->cmds;
 	home_dir = ft_getenv(data, "HOME");
 	if (!tmp->str[1] && ft_strcmp(tmp->str[0], "cd") == 0)

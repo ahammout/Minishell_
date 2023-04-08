@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 21:01:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/07 23:12:28 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 02:21:20 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	cmd_call(t_data *data)
 	int		st;
 
 	i = 0;
+	path = NULL;
+	tmp = NULL;
 	check = count_pps(data->cmds);
 	tmp = list_to_str(data->env);
 	if (check)

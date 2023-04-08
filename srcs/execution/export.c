@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:24:41 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/07 23:39:06 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 01:17:20 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	ft_export(t_data *data, t_exec *cmd)
 	if (cmd->str[1] == NULL)
 	{
 		export0(data);
-		g_exit_status =	0;
+		g_exit_status = 0;
 		return ;
 	}
 	while (cmd->str[i])

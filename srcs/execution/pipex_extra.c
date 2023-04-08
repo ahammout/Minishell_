@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 20:17:53 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 01:47:47 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/08 03:24:29 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ void	handle_loop(t_vars	pipe, t_data	*data)
 	pipe.status = pipes_redirection(pipe.tmp, pipe.i, data);
 	if (pipe.status == -1)
 	{
-		ft_putstr_fd(pipe.tmp->cmd_status, 2);
-		ft_putstr_fd("dd\n", 2);
+		//perror(pipe.tmp->cmd_status);
 		g_exit_status = 1;
 	}
 	pipe.pids[pipe.i] = fork();
