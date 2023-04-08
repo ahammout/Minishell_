@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:46:56 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 21:01:42 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/08 21:46:50 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	analyze_redirections(t_data *data)
 }
 
 void	analyze_pipe(t_data *data)
-{	 
+{
 	if (data->tokens->type == PIPE && !data->err)
 	{
 		if (data->tokens->lenght > 1 || data->tokens->next == NULL)
@@ -43,7 +43,7 @@ void	analyze_pipe(t_data *data)
 	}
 }
 
-void	analyze_begin_end (t_data *data)
+void	analyze_begin_end(t_data *data)
 {
 	t_tokens	*head;
 
@@ -59,7 +59,7 @@ void	analyze_begin_end (t_data *data)
 	data->tokens = head;
 }
 
-t_tokens	*syntax_analyzer (t_data *data)
+t_tokens	*syntax_analyzer(t_data *data)
 {
 	t_tokens	*head;
 
@@ -70,7 +70,7 @@ t_tokens	*syntax_analyzer (t_data *data)
 		analyze_quotes(data);
 		analyze_pipe(data);
 		analyze_redirections(data);
-		data->tokens  = data->tokens->next;
+		data->tokens = data->tokens->next;
 	}
 	data->tokens = head;
 	if (data->err && !data->heredoc)
