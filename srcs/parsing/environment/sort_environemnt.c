@@ -6,24 +6,48 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:58:36 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/07 23:39:00 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 01:39:37 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-void	free_env(t_env *env)
+static char	**fill_envp(char **envp, t_env *env)
 {
-	t_env	*tmp;
+	int	i;
+
+	i = 0;
 	while (env)
 	{
-		free(env->name);
-		free(env->value);
-		tmp = env;
+		if (env->value)
+		{
+			envp[i] = ft_strjoin(env->name, "=");
+			envp[i] = ft_strjoin(envp[i], env->value);
+		}
+		else
+			envp[i] = ft_strdup(env->name);
+		i++;
 		env = env->next;
-		free(tmp);
 	}
+	envp[i] = NULL;
+	return (envp);
 }
+
+// while (tmp)
+// 	{
+// 		if (tmp->name && tmp->value)
+// 		{
+// 			tmp2 = ft_strjoin(tmp->name, "=");
+// 			envp[i] = ft_strjoin_free1(tmp2, tmp->value);
+// 		}
+// 		else if (!tmp->value)
+// 			envp[i] = ft_strdup(tmp->name);
+// 		else
+// 			break ;
+// 		tmp = tmp->next;
+// 		i++;
+// 	}
+// 	envp[i] = NULL;
 
 static int	find_eq(char *str)
 {
@@ -37,30 +61,6 @@ static int	find_eq(char *str)
 		i++;
 	}
 	return (i);
-}
-
-static t_env	*str_to_list(char **envp)
-{
-	t_env	*env;
-	t_env	*tmp;
-	int		i;
-
-	i = 0;
-	env = NULL;
-	while (envp[i])
-	{
-		tmp = (t_env *)malloc(sizeof(t_env));
-		tmp->name = ft_substr(envp[i], 0, find_eq(envp[i]));
-		if ((unsigned int)find_eq(envp[i]) == ft_strlen(envp[i]))
-			tmp->value = NULL;
-		else
-			tmp->value = ft_substr(envp[i], find_eq(envp[i]) + 1,
-					ft_strlen(envp[i]) - find_eq(envp[i]));
-		tmp->next = env;
-		env = tmp;
-		i++;
-	}
-	return (env);
 }
 
 static char	**sort_env(char **envp)
@@ -97,7 +97,6 @@ char	**list_to_str(t_env *env)
 
 	i = 0;
 	tmp = env;
-	envp = NULL;
 	while (tmp)
 	{
 		i++;
@@ -106,65 +105,8 @@ char	**list_to_str(t_env *env)
 	envp = (char **)malloc(sizeof(char *) * (i + 1));
 	i = 0;
 	tmp = env;
-	while (tmp)
-	{
-		if (tmp->name && tmp->value)
-		{
-			tmp2 = ft_strjoin(tmp->name, "=");
-			envp[i] = ft_strjoin_free1(tmp2, tmp->value);
-		}
-		else if (!tmp->value)
-			envp[i] = ft_strdup(tmp->name);
-		else
-			break;
-		tmp = tmp->next;
-		i++;
-	}
-	envp[i] = NULL;
+	envp = fill_envp(envp, tmp);
 	return (envp);
-}
-
-void	printEnv(t_data *data)
-{
-	t_env	*tmp;
-
-	tmp = data->env;
-	while (tmp)
-	{
-		if (tmp->value)
-		{
-			{
-				ft_putstr_fd(tmp->name, data->cmds->out_file);
-				ft_putstr_fd("=", data->cmds->out_file);
-				ft_putstr_fd(tmp->value, data->cmds->out_file);
-				ft_putstr_fd("\n", data->cmds->out_file);
-			}
-		}
-		tmp = tmp->next;
-	}
-}
-
-void	export0(t_data *data)
-{
-	t_env	*tmp;
-	t_env	*head;
-
-	tmp = sort_environment(data);
-	head = tmp;
-	   while (head)
-	{
-		ft_putstr_fd("declare -x ", data->cmds->out_file);
-		ft_putstr_fd(head->name, data->cmds->out_file);
-		if (head->value)
-		{
-			ft_putstr_fd("=\"", data->cmds->out_file);
-			ft_putstr_fd(head->value, data->cmds->out_file);
-			ft_putstr_fd("\"",data->cmds->out_file); 
-		}
-		ft_putstr_fd("\n", data->cmds->out_file);
-		head = head->next;
-	}
-	free_env(tmp);
 }
 
 t_env	*sort_environment(t_data *data)
