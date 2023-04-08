@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:06:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 21:22:10 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 23:25:21 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	pipe_exe(int *pids, t_data *data, t_exec *tmp, int i)
 			ft_putstr_fd("\n", 2);
 			g_exit_status = 1;
 		}
+		else if(tmp->str[0][0] == '\0')
+			is_empty(data, tmp);
 		else if (!tmp->str ||!builtin(data, tmp))
 			;
 		else

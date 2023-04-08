@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 03:29:45 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 20:22:16 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/08 23:22:27 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
 int g_exit_status ;
-// void ee()
-// {
-// 	system("leaks minishell");
-// }
+void ee()
+{
+	system("leaks minishell");
+}
 
 int init_data(t_data *data)
 {
@@ -51,7 +51,7 @@ int	main(int ac, char **av, char **envp)
 {
 	t_data	data;
 
-	// atexit(ee);
+	//atexit(ee);
 	(void)**av;
 	{
 		set_environment(&data, envp);

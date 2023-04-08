@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utiles_02.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 06:02:03 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/07 15:18:23 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/08 22:54:34 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ char	*extract_name(char *str, bool *append)
 		ft_putstr_fd("Minishell: export: `", 2);
 		ft_putstr_fd(name, 2);
 		ft_putstr_fd("': not a valid identifier\n", 2);
+		free(name);
 		g_exit_status = 1;
 		return (NULL);
 	}

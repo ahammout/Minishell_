@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 22:15:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 19:33:04 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 23:27:50 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,8 @@ void	ft_cd(t_data *data)
 	home_dir = ft_getenv(data, "HOME");
 	if (!tmp->str[1] && ft_strcmp(tmp->str[0], "cd") == 0)
 		g_exit_status = change_to_home_directory(data, home_dir);
+	else if (tmp->str[1][0] == '\0')
+		return ;
 	else
 	{
 		dir_path = tmp->str[1];

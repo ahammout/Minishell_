@@ -3,6 +3,19 @@
         "minishell.h": "c",
         "typeinfo": "c",
         "libft.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "signal.h": "c",
+        "stdbool.h": "c",
+        "wait.h": "c",
+        "fcntl.h": "c",
+        "limits.h": "c",
+        "errno.h": "c",
+        "paths.h": "c",
+        "readline.h": "c",
+        "stat.h": "c",
+        "stdio.h": "c",
+        "stdlib.h": "c",
+        "unistd.h": "c",
+        "history.h": "c"
     }
 }
