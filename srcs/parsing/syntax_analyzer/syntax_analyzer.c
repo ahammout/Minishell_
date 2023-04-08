@@ -3,72 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_analyzer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 18:12:24 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 16:11:43 by zessadqu         ###   ########.fr       */
+/*   Created: 2023/04/08 17:46:56 by ahammout          #+#    #+#             */
+/*   Updated: 2023/04/08 21:01:42 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-void    analyze_redirections(t_data *data)
+void	analyze_redirections(t_data *data)
 {
-	t_tokens    *token;
-
 	if (!data->err)
 	{
 		if (data->tokens->type == REDOUT || data->tokens->type == APPEND \
 			|| data->tokens->type == REDIN || data->tokens->type == HEREDOC)
 		{
-			token = data->tokens;
-			if (token->lenght > 2)
+			if (data->tokens->lenght > 2 || !data->tokens->next)
 			{
-				data->err = ft_strdup("Minishell: syntax error near unexpected token `newline'");
+				data->err = ft_strdup("Minishell: syntax error near `");
+				data->err = ft_strjoin_free1(data->err, "newline'");
 				if (data->tokens->type == HEREDOC)
 					data->heredoc = 0;
 			}
-			if (token->type == HEREDOC && token->next->type != KEYWORD)
-			{
-				data->err = ft_strjoin("Minishell: syntax error near unexpected token `", token->next->lex);
-				data->err = ft_strjoin_free1(data->err, "'");
-				data->heredoc = 0;
-			}
-			token = token->next;
-			if (!token && !data->err)
-				data->err = ft_strdup("Minishell: syntax error near unexpected token `newline'");
-			analyze_end (data, token);
+			analyze_filename(data);
 		}
 	}
 }
 
-void    analyze_pipe(t_data *data)
-{    
+void	analyze_pipe(t_data *data)
+{	 
 	if (data->tokens->type == PIPE && !data->err)
 	{
 		if (data->tokens->lenght > 1 || data->tokens->next == NULL)
-			data->err = ft_strjoin("Minishell: syntax error near unexpected token `", "|'");
+		{
+			data->err = ft_strdup("Minishell: syntax error near `");
+			data->err = ft_strjoin_free1(data->err, "|'");
+		}
 	}
 }
 
-void    analyze_begin_end (t_data *data)
+void	analyze_begin_end (t_data *data)
 {
-	t_tokens    *token;
+	t_tokens	*head;
 
-	token = data->tokens;
-	analyze_begin(data, token);
-	if (token->next && !data->err)
+	head = data->tokens;
+	analyze_begin(data);
+	if (data->tokens->next && !data->err)
 	{
-		while (token->next && !is_metecharacter(token->type))
-			token = token->next;
-		if (token->next == NULL)
-			analyze_end(data, token);
+		while (data->tokens->next && !is_metecharacter(data->tokens->type))
+			data->tokens = data->tokens->next;
+		if (data->tokens->next == NULL)
+			analyze_end(data);
 	}
+	data->tokens = head;
 }
 
-t_tokens    *syntax_analyzer (t_data *data)
+t_tokens	*syntax_analyzer (t_data *data)
 {
-	t_tokens    *head;
+	t_tokens	*head;
 
 	head = data->tokens;
 	analyze_begin_end(data);

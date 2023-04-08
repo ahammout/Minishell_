@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 14:17:42 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 21:05:08 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ enum
     HEREDOC = -120,
     PIPE = '|',
     EXPAND_ = '$',
-    SEMICOLONE = ';',
-    AND = '&',
     EMPTY = 0,
     KEYWORD = 1,
     INVALID = -1,
@@ -117,7 +115,7 @@ t_exec  *parser(t_data *data);
 
 //////////////////////////////// LEXER ///////////////////////////////////////////
 
-t_tokens    *lexer(t_data *data);    
+t_tokens    *lexer(t_data *data);
 int         is_keyword(char c);
 int         is_quoted(char c);
 int         is_whitespace(char c);
@@ -125,7 +123,9 @@ int         is_special_op(char c);
 int         is_metecharacter(int type);
 int         white_space(t_data *data, char *lexem);
 int         quotes(t_data *data, char *lexem, char type);
+int         quotes_size(char *lexem, char type);
 int         expand(t_data *data, char *lexem);
+int         expand_size(char *lexem);
 int         keyword(t_data *data, char *lexem);
 int         special_op(t_data *data, char *lexem, int type);
 void        optype (t_data *data, int type);
@@ -153,14 +153,15 @@ int         free_env_list(t_data *data);
 
 t_tokens    *syntax_analyzer(t_data *data);
 void        analyze_begin_end(t_data *data);
+void        analyze_begin(t_data *data);
+void        analyze_end(t_data *data);
 void        analyze_pipe(t_data *data);
 void        analyze_redirections(t_data *data);
+void        analyze_filename(t_data *data);
 int         analyze_quotes(t_data *data);
 int         quotes_syntax(char *lexem, int type);
 void        abs_syntax(t_data *data, int lexem_len, int n_quotes);
-void        analyze_begin(t_data *data, t_tokens *token);
-void        analyze_end(t_data *data, t_tokens *token);
-    
+
 ///////////////////////////////// EXPANDER //////////////////////////////////////
 
 t_tokens    *expander(t_data *data);

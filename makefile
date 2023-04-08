@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+         #
+#    By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 11:15:10 by ahammout          #+#    #+#              #
-#    Updated: 2023/04/08 02:55:57 by zessadqu         ###   ########.fr        #
+#    Updated: 2023/04/08 17:25:43 by ahammout         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,9 @@ SRCS = 	srcs/main.c \
 		srcs/free_tools.c \
 		srcs/parsing/tools.c \
 		srcs/parsing/lexer/lexer.c \
-		srcs/parsing/lexer/lexer_check_tools.c \
-		srcs/parsing/lexer/lexer_tools.c \
+		srcs/parsing/lexer/lexer_tools1.c \
+		srcs/parsing/lexer/lexer_tools2.c \
+		srcs/parsing/lexer/lexer_tools3.c \
 		srcs/parsing/lexer/lexer_quotes.c \
 		srcs/parsing/environment/set_environment.c \
 		srcs/parsing/environment/set_environment_beta.c \

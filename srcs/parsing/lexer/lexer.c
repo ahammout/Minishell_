@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 03:31:28 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 16:04:11 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 17:41:08 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,7 @@ int	expand(t_data *data, char *lexem)
 
 	ref.i = 0;
 	ref.j = 0;
-	ref.l = 0;
-	while (lexem[ref.l] == EXPAND_ || lexem[ref.l] == '@' \
-		|| lexem[ref.l] == '*')
-		ref.l++;
-	while (ft_isalpha(lexem[ref.l]) || ft_isdigit(lexem[ref.l]) \
-		|| lexem[ref.l] == '_' || lexem[ref.l] == '?')
-		ref.l++;
-	data->tokens->lex = malloc(sizeof(char) * (ref.l + 1));
+	data->tokens->lex = malloc(sizeof(char) * (expand_size(lexem) + 1));
 	if (!data->tokens->lex)
 		exit_minishell(data, "Minishell: Allocation failed.");
 	while (lexem[ref.i] == EXPAND_ || lexem[ref.i] == '@' \
@@ -82,23 +75,6 @@ int	expand(t_data *data, char *lexem)
 		data->tokens->attach = 1;
 	data->tokens->type = EXPAND_;
 	return (ref.i);
-}
-
-int	quotes_size(char *lexem, char type)
-{
-	int	s;
-	int q;
-
-	s = 0;
-	while (lexem[s])
-	{
-		if (lexem[s] == type)
-			q++;
-		s++;
-		if (q == 2)
-			break;
-	}
-	return (s);
 }
 
 int	quotes(t_data *data, char *lexem, char type)
@@ -120,10 +96,11 @@ int	quotes(t_data *data, char *lexem, char type)
 			quote++;
 		data->tokens->lex[ref.j++] = lexem[ref.i++];
 		if (quote == 2)
-			break;
+			break ;
 	}
 	data->tokens->lex[ref.j] = '\0';
-	if (is_quoted(lexem[ref.i]) || lexem[ref.i] == EXPAND_ || is_keyword(lexem[ref.i]))
+	if (is_quoted(lexem[ref.i]) || lexem[ref.i] == EXPAND_ \
+		|| is_keyword(lexem[ref.i]))
 		data->tokens->attach = 1;
 	data->tokens->type = type;
 	return (ref.i);
@@ -132,29 +109,28 @@ int	quotes(t_data *data, char *lexem, char type)
 t_tokens	*lexer(t_data *data)
 {
 	t_tokens	*head;
-	int			add_node;
-	int			i;
-	
+	t_ref		ref;
+
 	head = NULL;
 	if (white_check (data->buffer))
 	{
-		i = 0;
-		add_node = 0;
+		ref.i = 0;
+		ref.l = 0;
 		init_tokens_list(data);
 		head = data->tokens;
-		while (data->buffer[i] && white_check (data->buffer + i))
+		while (data->buffer[ref.i] && white_check (data->buffer + ref.i))
 		{
-			create_new_node(data, &add_node);
-			while (is_whitespace(data->buffer[i]))
-				i++;
-			if (is_quoted(data->buffer[i]))
-				i += quotes(data, data->buffer + i, data->buffer[i]);
-			else if (data->buffer[i] == EXPAND_)
-				i += expand(data, data->buffer + i);
-			else if (is_keyword(data->buffer[i]))
-				i += keyword(data, data->buffer + i);
-			else if (is_special_op(data->buffer[i]))
-				i += special_op(data, data->buffer + i, data->buffer[i]);
+			create_new_node(data, &ref.l);
+			while (is_whitespace(data->buffer[ref.i]))
+				ref.i++;
+			if (is_quoted(data->buffer[ref.i]))
+				ref.i += quotes(data, data->buffer + ref.i, data->buffer[ref.i]);
+			else if (data->buffer[ref.i] == EXPAND_)
+				ref.i += expand(data, data->buffer + ref.i);
+			else if (is_keyword(data->buffer[ref.i]))
+				ref.i += keyword(data, data->buffer + ref.i);
+			else if (is_special_op(data->buffer[ref.i]))
+				ref.i += special_op(data, data->buffer + ref.i, data->buffer[ref.i]);
 		}
 	}
 	free(data->buffer);

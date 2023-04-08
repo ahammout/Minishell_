@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 03:29:45 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 14:27:04 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 20:22:16 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(int ac, char **av, char **envp)
 {
 	t_data	data;
 
-	//atexit(ee);
+	// atexit(ee);
 	(void)**av;
 	{
 		set_environment(&data, envp);
@@ -64,7 +64,6 @@ int	main(int ac, char **av, char **envp)
 			data.cmds = parser(&data);
 			if (data.cmds)
 				cmd_call(&data);
-			//display_cmds(data.cmds);
 		}
 	}
 	return (0);
