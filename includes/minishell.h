@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 14:17:42 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 17:58:29 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ typedef struct  s_data
     char        *err;
     t_pipe      *pipex;
     char        path[PATH_MAX];
+    char        *path_;
     int         heredoc;
 }               t_data;
 

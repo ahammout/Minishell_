@@ -6,7 +6,7 @@
 #    By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 11:15:10 by ahammout          #+#    #+#              #
-#    Updated: 2023/04/08 02:55:57 by zessadqu         ###   ########.fr        #
+#    Updated: 2023/04/08 20:06:45 by zessadqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,10 @@ CC = gcc -fsanitize=address
 READLINEFLAG =   -lreadline 
 
 LIBFT = libft/libft.a
+
+LFLAGS = -L /Users/zessadqu/homebrew/Cellar/readline/8.2.1/lib
+
+IFLAGS = -I /Users/zessadqu/homebrew/Cellar/readline/8.2.1/include
 
 INCLUDES = includes/minishell.h
 
@@ -66,8 +70,8 @@ SRCS = 	srcs/main.c \
 		
 OBJS = $(SRCS:.c=.o)
 
-%.o : %.c $(INCLUDES) -lreadline
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+%.o : %.c $(INCLUDES) -lreadline $(LFLAGS) $(IFLAGS)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(LFLAGS) $(IFLAGS) -c $< -o $@
 
 all : $(NAME)
 
