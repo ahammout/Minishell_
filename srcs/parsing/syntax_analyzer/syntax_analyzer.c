@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_analyzer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 18:12:24 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/06 22:26:58 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 03:15:52 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,17 @@ void    analyze_redirections(t_data *data)
         {
             token = data->tokens;
             if (token->lenght > 2)
+            {
                 data->err = ft_strdup("Minishell: syntax error near unexpected token `newline'");
+                if (data->tokens->type == HEREDOC)
+                    data->heredoc = 0;
+            }
+            if (token->type == HEREDOC && token->next->type != KEYWORD)
+            {
+                data->err = ft_strjoin("Minishell: syntax error near unexpected token `", token->next->lex);
+                data->err = ft_strjoin_free1(data->err, "'");
+                data->heredoc = 0;
+            }
             token = token->next;
             if (!token && !data->err)
                 data->err = ft_strdup("Minishell: syntax error near unexpected token `newline'");

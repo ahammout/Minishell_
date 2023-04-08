@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/07 23:38:42 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 01:45:05 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ enum
     SEMICOLONE = ';',
     AND = '&',
     EMPTY = 0,
-    KEYWORD = -1,
+    KEYWORD = 1,
+    INVALID = -1,
 };
 
 typedef struct  s_ref
@@ -254,6 +255,7 @@ void	free_env(t_env *env);
 /////////////////////////////////// TOOLS //////////////////////////////////
 
 void            exit_minishell(t_data *data, char *err);
+char            *ft_strdup_free(char *s1);
 void            free_data(t_data *data);
 void            generate_error(t_data *data);
 int             white_check(char *str);

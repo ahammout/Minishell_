@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_check_tools.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:46:54 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/06 22:27:14 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 03:14:39 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void optype(t_data *data, int type)
         data->tokens->type = APPEND;
     else if (data->tokens->lenght == 1 && type == REDIN)
         data->tokens->type = REDIN;
-    else if (type == REDIN && (data->tokens->lenght > 1 && data->tokens->lenght <= 2))
+    else if (data->tokens->lenght > 1 && type == REDIN)
     {
         data->heredoc = 1;
         data->tokens->type = HEREDOC;

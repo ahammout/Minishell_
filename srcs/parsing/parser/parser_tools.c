@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 18:59:47 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/07 15:47:27 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/08 02:01:27 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void    display_cmds(t_exec *cmds)
             }
         }
         printf("\n");
+        if (cmds->cmd_status)
+            printf("* CMD status: %s\n", cmds->cmd_status);
         printf("* Input FD: %d\n", cmds->in_file);
         printf("* Output FD: %d\n\n", cmds->out_file);
         cmds = cmds->next;

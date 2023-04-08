@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/07 23:47:10 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/08 02:02:00 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	main(int ac, char **av, char **envp)
 			data.cmds = parser(&data);
 			if (data.cmds)
 				cmd_call(&data);
-			display_cmds(data.cmds);
+			// display_cmds(data.cmds);
 		}
 	}
 	return (0);
