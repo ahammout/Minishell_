@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utiles_04.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 06:43:28 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/09 02:02:21 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/09 15:12:10 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	check_bash(char *path, t_exec *exc, char **envp)
 void	free_env(t_env *env)
 {
 	t_env	*tmp;
-	
+
 	while (env)
 	{
 		free(env->name);
@@ -73,7 +73,7 @@ void	is_empty(t_data *data, t_exec *exec)
 
 	i = 0;
 	if (!exec->str)
-		return;
+		return ;
 	if (exec->str[0][0] == '\0')
 		is_no_cmd(data, exec);
 }

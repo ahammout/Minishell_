@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:46:44 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/09 15:30:45 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/09 15:31:18 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ignore_signal(void)
 
 	sa.sa_handler = SIG_IGN;
 	sigaction(SIGINT, &sa, NULL);
-	sigaction(SIGQUIT, &sa, NULL);
 }
 
 static void	signals_router(int signal, siginfo_t *siginfo, void *content)
@@ -43,5 +42,4 @@ void	signals_handler(void)
 	sa.sa_sigaction = &signals_router;
 	rl_catch_signals = 0;
 	sigaction(SIGINT, &sa, NULL);
-	// sigaction(SIGQUIT, &sa, NULL);
 }

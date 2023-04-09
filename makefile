@@ -6,14 +6,14 @@
 #    By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 11:15:10 by ahammout          #+#    #+#              #
-#    Updated: 2023/04/09 15:30:38 by ahammout         ###   ########.fr        #
+#    Updated: 2023/04/09 15:31:24 by ahammout         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # -fsanitize=address
-CC = gcc -fsanitize=address
+CC = cc #-fsanitize=address
 
-# CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g
 
 READLINEFLAG =   -lreadline 
 

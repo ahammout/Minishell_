@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:37:04 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 02:22:25 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 15:25:01 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	export0(t_data *data)
 
 	tmp = sort_environment(data);
 	head = tmp;
-	   while (head)
+	while (head)
 	{
 		ft_putstr_fd("declare -x ", data->cmds->out_file);
 		ft_putstr_fd(head->name, data->cmds->out_file);
@@ -41,7 +41,7 @@ void	export0(t_data *data)
 		{
 			ft_putstr_fd("=\"", data->cmds->out_file);
 			ft_putstr_fd(head->value, data->cmds->out_file);
-			ft_putstr_fd("\"",data->cmds->out_file); 
+			ft_putstr_fd("\"", data->cmds->out_file);
 		}
 		ft_putstr_fd("\n", data->cmds->out_file);
 		head = head->next;
@@ -57,7 +57,7 @@ t_env	*str_to_list(char **envp)
 
 	i = 0;
 	env = NULL;
-    tmp = NULL;
+	tmp = NULL;
 	while (envp[i])
 	{
 		tmp = (t_env *)malloc(sizeof(t_env));

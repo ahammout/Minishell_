@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 20:17:53 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 21:20:51 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 15:02:33 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void	close_fd(t_data	*data)
 
 void	handle_loop(t_vars	pipe, t_data	*data)
 {
-	restore_parent(pipe.std, 0, pipe.pids, data);
+	restore(pipe.std, 0, pipe.pids, data);
 	pipe.status = pipes_redirection(pipe.tmp, pipe.i, data);
 	pipe.pids[pipe.i] = fork();
 	if (pipe.pids[pipe.i] == -1)
 	{
 		perror("fork");
-		restore_parent(pipe.std, 1, pipe.pids, data);
+		restore(pipe.std, 1, pipe.pids, data);
 		g_exit_status = 1;
 		return ;
 	}
@@ -72,8 +72,6 @@ char	*get_path(char *str, t_data *data, int *status)
 	int		i;
 
 	path = ft_getenv(data, "PATH");
-	if (!path)
-		path = ft_strdup("/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin");
 	paths = ft_split(path, ':');
 	if (!paths)
 		return (*status = 1, NULL);

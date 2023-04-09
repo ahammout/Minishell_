@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 02:43:28 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/09 04:12:49 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/09 15:03:04 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ void		close_fd(t_data *data);
 int			pipes_redirection(t_exec *tmp, int i, t_data *data);
 void		exec_pipes(t_exec *exc, t_data *data);
 void		pipe_exe(int *pids, t_data *data, t_exec *tmp, int i);
-void		restore_parent(int *stds, int status, int *pids, t_data *data);
+void		restore(int *stds, int status, int *pids, t_data *data);
 void		handle_fds(t_data *data, int i);
 void		ft_exit(t_exec *cmd);
 void		ft_export(t_data *data, t_exec *cmd);
@@ -202,7 +202,6 @@ void		ignore_signal(void);
 char		*get_path(char *str, t_data *data, int *status);
 void		print_env(t_data *data);
 t_env		*sort_environment(t_data *data);
-void		restore_parent(int *stds, int status, int *pids, t_data *data);
 void		close_fd(t_data *data);
 char		*ft_getenv(t_data *data, char *str);
 int			ft_pwd(t_data *data);

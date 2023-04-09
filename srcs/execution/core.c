@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 21:01:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/09 02:52:20 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 14:47:32 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ void	shell_cmd(t_data *data, char *path, char **tmp)
 
 void	cmd_extra(t_data *data, char *path, char **tmp, int st)
 {
-	if (data->cmds->in_file == -1)
-		return (perror("Minishell"), (void)0);
 	if (path && ft_strncmp(data->cmds->str[0], "./", 2))
 		return (shell_cmd(data, path, tmp), (void)0);
 	else if (st == 3)
@@ -70,22 +68,21 @@ void	cmd_call(t_data *data)
 	int		st;
 
 	i = 0;
-	path = NULL;
-	tmp = NULL;
 	check = count_pps(data->cmds);
-	tmp = list_to_str(data->env);
 	if (check)
 	{
 		data->pipex = malloc(sizeof(t_pipe));
 		data->pipex->p_c = check;
-		return (exec_pipes(data->cmds, data),
-			free_array(tmp), (void)0);
+		return (exec_pipes(data->cmds, data), (void)0);
 	}
+	if (data->cmds->in_file == -1)
+		return (error_display(data->cmds), free_data(data), (void)0);
 	if (!data->cmds->str || !builtin(data, data->cmds))
-		return (free_array(tmp), free_data(data), (void)0);
+		return (free_data(data), (void)0);
 	if (data->cmds->str[0] && data->cmds->str[0][0] == '\0')
-		return (is_empty(data, data->cmds), free_data(data), free_array(tmp), (void)0);
+		return (is_empty(data, data->cmds), free_data(data), (void)0);
 	st = check_file(data->cmds->str[0]);
 	path = get_path(data->cmds->str[0], data, &check);
+	tmp = list_to_str(data->env);
 	return (cmd_extra(data, path, tmp, st), (void)0);
 }
