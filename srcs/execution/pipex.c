@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:06:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 23:25:21 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 01:35:06 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,11 @@ void	pipe_exe(int *pids, t_data *data, t_exec *tmp, int i)
 	{
 		handle_fds(data, i);
 		if (tmp->in_file == -1)
-		{
-			ft_putstr_fd(tmp->cmd_status, 2);
-			ft_putstr_fd("\n", 2);
-			g_exit_status = 1;
-		}
-		else if(tmp->str[0][0] == '\0')
-			is_empty(data, tmp);
+			error_display(tmp);
 		else if (!tmp->str ||!builtin(data, tmp))
 			;
+		else if (tmp->str[0] && tmp->str[0][0] == '\0')
+			is_empty(data, tmp);
 		else
 		{
 			path = get_path(tmp->str[0], data, &status);
