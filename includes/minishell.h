@@ -6,7 +6,11 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/04/08 23:43:46 by ahammout         ###   ########.fr       */
+=======
+/*   Updated: 2023/04/08 23:39:47 by zessadqu         ###   ########.fr       */
+>>>>>>> 4b57db09e3e7d1811f93cb8bd2e612ad2b896270
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -257,6 +261,7 @@ void	free_env(t_env *env);
 t_env	*str_to_list(char **envp);
 void    kill_process(t_vars *pipe, int process);
 void	is_empty(t_data *data, t_exec *exec);
+void	error_display(t_exec *tmp);
 /////////////////////////////////// TOOLS //////////////////////////////////
 
 void            exit_minishell(t_data *data, char *err);

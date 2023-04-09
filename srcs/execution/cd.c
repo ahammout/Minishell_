@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 22:15:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 23:27:50 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 23:43:14 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,10 @@ static int	change_to_directory(t_data *data, char *dir_path)
 	char	*cwd;
 	char	*tmp;
 
-	cwd = NULL;
-	tmp = NULL;
 	cwd = getcwd(data->path, PATH_MAX);
 	tmp = ft_strdup(data->path);
-	if ((!ft_strncmp(dir_path, "..",2)
-			|| !ft_strncmp(dir_path, ".",1)) && cwd == NULL)
+	if ((!ft_strncmp(dir_path, "..", 2)
+			|| !ft_strncmp(dir_path, ".", 1)) && cwd == NULL)
 		return (special_case(data, tmp), free(cwd), 0);
 	if (chdir(dir_path) == -1)
 	{
@@ -109,9 +107,7 @@ static int	change_to_directory(t_data *data, char *dir_path)
 	cwd = getcwd(NULL, PATH_MAX);
 	export1(data, "OLDPWD", data->path, false);
 	export1(data, "PWD", cwd, false);
-	free(tmp);
-	free(cwd);
-	return (0);
+	return (free(tmp), free(cwd), 0);
 }
 
 void	ft_cd(t_data *data)
