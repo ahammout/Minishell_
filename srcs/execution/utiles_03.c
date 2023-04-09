@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 06:32:53 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/07 21:00:45 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 02:52:26 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ extern int	g_exit_status;
 
 void	executable_f(t_data *data, char **tmp)
 {
-	execute_command(data, data->cmds, data->cmds->str[0], tmp);
+	execute_command(data->cmds, data->cmds->str[0], tmp);
 	free_array(tmp);
 	free_data(data);
 }

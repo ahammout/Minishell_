@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:16:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/07 20:59:59 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 02:51:32 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	exec_command(int pid, t_exec *exc, char *path, char **envp)
 	}
 }
 
-void	execute_command(t_data *data, t_exec *exec, char *path, char **envp)
+void	execute_command(t_exec *exec, char *path, char **envp)
 {
 	int		status;
 	int		saved_stdin;

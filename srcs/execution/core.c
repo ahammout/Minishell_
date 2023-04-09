@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 21:01:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/09 01:42:46 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 02:52:20 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	check_file(const char *filename)
 
 void	shell_cmd(t_data *data, char *path, char **tmp)
 {
-	execute_command(data, data->cmds, path, tmp);
+	execute_command(data->cmds, path, tmp);
 	free_array(tmp);
 	free(path);
 	free_data(data);

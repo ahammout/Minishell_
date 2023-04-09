@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:58:36 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 15:50:04 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 02:50:40 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ char	**list_to_str(t_env *env)
 	char	**envp;
 	int		i;
 	t_env	*tmp;
-	char	*tmp2;
 
 	i = 0;
 	tmp = env;

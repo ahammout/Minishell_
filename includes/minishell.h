@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 02:43:28 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/09 02:43:32 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 02:51:50 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,8 +203,7 @@ int			error_in(const char *str);
 void		setLastNode(t_env *env);
 t_env		*find_node(char *str, t_data *data);
 void		ft_unset(t_exec *cmd, t_data *data);
-void		execute_command(t_data *data, t_exec *exec,
-				char *path, char **envp);
+void		execute_command(t_exec *exec, char *path, char **envp);
 void		ignore_signal(void);
 char		*get_path(char *str, t_data *data, int *status);
 void		print_env(t_data *data);
