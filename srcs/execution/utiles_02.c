@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 06:02:03 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 22:54:34 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 01:22:28 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*extract_name(char *str, bool *append)
 	int		i;
 	char	*name;
 
-	i = 1;
+	i = 0;
 	while (str[i] && str[i] != '=')
 		i++;
 	if (str[i] == '=' && check_append(str))
@@ -42,7 +42,7 @@ char	*extract_name(char *str, bool *append)
 	{
 		g_exit_status = 1;
 		ft_putstr_fd("Minishell: export: `", 2);
-		ft_putstr_fd(name, 2);
+		ft_putstr_fd(str, 2);
 		ft_putstr_fd("': not a valid identifier\n", 2);
 		free(name);
 		g_exit_status = 1;
