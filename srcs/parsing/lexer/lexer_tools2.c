@@ -1,45 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer_tools2.c                                     :+:      :+:    :+:   */
+/*   lexer_tools3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 17:26:46 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 21:41:12 by ahammout         ###   ########.fr       */
+/*   Created: 2023/04/08 17:26:40 by ahammout          #+#    #+#             */
+/*   Updated: 2023/04/08 17:26:43 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-int	quotes_size(char *lexem, char type)
+void	optype(t_data *data, int type)
 {
-	int	s;
-	int	q;
-
-	s = 0;
-	q = 0;
-	while (lexem[s])
+	if (data->tokens->lenght == 1 && type == REDOUT)
+		data->tokens->type = REDOUT;
+	else if (data->tokens->lenght > 1 && type == REDOUT)
+		data->tokens->type = APPEND;
+	else if (data->tokens->lenght == 1 && type == REDIN)
+		data->tokens->type = REDIN;
+	else if (data->tokens->lenght > 1 && type == REDIN)
 	{
-		if (lexem[s] == type)
-			q++;
-		s++;
-		if (q == 2)
-			break ;
+		data->heredoc = 1;
+		data->tokens->type = HEREDOC;
 	}
-	return (s);
+	else if (type == PIPE)
+		data->tokens->type = PIPE;
 }
 
-int	expand_size(char *lexem)
+int	is_special_op(char c)
 {
-	int	s;
+	if (c == REDIN || c == REDOUT || c == PIPE)
+		return (1);
+	return (0);
+}
 
-	s = 0;
-	while (lexem[s] == EXPAND_ || lexem[s] == '@' \
-		|| lexem[s] == '*')
-		s++;
-	while (ft_isalpha(lexem[s]) || ft_isdigit(lexem[s]) \
-		|| lexem[s] == '_' || lexem[s] == '?')
-		s++;
-	return (s);
+int	is_whitespace(char c)
+{
+	if ((c == ' ' || c == '\t'))
+		return (1);
+	return (0);
+}
+
+int	is_quoted(char c)
+{
+	if ((c == DQUOTE || c == SQUOTE))
+		return (1);
+	return (0);
+}
+
+int	is_keyword(char c)
+{
+	if (!is_quoted(c) && !is_special_op(c)
+		&& !is_whitespace(c) && c != EXPAND_
+		&& c != '\0')
+		return (1);
+	return (0);
 }

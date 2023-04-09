@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 03:29:45 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/09 02:50:00 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 04:04:03 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
 int g_exit_status ;
-void ee()
-{
-	system("leaks minishell");
-}
+// void ee()
+// {
+// 	system("leaks minishell");
+// }
 
 int init_data(t_data *data)
 {
-	data->buffer = NULL;
+	data->line = NULL;
 	data->err = NULL;
 	data->tokens = NULL;
 	data->cmds = NULL;
@@ -35,14 +35,14 @@ void	read_line(t_data *data)
 	buffer_size = 0;
 	while (!buffer_size)
 	{
-		data->buffer = readline("(minishell@Developers)$> ");
-		if (!data->buffer)
+		data->line = readline("(minishell@Developers)$> ");
+		if (!data->line)
 		{
 			g_exit_status = 2;
 			ft_putstr_fd("exit\n", 1);
 			exit_minishell(data, NULL);
 		}
-		buffer_size = ft_strlen(data->buffer);
+		buffer_size = ft_strlen(data->line);
 	}
 }
 
@@ -50,7 +50,7 @@ int	main(int ac, char **av, char **envp)
 {
 	t_data	data;
 
-	atexit(ee);
+	// atexit(ee);
 	(void)ac;
 	(void)**av;
 	{
@@ -60,7 +60,7 @@ int	main(int ac, char **av, char **envp)
 		{
 			signals_handler();
 			read_line(&data);
-			add_history(data.buffer);
+			add_history(data.line);
 			data.cmds = parser(&data);
 			if (data.cmds)
 				cmd_call(&data);

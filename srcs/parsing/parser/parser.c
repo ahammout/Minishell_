@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 23:51:17 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/09 00:14:29 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/09 05:23:56 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*join_arguments(t_data *data)
 	char	*arg;
 
 	arg = ft_strdup("");
-	while (data->tokens->attach)
+	while (data->tokens && data->tokens->attach)
 	{
 		if (data->tokens->type != EMPTY)
 			arg = ft_strjoin_free1(arg, data->tokens->lex);
@@ -70,19 +70,40 @@ void	command_arguments_handler(t_data *data)
 	data->cmds->str = str;
 }
 
+void display_tokens(t_tokens *token)
+{
+	t_tokens *head;
+	int n;
+
+	head = token;
+	n = 0;
+	while (head != NULL)
+	{
+		printf("---- Node %d ----\n", n);
+		printf("Lexeme: %s\n", head->lex);
+		printf("Type: %d\n\n", head->type);
+		printf("Countinu: %d\n", head->attach);
+		// printf("---- Previous Node ----\n");
+		// printf("Lexeme: %s\n", head->prev->lex);
+		// printf("Type: %d\n\n", head->prev->type);
+		n++;
+		head = head->next;
+	}
+}
+
 t_exec	*tokens_to_cmds(t_data *data)
 {
-	t_tokens	*tmp;
+	t_tokens	*ptr;
 	t_exec		*head;
 
 	init_cmds_list(data);
 	head = data->cmds;
-	tmp = data->tokens;
+	ptr = data->tokens;
 	while (data->tokens)
 	{
 		if (!redirections_handler(data))
 		{
-			data->tokens = tmp;
+			data->tokens = ptr;
 			data->cmds = head;
 			return (free_data(data), (void *)0);
 		}
@@ -91,7 +112,7 @@ t_exec	*tokens_to_cmds(t_data *data)
 			next_cmd(data);
 	}
 	data->cmds = head;
-	data->tokens = tmp;
+	data->tokens = ptr;
 	free_tokens_list(data);
 	return (head);
 }

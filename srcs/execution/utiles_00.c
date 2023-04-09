@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 05:36:49 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 18:02:49 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/09 04:58:28 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ char	*ft_strjoin_free1(char *s1, char *s2)
 	}
 	str[i] = '\0';
 	free(s1);
-	s1 = NULL;
 	return (str);
 }
 

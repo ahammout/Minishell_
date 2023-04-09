@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_tools.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 03:26:45 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 16:11:57 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 04:06:14 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	free_data(t_data *data)
 
 void	exit_minishell(t_data *data, char *err)
 {
-	if (data->buffer)
-		free(data->buffer);
+	if (data->line)
+		free(data->line);
 	free_env_list(data);
 	free_tokens_list(data);
 	free_cmds_list(data);

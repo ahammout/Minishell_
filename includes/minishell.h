@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 02:43:28 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/09 02:51:50 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 04:12:49 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ typedef struct s_data
 {
 	char		**envp_;
 	t_env		*env;
-	char		*buffer;
+	char		*line;
 	t_tokens	*tokens;
 	t_exec		*cmds;
 	int			check;
@@ -133,9 +133,6 @@ int			free_tokens_list(t_data *data);
 void		cmd_call(t_data *data);
 int			count_pps(t_exec	*exec);
 void		updt_shlvl(t_data *data);
-
-///////////////////////////////// ENVIRONMENT /////////////////////////////////
-
 void		set_environment(t_data *data, char **envp);
 void		set_environment_beta(t_data *data);
 void		init_env_list(t_data *data, char **envp);
@@ -143,9 +140,6 @@ void		add_node(t_data *data, int *new_node);
 int			fill_name(t_data *data, char *envp);
 int			fill_value(t_data *data, char *envp);
 int			free_env_list(t_data *data);
-
-///////////////////////////////// SYNTAX ANALYZER //////////////////////////////
-
 t_tokens	*syntax_analyzer(t_data *data);
 void		analyze_begin_end(t_data *data);
 void		analyze_begin(t_data *data);
