@@ -6,11 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/09 01:49:30 by ahammout         ###   ########.fr       */
-=======
-/*   Updated: 2023/04/09 01:50:34 by zessadqu         ###   ########.fr       */
->>>>>>> 584a8c1957ec2bf2cae69f13b7bf6a0b43d65d83
+/*   Updated: 2023/04/09 02:02:00 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,7 +229,7 @@ void	cmd_extra(t_data *data, char *path, char **tmp, int st);
 void	mini_execve(char *path, t_exec *tmp, char **envp, int i);
 void	close_fds(t_data *data);
 void	file_checker(char *path, t_data *data, t_exec *tmp, char **envp);
-int	check_append(char *str);
+int	    check_append(char *str);
 char	*extract_name(char *str, bool *append);
 char	*extract_value(char *str);
 t_env	*find_env_node(t_env *env, const char *name);

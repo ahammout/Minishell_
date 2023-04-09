@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utiles_04.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 06:43:28 by zessadqu          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/08 23:39:30 by zessadqu         ###   ########.fr       */
-=======
-/*   Updated: 2023/04/09 01:34:04 by zessadqu         ###   ########.fr       */
->>>>>>> 7ee4a774096231491bee4b55f99abeb926e1152e
+/*   Updated: 2023/04/09 02:02:21 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +65,6 @@ void	free_env(t_env *env)
 		env = env->next;
 		free(tmp);
 	}
-}
-
-void	error_display(t_exec *tmp)
-{
-	ft_putstr_fd(tmp->cmd_status, 2);
-	ft_putstr_fd("\n", 2);
-	g_exit_status = 1;
 }
 
 void	is_empty(t_data *data, t_exec *exec)
