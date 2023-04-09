@@ -6,7 +6,11 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/04/09 01:49:30 by ahammout         ###   ########.fr       */
+=======
+/*   Updated: 2023/04/09 01:50:34 by zessadqu         ###   ########.fr       */
+>>>>>>> 584a8c1957ec2bf2cae69f13b7bf6a0b43d65d83
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,9 +138,7 @@ int         free_tokens_list(t_data *data);
 void        cmd_call(t_data *data);
 int         count_pps(t_exec	*exec);
 void        updt_shlvl(t_data *data);
-
 ///////////////////////////////// ENVIRONMENT /////////////////////////////////
-
 void        set_environment(t_data *data, char **envp);
 void        set_environment_beta(t_data *data);
 void        init_env_list(t_data *data, char **envp);
@@ -144,9 +146,7 @@ void        add_node(t_data *data, int *new_node);
 int         fill_name(t_data *data, char *envp);
 int         fill_value(t_data *data, char *envp);
 int         free_env_list(t_data *data);
-
 ///////////////////////////////// SYNTAX ANALYZER //////////////////////////////
-
 t_tokens    *syntax_analyzer(t_data *data);
 void        analyze_begin_end(t_data *data);
 void        analyze_begin(t_data *data);
