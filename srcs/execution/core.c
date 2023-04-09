@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 21:01:09 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 23:18:39 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 01:42:46 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ void	cmd_call(t_data *data)
 		return (exec_pipes(data->cmds, data),
 			free_array(tmp), (void)0);
 	}
-	if (data->cmds->str[0][0] == '\0')
-		return (is_empty(data, data->cmds), free_data(data), free_array(tmp), (void)0);
 	if (!data->cmds->str || !builtin(data, data->cmds))
 		return (free_array(tmp), free_data(data), (void)0);
+	if (data->cmds->str[0] && data->cmds->str[0][0] == '\0')
+		return (is_empty(data, data->cmds), free_data(data), free_array(tmp), (void)0);
 	st = check_file(data->cmds->str[0]);
 	path = get_path(data->cmds->str[0], data, &check);
 	return (cmd_extra(data, path, tmp, st), (void)0);
