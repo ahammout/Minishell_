@@ -6,15 +6,15 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:25:51 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/03 02:14:01 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/09 02:11:40 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_nbrlen(int nbr)
+int	ft_nbrlen(int nbr)
 {
-	int size;
+	int	size;
 
 	size = 0;
 	if (nbr <= 0)
@@ -27,10 +27,10 @@ int ft_nbrlen(int nbr)
 	return (size);
 }
 
-char *ft_itoa(int nbr)
+char	*ft_itoa(int nbr)
 {
-	int size;
-	char *str;
+	int		size;
+	char	*str;
 
 	size = ft_nbrlen(nbr);
 	str = malloc(sizeof(char) * size + 1);

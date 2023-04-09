@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 12:55:29 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/03 02:14:57 by ahammout         ###   ########.fr       */
+/*   Created: 2023/04/09 02:17:27 by ahammout          #+#    #+#             */
+/*   Updated: 2023/04/09 02:17:29 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ char	*ft_strchr(const char *s, int c);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcpy(char *dst, const char *src, size_t len);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-int     ft_strcmp(const char *s1, const char *s2);
-char    *ft_strnstr(const char *haystack, const char *needle, size_t len);
+int		ft_strcmp(const char *s1, const char *s2);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strrchr(const char *s, int c);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
@@ -46,8 +46,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
-char    *ft_itoa(int nbr);
-char    *ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char	*ft_itoa(int nbr);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f) (unsigned int, char*));
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
