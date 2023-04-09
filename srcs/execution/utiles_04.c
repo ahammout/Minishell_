@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 06:43:28 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 23:16:37 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 23:39:30 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,11 @@ void	free_env(t_env *env)
 	}
 }
 
-void kill_process(t_vars *pipe, int process)
+void	error_display(t_exec *tmp)
 {
-	int i;
-
-	i = 0;
-	while (i < process)
-	{
-		kill(pipe->pids[i], SIGKILL);
-		i++;
-	}
-	return;
+	ft_putstr_fd(tmp->cmd_status, 2);
+	ft_putstr_fd("\n", 2);
+	g_exit_status = 1;
 }
 
 void	is_empty(t_data *data, t_exec *exec)

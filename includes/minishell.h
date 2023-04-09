@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 23:13:43 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 23:39:47 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -257,6 +257,7 @@ void	free_env(t_env *env);
 t_env	*str_to_list(char **envp);
 void    kill_process(t_vars *pipe, int process);
 void	is_empty(t_data *data, t_exec *exec);
+void	error_display(t_exec *tmp);
 /////////////////////////////////// TOOLS //////////////////////////////////
 
 void            exit_minishell(t_data *data, char *err);
