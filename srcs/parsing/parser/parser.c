@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 23:51:17 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/09 05:23:56 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/09 15:03:45 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,27 +70,6 @@ void	command_arguments_handler(t_data *data)
 	data->cmds->str = str;
 }
 
-void display_tokens(t_tokens *token)
-{
-	t_tokens *head;
-	int n;
-
-	head = token;
-	n = 0;
-	while (head != NULL)
-	{
-		printf("---- Node %d ----\n", n);
-		printf("Lexeme: %s\n", head->lex);
-		printf("Type: %d\n\n", head->type);
-		printf("Countinu: %d\n", head->attach);
-		// printf("---- Previous Node ----\n");
-		// printf("Lexeme: %s\n", head->prev->lex);
-		// printf("Type: %d\n\n", head->prev->type);
-		n++;
-		head = head->next;
-	}
-}
-
 t_exec	*tokens_to_cmds(t_data *data)
 {
 	t_tokens	*ptr;
@@ -116,7 +95,6 @@ t_exec	*tokens_to_cmds(t_data *data)
 	free_tokens_list(data);
 	return (head);
 }
-
 ////////////////////////////////// PARSE_LINE //////////////////////////////
 
 t_exec	*parser(t_data *data)
@@ -126,9 +104,7 @@ t_exec	*parser(t_data *data)
 		if (syntax_analyzer(data))
 		{
 			if (expander(data))
-			{
 				return (tokens_to_cmds(data));
-			}
 		}
 	}
 	return (0);

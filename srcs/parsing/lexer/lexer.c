@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 03:31:28 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/09 04:08:49 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/09 15:00:55 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	keyword(t_data *data, char *lexem)
 void	tokenize_line(t_data *data)
 {
 	int	i;
-	int add_node;
+	int	add_node;
 
 	i = 0;
 	add_node = 0;
