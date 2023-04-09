@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 03:29:45 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 23:22:27 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 00:32:01 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	read_line(t_data *data)
 	while (!buffer_size)
 	{
 		data->buffer = readline("(minishell@Developers)$> ");
-		//printf("The buffer is: %s", data->buffer);
 		if (!data->buffer)
 		{
 			g_exit_status = 2;
@@ -51,7 +50,7 @@ int	main(int ac, char **av, char **envp)
 {
 	t_data	data;
 
-	//atexit(ee);
+	atexit(ee);
 	(void)**av;
 	{
 		set_environment(&data, envp);
