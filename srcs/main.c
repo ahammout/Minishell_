@@ -3,33 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 03:29:45 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/09 15:27:17 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 17:46:34 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-// void display_cmds(t_exec *cmds)
-// {
-// 	t_exec *tmp;
-
-// 	tmp = cmds;
-// 	while (tmp)
-// 	{
-// 		printf(" fd   in %d\n ", tmp->in_file);
-// 		printf(" fd   out %d\n ", tmp->out_file);
-// 		tmp = tmp->next;
-// 	}
-// }
 int	g_exit_status ;
-
-void	ee(void)
-{
-	system("leaks minishell");
-}
 
 int	init_data(t_data *data)
 {
@@ -52,7 +35,7 @@ void	read_line(t_data *data)
 		if (!data->line)
 		{
 			g_exit_status = 2;
-			ft_putstr_fd("exit\n", 1);
+			ft_putstr_fd("\nexit\n", 1);
 			exit_minishell(data, NULL);
 		}
 		buffer_size = ft_strlen(data->line);
@@ -63,7 +46,6 @@ int	main(int ac, char **av, char **envp)
 {
 	t_data	data;
 
-	atexit(ee);
 	(void)ac;
 	(void)**av;
 	set_environment(&data, envp);

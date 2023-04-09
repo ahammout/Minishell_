@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_analyzer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:46:56 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/09 14:49:19 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 17:43:05 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	analyze_redirections(t_data *data)
 			{
 				data->err = ft_strdup("Minishell: syntax error near `");
 				data->err = ft_strjoin_free1(data->err, "newline'");
-				if (data->tokens->type == HEREDOC)
+				if (data->err && data->heredoc)
 					data->heredoc = 0;
 			}
 			analyze_filename(data);
@@ -39,6 +39,8 @@ void	analyze_pipe(t_data *data)
 		{
 			data->err = ft_strdup("Minishell: syntax error near `");
 			data->err = ft_strjoin_free1(data->err, "|'");
+			if (data->err && data->heredoc)
+				data->heredoc = 0;
 		}
 	}
 }
@@ -73,7 +75,7 @@ t_tokens	*syntax_analyzer(t_data *data)
 		data->tokens = data->tokens->next;
 	}
 	data->tokens = head;
-	if (data->err && !data->heredoc)
+	if (data->err)
 		return (generate_error(data), free_data(data), (void *)0);
 	return (head);
 }

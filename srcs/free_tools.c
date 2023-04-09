@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 03:26:45 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/09 04:06:14 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/09 15:39:30 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,10 @@ int	free_env_list(t_data *data)
 
 	while (data->env)
 	{
-		free(data->env->name);
-		free(data->env->value);
+		if (data->env->name)
+			free(data->env->name);
+		if (data->env->value)
+			free(data->env->value);
 		tmp = data->env;
 		data->env = data->env->next;
 		free(tmp);
