@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:46:44 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/08 21:11:12 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 02:33:50 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	signals_router(int signal, siginfo_t *siginfo, void *content)
 		g_exit_status = 130;
 		ft_putstr_fd("\n", 1);
 		rl_on_new_line();
-		//rl_replace_line("", 0);
+		rl_replace_line("", 0);
 		rl_redisplay();
 	}
 }
@@ -41,7 +41,7 @@ void	signals_handler(void)
 
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = &signals_router;
-	//rl_catch_signals = 0;
+	rl_catch_signals = 0;
 	sigaction(SIGINT, &sa, NULL);
 	// sigaction(SIGQUIT, &sa, NULL);
 }

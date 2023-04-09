@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+         #
+#    By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 11:15:10 by ahammout          #+#    #+#              #
-#    Updated: 2023/04/09 01:50:29 by ahammout         ###   ########.fr        #
+#    Updated: 2023/04/09 02:41:52 by zessadqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,7 @@ READLINEFLAG =   -lreadline
 
 LIBFT = libft/libft.a
 
-LFLAGS = -L /Users/zessadqu/homebrew/Cellar/readline/8.2.1/lib
-
-IFLAGS = -I /Users/zessadqu/homebrew/Cellar/readline/8.2.1/include
+READLINE=$(shell brew --prefix readline)
 
 INCLUDES = includes/minishell.h
 
@@ -71,14 +69,14 @@ SRCS = 	srcs/main.c \
 		
 OBJS = $(SRCS:.c=.o)
 
-%.o : %.c $(INCLUDES) -lreadline $(LFLAGS) $(IFLAGS)
-	@$(CC) $(CFLAGS) $(INCLUDES) $(LFLAGS) $(IFLAGS) -c $< -o $@
+%.o : %.c $(INCLUDES) -lreadline 
+	@$(CC) $(CFLAGS) $(INCLUDES) -I $(READLINE)/include -c $< -o $@
 
 all : $(NAME)
 
 $(NAME) : $(OBJS) $(INCLUDES)
 	@make -C libft
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(READLINEFLAG)  -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(READLINEFLAG) -lreadline -L $(READLINE)/lib  -o $(NAME)
 
 clean :
 	@make clean -C libft
