@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:14:55 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 18:12:25 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/09 15:17:01 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	unset_last_node(t_env *env)
 	tmp->next = NULL;
 }
 
-// Find the node in the linked list with the given name and return it, or NULL if not found
 static t_env	*find_env_node_unset(char *name, t_data *data)
 {
 	t_env	*env;
@@ -55,7 +54,6 @@ static t_env	*find_env_node_unset(char *name, t_data *data)
 	return (NULL);
 }
 
-// Free the memory allocated for an environment node
 void	free_env_node(t_env *node)
 {
 	free(node->name);
@@ -64,7 +62,6 @@ void	free_env_node(t_env *node)
 	free(node);
 }
 
-// Remove environment variables specified in the command
 void	ft_unset(t_exec *cmd, t_data *data)
 {
 	int		i;

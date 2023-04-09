@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 03:29:45 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/09 15:06:03 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 15:27:17 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,14 @@
 // 		tmp = tmp->next;
 // 	}
 // }
-int g_exit_status ;
-void ee()
+int	g_exit_status ;
+
+void	ee(void)
 {
 	system("leaks minishell");
 }
 
-int init_data(t_data *data)
+int	init_data(t_data *data)
 {
 	data->line = NULL;
 	data->err = NULL;
@@ -62,7 +63,7 @@ int	main(int ac, char **av, char **envp)
 {
 	t_data	data;
 
-	 atexit(ee);
+	atexit(ee);
 	(void)ac;
 	(void)**av;
 	set_environment(&data, envp);

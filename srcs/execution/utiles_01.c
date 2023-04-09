@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 05:45:32 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/07 17:18:05 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 15:12:53 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,19 +97,19 @@ void	handle_fds(t_data *data, int i)
 	while (j < data->pipex->p_c)
 	{
 		if (j + 1 != i || i == 0)
-			close(data->pipex->p_fd[j][0]); // Close read end
+			close(data->pipex->p_fd[j][0]);
 		if (i == data->pipex->p_c || i != j)
-			close(data->pipex->p_fd[j][1]); // Close write end
+			close(data->pipex->p_fd[j][1]);
 		j++;
 	}
 	if (i != 0)
 	{
-		dup2(data->pipex->p_fd[i - 1][0], 0); // Duplicate read end of previous process's pipe
-		close(data->pipex->p_fd[i - 1][0]); // Close original read end fd
+		dup2(data->pipex->p_fd[i - 1][0], 0);
+		close(data->pipex->p_fd[i - 1][0]);
 	}
 	if (i != data->pipex->p_c)
 	{
-		dup2(data->pipex->p_fd[i][1], 1); // Duplicate write end of current process's pipe
-		close(data->pipex->p_fd[i][1]); // Close original write end fd
+		dup2(data->pipex->p_fd[i][1], 1);
+		close(data->pipex->p_fd[i][1]);
 	}
 }
