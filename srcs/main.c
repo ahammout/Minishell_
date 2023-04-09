@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 03:29:45 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/09 17:52:12 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 17:54:00 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	read_line(t_data *data)
 		if (!data->line)
 		{
 			g_exit_status = 2;
-			ft_putstr_fd("\nexit\n", 1);
+			ft_putstr_fd("exit\n", 1);
 			exit_minishell(data, NULL);
 		}
 		buffer_size = ft_strlen(data->line);

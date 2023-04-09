@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 02:09:12 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/09 17:50:22 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 17:54:37 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,3 @@ void	set_environment_beta(t_data *data)
 		= ft_strdup("/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin");
 	data->env->next->next->next->next = NULL;
 }
-
