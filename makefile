@@ -3,17 +3,16 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+         #
+#    By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 11:15:10 by ahammout          #+#    #+#              #
-#    Updated: 2023/04/09 17:48:57 by ahammout         ###   ########.fr        #
+#    Updated: 2023/04/09 18:54:14 by zessadqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# -fsanitize=address
-CC = gcc -fsanitize=address
+CC = cc
 
-# CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 READLINEFLAG =   -lreadline 
 

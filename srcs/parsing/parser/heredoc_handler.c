@@ -6,13 +6,13 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 23:49:05 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/09 17:41:01 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 18:41:08 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-void	heredoc_action(t_data *data, int status, int fd[2])
+int	heredoc_action(t_data *data, int status, int fd[2])
 {
 	if (status == 0)
 	{
@@ -28,9 +28,9 @@ void	heredoc_action(t_data *data, int status, int fd[2])
 		g_exit_status = 1;
 		close(fd[0]);
 		close(fd[1]);
-		free_data(data);
-		main(1, NULL, list_to_str(data->env));
+		return (0);
 	}
+	return (1);
 }
 
 void	heredoc_sig_handler(int sig)
@@ -79,8 +79,7 @@ int	heredoc_handler(t_data *data)
 	if (pid == 0)
 		read_input(data, fd);
 	waitpid(pid, &status, 0);
-	heredoc_action(data, status, fd);
-	if (data->err)
-		return (generate_error(data), 0);
+	if (!heredoc_action(data, status, fd))
+		return (0);
 	return (1);
 }
