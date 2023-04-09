@@ -6,25 +6,16 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 18:23:06 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 22:46:26 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/08 23:45:13 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-char *inclosed_quotes(char *input)
+void	abs_syntax(t_data *data, int lexem_len, int n_quotes)
 {
-	char *error;
-
-	error = ft_strjoin("Minishell: ", input);
-	error = ft_strjoin (error, ": Inclosed quotes.");
-	return (error);
-}
-
-void    abs_syntax(t_data *data, int lexem_len, int n_quotes)
-{
-	t_ref   ref;
-	char    *lexem;
+	t_ref	ref;
+	char	*lexem;
 
 	ref.i = 0;
 	ref.j = 0;
@@ -49,10 +40,19 @@ void    abs_syntax(t_data *data, int lexem_len, int n_quotes)
 	free (lexem);
 }
 
-int quotes_syntax(char *lexem, int type)
+char	*inclosed_quotes(char *input)
 {
-	int i;
-	int n_q;
+	char	*error;
+
+	error = ft_strjoin("Minishell: ", input);
+	error = ft_strjoin (error, ": Inclosed quotes.");
+	return (error);
+}
+
+int	quotes_syntax(t_data *data, char *lexem, int type)
+{
+	int	i;
+	int	n_q;
 
 	i = 0;
 	n_q = 0;
@@ -64,27 +64,28 @@ int quotes_syntax(char *lexem, int type)
 	}
 	if (n_q == 2)
 		return (n_q);
+	else
+		data->err = inclosed_quotes(data->tokens->lex);
 	return (-1);
 }
 
-int analyze_quotes(t_data *data)
+int	analyze_quotes(t_data *data)
 {
-	int n_q;
+	int	n_q;
 
 	if (data->tokens->type == DQUOTE || data->tokens->type == SQUOTE)
 	{
-		n_q = quotes_syntax (data->tokens->lex, data->tokens->type);
-		if (n_q == -1)
-			data->err = inclosed_quotes(data->tokens->lex);
+		n_q = quotes_syntax (data, data->tokens->lex, data->tokens->type);
 		if (!data->err)
 		{
 			abs_syntax(data, ft_strlen(data->tokens->lex), n_q);
 			if (data->tokens->lex)
 			{
-				if (ft_strchr(data->tokens->lex, DQUOTE) || data->tokens->type == SQUOTE \
+				if (ft_strchr(data->tokens->lex, DQUOTE) \
+					|| data->tokens->type == SQUOTE \
 					|| data->tokens->prev->type == HEREDOC)
 				{
-					data->tokens->type = KEYWORD;   
+					data->tokens->type = KEYWORD;
 					return (0);
 				}
 				data->tokens->type = KEYWORD;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 11:14:27 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 23:13:43 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/08 23:43:46 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ void        analyze_pipe(t_data *data);
 void        analyze_redirections(t_data *data);
 void        analyze_filename(t_data *data);
 int         analyze_quotes(t_data *data);
-int         quotes_syntax(char *lexem, int type);
+int         quotes_syntax(t_data *data, char *lexem, int type);
 void        abs_syntax(t_data *data, int lexem_len, int n_quotes);
 
 ///////////////////////////////// EXPANDER //////////////////////////////////////

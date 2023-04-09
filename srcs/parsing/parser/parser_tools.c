@@ -5,21 +5,47 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 18:59:47 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 20:18:30 by ahammout         ###   ########.fr       */
+/*   Created: 2023/04/09 00:15:56 by ahammout          #+#    #+#             */
+/*   Updated: 2023/04/09 00:18:49 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-int is_redirection(int type)
+int	get_size(t_data *data)
+{
+	t_tokens	*tmp;
+	int			size;
+
+	size = 0;
+	if (data->tokens)
+	{
+		tmp = data->tokens;
+		while (tmp && !is_redirection(tmp->type) && tmp->type != PIPE)
+		{
+			if (tmp->type != EMPTY)
+			{
+				if (tmp->attach)
+				{
+					while (tmp->attach)
+						tmp = tmp->next;
+				}
+				size++;
+			}
+			tmp = tmp->next;
+		}
+	}
+	return (size);
+}
+
+int	is_redirection(int type)
 {
 	if (type == REDIN || type == REDOUT || type == APPEND || type == HEREDOC)
 		return (1);
 	return (0);
 }
 
-void init_cmds_list(t_data *data)
+void	init_cmds_list(t_data *data)
 {
 	data->cmds = malloc(sizeof(t_exec));
 	if (!data->cmds)
@@ -31,9 +57,9 @@ void init_cmds_list(t_data *data)
 	data->cmds->next = NULL;
 }
 
-void next_cmd(t_data *data)
+void	next_cmd(t_data *data)
 {
-	t_exec *node;
+	t_exec	*node;
 
 	node = malloc(sizeof(t_exec));
 	if (!node)
@@ -46,34 +72,4 @@ void next_cmd(t_data *data)
 	data->cmds->next = node;
 	data->cmds = data->cmds->next;
 	data->tokens = data->tokens->next;
-}
-
-void    display_cmds(t_exec *cmds)
-{
-	t_exec *head;
-	int     n;
-	int     i;
-
-	head = cmds;
-	n = 0;
-	while (cmds != NULL)
-	{
-		i = 0;
-		printf ("-------------- CMD %d -----------------\n\n", n++);
-		if (cmds->str)
-		{
-			while (cmds->str[i])
-			{
-				printf("  + Str [ %d ]: %s\n", i, cmds->str[i]);
-				i++;
-			}
-		}
-		printf("\n");
-		if (cmds->cmd_status)
-			printf("* CMD status: %s\n", cmds->cmd_status);
-		printf("* Input FD: %d\n", cmds->in_file);
-		printf("* Output FD: %d\n\n", cmds->out_file);
-		cmds = cmds->next;
-	}
-	cmds = head;
 }

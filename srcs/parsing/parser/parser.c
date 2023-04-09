@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 17:36:39 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 22:50:53 by ahammout         ###   ########.fr       */
+/*   Created: 2023/04/08 23:51:17 by ahammout          #+#    #+#             */
+/*   Updated: 2023/04/09 00:14:29 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-char *join_arguments(t_data *data)
+char	*join_arguments(t_data *data)
 {
-	char *arg;
+	char	*arg;
 
 	arg = ft_strdup("");
 	while (data->tokens->attach)
@@ -28,57 +28,40 @@ char *join_arguments(t_data *data)
 	return (arg);
 }
 
-int get_size(t_data *data)
+char	**fill_str(t_data *data, int size)
 {
-	t_tokens *tmp;
-	int size;
+	char	**str;
+	int		i;
 
-	tmp = data->tokens;
-	size = 0;
-	while (tmp && !is_redirection(tmp->type) && tmp->type != PIPE)
+	i = 0;
+	str = malloc(sizeof(char *) * (size + 1));
+	if (!str)
+		exit_minishell(data, "Minishell: Allocation failed.");
+	while (data->tokens && data->tokens->type != PIPE)
 	{
-		if (tmp->type != EMPTY)
+		if (data->tokens->type != EMPTY)
 		{
-			if (tmp->attach)
-			{
-				while (tmp->attach)
-					tmp = tmp->next;
-			}
-			size++;
+			if (data->tokens->attach)
+				str[i] = join_arguments(data);
+			else
+				str[i] = ft_strdup(data->tokens->lex);
+			i++;
 		}
-		tmp = tmp->next;
+		data->tokens = data->tokens->next;
 	}
-	return (size);
+	str[i] = NULL;
+	return (str);
 }
 
-void    command_arguments_handler(t_data *data)
+void	command_arguments_handler(t_data *data)
 {
-	t_ref   ref;
-	char    **str;
-	int     size; 
+	char	**str;
+	int		size;
 
-	ref.i = 0;
 	str = NULL;
 	size = get_size(data);
 	if (size)
-	{
-		str = malloc(sizeof(char *) * (size + 1));
-		if (!str)
-			exit_minishell(data, "Minishell: Allocation failed.");
-		while (data->tokens && data->tokens->type != PIPE)
-		{
-			if (data->tokens->type != EMPTY)
-			{
-				if (data->tokens->attach)
-					str[ref.i] = join_arguments(data);
-				else
-					str[ref.i] = ft_strdup(data->tokens->lex);
-				ref.i++;
-			}
-			data->tokens = data->tokens->next;
-		}
-		str[ref.i] = NULL;
-	}
+		str = fill_str(data, size);
 	else
 	{
 		while (data->tokens && data->tokens->type != PIPE)
@@ -87,10 +70,10 @@ void    command_arguments_handler(t_data *data)
 	data->cmds->str = str;
 }
 
-t_exec *tokens_to_cmds(t_data *data)
+t_exec	*tokens_to_cmds(t_data *data)
 {
-	t_exec *head;
-	t_tokens *tmp;
+	t_tokens	*tmp;
+	t_exec		*head;
 
 	init_cmds_list(data);
 	head = data->cmds;
@@ -115,7 +98,7 @@ t_exec *tokens_to_cmds(t_data *data)
 
 ////////////////////////////////// PARSE_LINE //////////////////////////////
 
-t_exec *parser(t_data *data)
+t_exec	*parser(t_data *data)
 {
 	if (lexer(data))
 	{

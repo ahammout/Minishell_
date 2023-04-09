@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_handler.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 14:37:05 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 21:25:46 by zessadqu         ###   ########.fr       */
+/*   Created: 2023/04/08 23:49:05 by ahammout          #+#    #+#             */
+/*   Updated: 2023/04/08 23:49:48 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-void heredoc_action(t_data *data, int status, int fd[2])
+void	heredoc_action(t_data *data, int status, int fd[2])
 {
 	if (status == 0)
 	{
@@ -34,15 +34,15 @@ void heredoc_action(t_data *data, int status, int fd[2])
 	}
 }
 
-void heredoc_sig_handler(int sig)
+void	heredoc_sig_handler(int sig)
 {
 	(void)sig;
 	exit(1);
 }
 
-void read_input(t_data *data, int fd[2])
+void	read_input(t_data *data, int fd[2])
 {
-	char *buffer;
+	char	*buffer;
 
 	close(fd[0]);
 	signal(SIGINT, heredoc_sig_handler);
@@ -54,7 +54,7 @@ void read_input(t_data *data, int fd[2])
 		if (ft_strcmp(buffer, data->tokens->next->lex) == 0)
 		{
 			free(buffer);
-			break;
+			break ;
 		}
 		ft_putstr_fd(buffer, fd[1]);
 		ft_putstr_fd("\n", fd[1]);
@@ -64,11 +64,11 @@ void read_input(t_data *data, int fd[2])
 	exit(0);
 }
 
-int heredoc_handler(t_data *data)
+int	heredoc_handler(t_data *data)
 {
-	int     fd[2];
-	pid_t   pid;
-	int     status;
+	int		fd[2];
+	pid_t	pid;
+	int		status;
 
 	signal(SIGINT, SIG_IGN);
 	if (pipe(fd) == -1)

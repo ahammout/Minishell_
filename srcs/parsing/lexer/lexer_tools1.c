@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:26:53 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 17:43:37 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/09 00:19:13 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,22 +45,4 @@ void	create_new_node(t_data *data, int *add_node)
 	}
 	else
 		*add_node = 1;
-}
-
-void	display_tokens(t_tokens *token)
-{
-	t_tokens	*head;
-	int			n;
-
-	head = token;
-	n = 0;
-	while (head != NULL)
-	{
-		printf("---- Node %d ----\n", n);
-		printf("Lexeme: %s\n", head->lex);
-		printf("Type: %d\n\n", head->type);
-		printf("Countinu: %d\n", head->attach);
-		n++;
-		head = head->next;
-	}
 }
