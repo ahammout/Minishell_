@@ -6,13 +6,13 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:06:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/09 01:35:06 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 15:02:33 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	restore_parent(int *stds, int status, int *pids, t_data *data)
+void	restore(int *stds, int status, int *pids, t_data *data)
 {
 	int	i;
 
@@ -105,7 +105,7 @@ void	exec_pipes(t_exec *exc, t_data *data)
 		pipe.tmp = pipe.tmp->next;
 		pipe.i++;
 	}
-	restore_parent(pipe.std, 1, pipe.pids, data);
+	restore(pipe.std, 1, pipe.pids, data);
 	free(pipe.std);
 	free(pipe.pids);
 	free_pipes(data);

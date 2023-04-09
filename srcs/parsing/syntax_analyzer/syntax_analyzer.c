@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_analyzer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:46:56 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 21:46:50 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/09 14:49:19 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,6 @@ t_tokens	*syntax_analyzer(t_data *data)
 	}
 	data->tokens = head;
 	if (data->err && !data->heredoc)
-		return (generate_error(data), (void *)0);
+		return (generate_error(data), free_data(data), (void *)0);
 	return (head);
 }
