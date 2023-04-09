@@ -6,30 +6,13 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 03:29:45 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/09 15:27:17 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 17:46:13 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-// void display_cmds(t_exec *cmds)
-// {
-// 	t_exec *tmp;
-
-// 	tmp = cmds;
-// 	while (tmp)
-// 	{
-// 		printf(" fd   in %d\n ", tmp->in_file);
-// 		printf(" fd   out %d\n ", tmp->out_file);
-// 		tmp = tmp->next;
-// 	}
-// }
 int	g_exit_status ;
-
-void	ee(void)
-{
-	system("leaks minishell");
-}
 
 int	init_data(t_data *data)
 {
@@ -63,7 +46,6 @@ int	main(int ac, char **av, char **envp)
 {
 	t_data	data;
 
-	atexit(ee);
 	(void)ac;
 	(void)**av;
 	set_environment(&data, envp);

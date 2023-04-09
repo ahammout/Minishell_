@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_handler.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 23:49:05 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 23:49:48 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/09 17:41:01 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	heredoc_action(t_data *data, int status, int fd[2])
 		g_exit_status = 1;
 		close(fd[0]);
 		close(fd[1]);
-		free_env_list(data);
 		free_data(data);
 		main(1, NULL, list_to_str(data->env));
 	}
@@ -37,6 +36,7 @@ void	heredoc_action(t_data *data, int status, int fd[2])
 void	heredoc_sig_handler(int sig)
 {
 	(void)sig;
+	ft_putchar_fd('\n', 1);
 	exit(1);
 }
 

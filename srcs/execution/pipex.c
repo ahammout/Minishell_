@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:06:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/09 15:02:33 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 15:52:26 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,7 @@ void	free_pipes(t_data *data)
 void	exec_pipes(t_exec *exc, t_data *data)
 {
 	t_vars	pipe;
-	int		i;
 
-	i = 0;
 	init_pipes(data, exc, &pipe);
 	if (data->pipex->p_c)
 		data->pipex->p_fd = pipe_gener(data->pipex->p_c);

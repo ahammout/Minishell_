@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 00:06:12 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/06 18:11:55 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/09 15:41:57 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_exit(t_exec	*cmd)
 			if (!ft_isdigit(cmd->str[1][i]))
 			{
 				ft_putstr_fd("Numeric argument required\n", 2);
-				exit (255);
+				exit (1);
 			}
 			else
 			{
