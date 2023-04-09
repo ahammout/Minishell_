@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:46:44 by zessadqu          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/09 17:46:36 by zessadqu         ###   ########.fr       */
-=======
-/*   Updated: 2023/04/09 17:48:51 by ahammout         ###   ########.fr       */
->>>>>>> a1fc0d45a55cc0af6f9dc4026a806bf46b564992
+/*   Updated: 2023/04/09 17:52:22 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +42,4 @@ void	signals_handler(void)
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = &signals_router;
 	sigaction(SIGINT, &sa, NULL);
-	// sigaction(SIGQUIT, &sa, NULL);
 }
