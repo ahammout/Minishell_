@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 02:43:28 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/09 15:03:04 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 17:50:27 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,6 @@ void		create_new_node(t_data *data, int *add_node);
 void		add_new_node(t_data *data);
 int			free_tokens_list(t_data *data);
 void		cmd_call(t_data *data);
-int			count_pps(t_exec	*exec);
 void		updt_shlvl(t_data *data);
 void		set_environment(t_data *data, char **envp);
 void		set_environment_beta(t_data *data);
@@ -194,8 +193,6 @@ void		ft_export(t_data *data, t_exec *cmd);
 void		export1(t_data *data, char *name, char *value, bool append);
 t_env		*sort_environment(t_data *data);
 int			error_in(const char *str);
-void		setLastNode(t_env *env);
-t_env		*find_node(char *str, t_data *data);
 void		ft_unset(t_exec *cmd, t_data *data);
 void		execute_command(t_exec *exec, char *path, char **envp);
 void		ignore_signal(void);
@@ -240,10 +237,5 @@ char		*ft_strdup_free(char *s1);
 void		free_data(t_data *data);
 void		generate_error(t_data *data);
 int			white_check(char *str);
-char		**ft_2strdup(char **tab1);
-void		display_tokens(t_tokens *token);
-void		display_table(char **dstr);
-void		display_cmds(t_exec *cmds);
-void		display_environment(t_data *data);
 
 #endif

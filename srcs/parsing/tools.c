@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 03:30:30 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 16:11:53 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 15:33:31 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	generate_error(t_data *data)
 {
-	g_exit_status = 2;
+	g_exit_status = 258;
 	ft_putstr_fd(data->err, 2);
 	ft_putstr_fd("\n", 2);
 }

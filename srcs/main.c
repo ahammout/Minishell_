@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 03:29:45 by ahammout          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/04/09 17:46:13 by zessadqu         ###   ########.fr       */
+=======
+/*   Updated: 2023/04/09 17:46:34 by ahammout         ###   ########.fr       */
+>>>>>>> a1fc0d45a55cc0af6f9dc4026a806bf46b564992
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +39,7 @@ void	read_line(t_data *data)
 		if (!data->line)
 		{
 			g_exit_status = 2;
-			ft_putstr_fd("exit\n", 1);
+			ft_putstr_fd("\nexit\n", 1);
 			exit_minishell(data, NULL);
 		}
 		buffer_size = ft_strlen(data->line);

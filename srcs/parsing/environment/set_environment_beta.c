@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 02:09:12 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/09 15:17:27 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 17:50:22 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,3 @@ void	set_environment_beta(t_data *data)
 	data->env->next->next->next->next = NULL;
 }
 
-void	display_environment(t_data *data)
-{
-	t_env	*head;
-	int		index;
-
-	head = data->env;
-	index = 0;
-	while (head != NULL)
-	{
-		printf("--------------	Node %d	-----------\n\n", index);
-		printf(" *Name: %s\n", head->name);
-		printf(" *Value: %s\n\n", head->value);
-		index++;
-		head = head->next;
-	}
-}

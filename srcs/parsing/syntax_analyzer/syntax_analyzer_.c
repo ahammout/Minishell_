@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 21:47:07 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 22:16:12 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/09 17:27:14 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	analyze_begin(t_data *data)
 			{
 				data->err = ft_strdup("Minishell: syntax error near `");
 				data->err = ft_strjoin_free1(data->err, "newline'");
-				if (data->tokens->type == HEREDOC)
+				if (data->err && data->heredoc)
 					data->heredoc = 0;
 			}
 		}
@@ -42,7 +42,8 @@ void	analyze_end(t_data *data)
 			{
 				data->err = ft_strdup("Minishell: syntax error near `");
 				data->err = ft_strjoin_free1(data->err, "newline'");
-				data->heredoc = 0;
+				if (data->err && data->heredoc)
+					data->heredoc = 0;
 			}
 		}
 	}
@@ -65,7 +66,7 @@ void	analyze_filename(t_data *data)
 				data->err = ft_strdup("Minishell: syntax error near `");
 				data->err = ft_strjoin_free1(data->err, filename);
 				data->err = ft_strjoin_free1(data->err, "'");
-				if (data->tokens->type == HEREDOC)
+				if (data->err && data->heredoc)
 					data->heredoc = 0;
 				free(filename);
 			}
