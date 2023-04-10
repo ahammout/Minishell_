@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 00:06:12 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/09 15:41:57 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 19:56:06 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ void	ft_exit(t_exec	*cmd)
 		}
 		i++;
 	}
-	exit(0);
+	return (ft_putendl_fd("exit", 1), exit(0), (void)0);
 }

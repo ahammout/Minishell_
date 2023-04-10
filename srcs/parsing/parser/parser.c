@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 23:51:17 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/09 15:03:45 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/10 14:57:12 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*join_arguments(t_data *data)
 			arg = ft_strjoin_free1(arg, data->tokens->lex);
 		data->tokens = data->tokens->next;
 	}
-	if (data->tokens->lex && data->tokens->type != EMPTY)
+	if (data->tokens && data->tokens->lex && data->tokens->type != EMPTY)
 		arg = ft_strjoin_free1(arg, data->tokens->lex);
 	return (arg);
 }
@@ -41,13 +41,14 @@ char	**fill_str(t_data *data, int size)
 	{
 		if (data->tokens->type != EMPTY)
 		{
-			if (data->tokens->attach)
+			if (data->tokens && data->tokens->attach)
 				str[i] = join_arguments(data);
 			else
 				str[i] = ft_strdup(data->tokens->lex);
 			i++;
 		}
-		data->tokens = data->tokens->next;
+		if (data->tokens)
+			data->tokens = data->tokens->next;
 	}
 	str[i] = NULL;
 	return (str);

@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 05:45:32 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/09 15:12:53 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 19:46:36 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,7 @@ void	mini_execve(char *path, t_exec *tmp, char **envp, int i)
 	else
 	{
 		if (execve(tmp->str[0], tmp->str, envp) == -1)
-		{
-			if (errno == ETXTBSY)
-			{
-				perror("Minishell");
-				g_exit_status = 126;
-			}
-			else
-				check_bash(tmp->str[0], tmp, envp);
-		}
+			check_bash(tmp->str[0], tmp, envp);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 00:15:56 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/09 00:18:49 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/10 14:55:27 by ahammout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	get_size(t_data *data)
 			{
 				if (tmp->attach)
 				{
-					while (tmp->attach)
+					while (tmp && tmp->attach)
 						tmp = tmp->next;
 				}
 				size++;

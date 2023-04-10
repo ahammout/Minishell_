@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 23:49:05 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/09 18:41:08 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 21:45:33 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	heredoc_action(t_data *data, int status, int fd[2])
 	}
 	else
 	{
-		g_exit_status = 1;
 		close(fd[0]);
 		close(fd[1]);
 		return (0);
@@ -35,9 +34,12 @@ int	heredoc_action(t_data *data, int status, int fd[2])
 
 void	heredoc_sig_handler(int sig)
 {
-	(void)sig;
-	ft_putchar_fd('\n', 1);
-	exit(1);
+	if (sig == SIGINT)
+	{
+		ft_putchar_fd('\n', 1);
+		g_exit_status = 1;
+		exit(g_exit_status);
+	}
 }
 
 void	read_input(t_data *data, int fd[2])
@@ -46,6 +48,7 @@ void	read_input(t_data *data, int fd[2])
 
 	close(fd[0]);
 	signal(SIGINT, heredoc_sig_handler);
+	signal(SIGQUIT, SIG_IGN);
 	while (1)
 	{
 		buffer = readline("heredoc> ");
@@ -71,6 +74,7 @@ int	heredoc_handler(t_data *data)
 	int		status;
 
 	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
 	if (pipe(fd) == -1)
 		exit_minishell(data, "Minishell: pipe() failed.");
 	pid = fork();

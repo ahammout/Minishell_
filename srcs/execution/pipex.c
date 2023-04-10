@@ -6,7 +6,7 @@
 /*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:06:39 by zessadqu          #+#    #+#             */
-/*   Updated: 2023/04/09 15:52:26 by zessadqu         ###   ########.fr       */
+/*   Updated: 2023/04/09 21:47:40 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	pipe_exe(int *pids, t_data *data, t_exec *tmp, int i)
 	envp = NULL;
 	if (pids[i] == 0)
 	{
+		signals_handler();
 		handle_fds(data, i);
 		if (tmp->in_file == -1)
 			error_display(tmp);

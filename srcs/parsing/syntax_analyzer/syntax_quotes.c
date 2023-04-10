@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_quotes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahammout <ahammout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zessadqu <zessadqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 18:23:06 by ahammout          #+#    #+#             */
-/*   Updated: 2023/04/08 23:45:13 by ahammout         ###   ########.fr       */
+/*   Updated: 2023/04/09 20:17:25 by zessadqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*inclosed_quotes(char *input)
 	char	*error;
 
 	error = ft_strjoin("Minishell: ", input);
-	error = ft_strjoin (error, ": Inclosed quotes.");
+	error = ft_strjoin_free1(error, ": Inclosed quotes.");
 	return (error);
 }
 
